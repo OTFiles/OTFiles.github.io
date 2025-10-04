@@ -1,0 +1,933 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OTFiles 的小站 | OTFiles 的小站</title><meta name="author" content="OTFiles"><meta name="copyright" content="OTFiles"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="我的世界贴图预览 - Minecraft Pixel Renderer                   :root {             --primary-color: #4ecca3;             --primary-dark: #3daa8a;             --bg-color: #ffffff;             -">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OTFiles 的小站">
+<meta property="og:url" content="https://otfiles.github.io/Minecraft_Pixel_Renderer/index.html">
+<meta property="og:site_name" content="OTFiles 的小站">
+<meta property="og:description" content="我的世界贴图预览 - Minecraft Pixel Renderer                   :root {             --primary-color: #4ecca3;             --primary-dark: #3daa8a;             --bg-color: #ffffff;             -">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://otfiles.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-10-04T05:57:34.493Z">
+<meta property="article:modified_time" content="2025-10-04T05:57:34.493Z">
+<meta property="article:author" content="OTFiles">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://otfiles.github.io/img/butterfly-icon.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://otfiles.github.io/Minecraft_Pixel_Renderer/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OTFiles 的小站',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 7.3.0"><script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css');loadCss('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript></head><body class="light-mode"><div id="web_bg" style="background-image: url(/img/bg1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/SCP_Foundation_emblem/"><span> SCP_LOG</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OTFiles 的小站</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/SCP_Foundation_emblem/"><span> SCP_LOG</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的世界贴图预览 - Minecraft Pixel Renderer</title>
+    
+    <style>
+        :root {
+            --primary-color: #4ecca3;
+            --primary-dark: #3daa8a;
+            --bg-color: #ffffff;
+            --card-bg: #f8f9fa;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .dark-mode {
+            --primary-color: #4ecca3;
+            --primary-dark: #3daa8a;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --border-color: #333333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-text {
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background-color: var(--card-bg);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .theme-toggle:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .theme-icon {
+            font-size: 1.2rem;
+        }
+        
+        .upload-section {
+            margin-bottom: 30px;
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+        
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .card-title i {
+            color: var(--primary-color);
+        }
+        
+        .file-input-wrapper {
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-label {
+            display: block;
+            padding: 18px;
+            background-color: var(--card-bg);
+            border: 2px dashed var(--primary-color);
+            border-radius: 12px;
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .file-label:hover {
+            background-color: rgba(78, 204, 163, 0.1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .preview-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .preview-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .preview-header {
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dark-mode .preview-header {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .preview-title {
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .preview-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .control-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .control-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--text-color);
+        }
+        
+        .dark-mode .control-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .preview-container {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            background-color: var(--bg-color);
+        }
+        
+        canvas {
+            max-width: 100%;
+            max-height: 100%;
+            image-rendering: pixelated;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        .preview-settings {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .dark-mode .preview-settings {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .control-group {
+            margin-bottom: 12px;
+        }
+        
+        .control-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .control-value {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--border-color);
+        }
+        
+        @media (max-width: 900px) {
+            .preview-section {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+    </style>
+
+
+    <div class="container">
+        <header>
+            <div class="header-text">
+                <h1>我的世界贴图预览</h1>
+                <h2>Minecraft Pixel Renderer</h2>
+                <p class="subtitle">上传Minecraft贴图，放大渲染像素细节，支持多图对比</p>
+            </div>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon theme-icon"></i>
+                <span>暗色模式</span>
+            </div>
+        </header>
+        
+        <div class="upload-section">
+            <div class="card-title">
+                <i class="fas fa-upload"></i>
+                <h3>上传贴图</h3>
+            </div>
+            
+            <div class="file-input-wrapper">
+                <input type="file" id="fileInput" class="file-input" accept="image/*" multiple="">
+                <label for="fileInput" class="file-label">
+                    <i class="fas fa-cloud-upload-alt"></i><br>
+                    点击或拖放Minecraft贴图文件（支持多选）
+                </label>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn" id="addBtn">
+                    <i class="fas fa-plus"></i> 添加图片
+                </button>
+                <button class="btn btn-secondary" id="clearAllBtn">
+                    <i class="fas fa-trash"></i> 清空全部
+                </button>
+            </div>
+        </div>
+        
+        <div class="preview-section" id="previewSection">
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-images"></i>
+                <h3>暂无图片</h3>
+                <p>请点击上方按钮添加Minecraft贴图</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 我的世界贴图预览 - Minecraft Pixel Renderer | 设计用于Minecraft贴图放大渲染与对比</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('fileInput');
+            const previewSection = document.getElementById('previewSection');
+            const emptyState = document.getElementById('emptyState');
+            const themeToggle = document.getElementById('themeToggle');
+            const addBtn = document.getElementById('addBtn');
+            const clearAllBtn = document.getElementById('clearAllBtn');
+            
+            let imageCount = 0;
+            let images = [];
+            
+            // 主题切换功能
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                document.body.classList.toggle('light-mode');
+                
+                const icon = themeToggle.querySelector('.theme-icon');
+                const text = themeToggle.querySelector('span');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    text.textContent = '亮色模式';
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    text.textContent = '暗色模式';
+                }
+                
+                // 重新渲染所有图片以应用新的网格颜色
+                images.forEach(imgData => {
+                    renderImage(imgData);
+                });
+            });
+            
+            // 添加图片按钮
+            addBtn.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            // 清空全部按钮
+            clearAllBtn.addEventListener('click', function() {
+                if (images.length === 0) return;
+                
+                if (confirm('确定要清空所有图片吗？')) {
+                    images = [];
+                    imageCount = 0;
+                    updatePreviewSection();
+                }
+            });
+            
+            // 文件选择处理
+            fileInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                if (!files || files.length === 0) return;
+                
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    
+                    if (!file.type.match('image.*')) {
+                        alert('请选择图片文件！');
+                        continue;
+                    }
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = new Image();
+                        img.onload = function() {
+                            addImage(img, file.name);
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+                
+                // 重置文件输入，允许再次选择相同文件
+                fileInput.value = '';
+            });
+            
+            // 拖放功能
+            const fileLabel = document.querySelector('.file-label');
+            fileLabel.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                fileLabel.style.backgroundColor = 'rgba(78, 204, 163, 0.2)';
+            });
+            
+            fileLabel.addEventListener('dragleave', function() {
+                fileLabel.style.backgroundColor = '';
+            });
+            
+            fileLabel.addEventListener('drop', function(e) {
+                e.preventDefault();
+                fileLabel.style.backgroundColor = '';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+            
+            // 添加图片到列表
+            function addImage(img, filename) {
+                const id = `image-${imageCount++}`;
+                const imageData = {
+                    id: id,
+                    img: img,
+                    filename: filename,
+                    scale: 16,
+                    smoothing: false,
+                    grid: true
+                };
+                
+                images.push(imageData);
+                updatePreviewSection();
+                createPreviewCard(imageData);
+            }
+            
+            // 创建预览卡片
+            function createPreviewCard(imageData) {
+                const card = document.createElement('div');
+                card.className = 'preview-card';
+                card.id = imageData.id;
+                
+                card.innerHTML = `
+                    <div class="preview-header">
+                        <div class="preview-title">
+                            <i class="fas fa-image"></i>
+                            <span>${imageData.filename}</span>
+                        </div>
+                        <div class="preview-controls">
+                            <button class="control-btn download-btn" title="下载图片">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="control-btn remove-btn" title="删除图片">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="preview-container">
+                        <canvas></canvas>
+                    </div>
+                    <div class="preview-settings">
+                        <div class="control-group">
+                            <div class="control-label">
+                                <span>像素放大</span>
+                                <span class="control-value">${imageData.scale}x</span>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="scale-slider" min="4" max="32" value="${imageData.scale}" step="4">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="control-label">
+                                <span>图像平滑</span>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="smoothing-checkbox" ${imageData.smoothing ? 'checked' : ''}>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="control-label">
+                                <span>背景网格</span>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="grid-checkbox" ${imageData.grid ? 'checked' : ''}>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                previewSection.appendChild(card);
+                
+                // 设置事件监听器
+                const scaleSlider = card.querySelector('.scale-slider');
+                const smoothingCheckbox = card.querySelector('.smoothing-checkbox');
+                const gridCheckbox = card.querySelector('.grid-checkbox');
+                const removeBtn = card.querySelector('.remove-btn');
+                const downloadBtn = card.querySelector('.download-btn');
+                const controlValue = card.querySelector('.control-value');
+                
+                scaleSlider.addEventListener('input', function() {
+                    imageData.scale = parseInt(this.value);
+                    controlValue.textContent = `${imageData.scale}x`;
+                    renderImage(imageData);
+                });
+                
+                smoothingCheckbox.addEventListener('change', function() {
+                    imageData.smoothing = this.checked;
+                    renderImage(imageData);
+                });
+                
+                gridCheckbox.addEventListener('change', function() {
+                    imageData.grid = this.checked;
+                    renderImage(imageData);
+                });
+                
+                removeBtn.addEventListener('click', function() {
+                    if (confirm('确定要删除这张图片吗？')) {
+                        images = images.filter(img => img.id !== imageData.id);
+                        card.remove();
+                        updatePreviewSection();
+                    }
+                });
+                
+                downloadBtn.addEventListener('click', function() {
+                    downloadImage(imageData);
+                });
+                
+                // 初始渲染
+                renderImage(imageData);
+            }
+            
+            // 渲染图像函数
+            function renderImage(imageData) {
+                const card = document.getElementById(imageData.id);
+                if (!card) return;
+                
+                const canvas = card.querySelector('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = imageData.img;
+                const scale = imageData.scale;
+                const useSmoothing = imageData.smoothing;
+                const showGrid = imageData.grid;
+                
+                // 设置画布尺寸
+                canvas.width = img.width * scale;
+                canvas.height = img.height * scale;
+                
+                // 设置图像渲染质量
+                ctx.imageSmoothingEnabled = useSmoothing;
+                
+                // 绘制背景网格
+                if (showGrid) {
+                    ctx.fillStyle = document.body.classList.contains('dark-mode') ? '#2a2a2a' : '#f0f0f0';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    ctx.strokeStyle = document.body.classList.contains('dark-mode') ? '#3a3a3a' : '#e0e0e0';
+                    ctx.lineWidth = 1;
+                    
+                    // 绘制网格线
+                    for (let x = 0; x <= canvas.width; x += scale) {
+                        ctx.beginPath();
+                        ctx.moveTo(x, 0);
+                        ctx.lineTo(x, canvas.height);
+                        ctx.stroke();
+                    }
+                    
+                    for (let y = 0; y <= canvas.height; y += scale) {
+                        ctx.beginPath();
+                        ctx.moveTo(0, y);
+                        ctx.lineTo(canvas.width, y);
+                        ctx.stroke();
+                    }
+                } else {
+                    ctx.fillStyle = document.body.classList.contains('dark-mode') ? '#1e1e1e' : '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                
+                // 绘制图像
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            }
+            
+            // 下载图片
+            function downloadImage(imageData) {
+                const card = document.getElementById(imageData.id);
+                if (!card) return;
+                
+                const canvas = card.querySelector('canvas');
+                const link = document.createElement('a');
+                link.download = `pixel-${imageData.filename}`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }
+            
+            // 更新预览区域
+            function updatePreviewSection() {
+                if (images.length === 0) {
+                    emptyState.style.display = 'block';
+                } else {
+                    emptyState.style.display = 'none';
+                }
+            }
+        });
+    </script>
+
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">OTFiles</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OTFiles"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暂无</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/I-made-a-preview-tool-for-my-Minecraft-texture-packs/" title="我做了一个我的世界贴图预览工具">我做了一个我的世界贴图预览工具</a><time datetime="2025-10-04T05:51:13.000Z" title="发表于 2025-10-04 13:51:13">2025-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/I-trained-an-AI-to-create-an-animation-of-the-SCP-logo/" title="我调教ai制作了一个scp标志的动画">我调教ai制作了一个scp标志的动画</a><time datetime="2025-10-03T06:39:14.000Z" title="发表于 2025-10-03 14:39:14">2025-10-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/I-trained-an-AI-to-create-an-animation-of-the-SCP-logo-Detailed-conversation/" title="我调教ai制作了一个scp标志的动画-详细对话">我调教ai制作了一个scp标志的动画-详细对话</a><time datetime="2025-10-03T06:00:00.000Z" title="发表于 2025-10-03 14:00:00">2025-10-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Backrooms-level-recommendations/" title="后室层级推荐">后室层级推荐</a><time datetime="2025-08-08T11:20:05.000Z" title="发表于 2025-08-08 19:20:05">2025-08-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Tech-Tinkering-From-Zero-to-Mastery/" title="玩机：从入门到入土">玩机：从入门到入土</a><time datetime="2025-08-08T09:58:47.000Z" title="发表于 2025-08-08 17:58:47">2025-08-08</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%A7%91%E6%99%AE/" style="font-size: 1.5em; color: #99a9bf">科普</a> <a href="/tags/%E5%BF%83%E7%90%86/" style="font-size: 1.1em; color: #999">心理</a> <a href="/tags/%E5%9F%9F%E9%99%90%E7%A9%BA%E9%97%B4/" style="font-size: 1.1em; color: #999">域限空间</a> <a href="/tags/WEB/" style="font-size: 1.1em; color: #999">WEB</a> <a href="/tags/AI/" style="font-size: 1.1em; color: #999">AI</a> <a href="/tags/Minecraft/" style="font-size: 1.1em; color: #999">Minecraft</a> <a href="/tags/%E7%8E%A9%E6%9C%BA/" style="font-size: 1.1em; color: #999">玩机</a> <a href="/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 1.1em; color: #999">加密</a> <a href="/tags/%E5%90%8E%E5%AE%A4/" style="font-size: 1.1em; color: #999">后室</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">7</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishdate="2025-08-07T00:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2025-10-04T05:58:05.251Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 By OTFiles</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="不许搜一些奇怪的东西哦，喵~" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div></div></div><script src="/bundle.js"></script></body></html>
