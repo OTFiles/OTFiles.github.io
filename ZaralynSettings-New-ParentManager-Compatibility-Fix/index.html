@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现 | OTFiles 的小站</title><meta name="author" content="OTFiles"><meta name="copyright" content="OTFiles"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现">
+<meta property="og:url" content="https://otfiles.github.io/ZaralynSettings-New-ParentManager-Compatibility-Fix/index.html">
+<meta property="og:site_name" content="OTFiles 的小站">
+<meta property="og:description" content="ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://otfiles.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-08-10T04:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-11T12:13:40.604Z">
+<meta property="article:author" content="OTFiles">
+<meta property="article:tag" content="破解">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="科技">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://otfiles.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现",
+  "url": "https://otfiles.github.io/ZaralynSettings-New-ParentManager-Compatibility-Fix/",
+  "image": "https://otfiles.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-08-10T04:00:00.000Z",
+  "dateModified": "2026-08-11T12:13:40.604Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "OTFiles",
+      "url": "https://OTFiles.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://otfiles.github.io/ZaralynSettings-New-ParentManager-Compatibility-Fix/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css');loadCss('https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css"></noscript></head><body><div id="web_bg" style="background-image: url(/img/bg1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OTFiles 的小站</span></a><a class="nav-page-title" href="/"><span class="site-name">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-10T04:00:00.000Z" title="发表于 2026-08-10 12:00:00">2026-08-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-11T12:13:40.604Z" title="更新于 2026-08-11 20:13:40">2026-08-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="ZaralynSettings-适配新版家长管理（v6-2-8）：机制迁移分析与自动识别实现"><a href="#ZaralynSettings-适配新版家长管理（v6-2-8）：机制迁移分析与自动识别实现" class="headerlink" title="ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现"></a>ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>此前发布的 <a href="https://otfiles.github.io/">《某学习平板自由安装软件——ParentManager的SQL注入漏洞》</a> 分析了家长管理应用 <code>ParentManager</code> 的 <code>AppContentProvider</code> SQL 注入漏洞，并基于该漏洞开发了工具 <a target="_blank" rel="noopener" href="https://github.com/OTFiles/ZaralynSetting">ZaralynSettings</a>（解除安装限制、黑白名单管理、数据库管理）。</p>
+<p>然而当家长管理升级到 <strong>v6.2.8</strong> 后，旧版工具的关键功能失效了：黑名单/白名单写入了错误的表、全局安装开关不再生效。本文记录了对新版 6.2.8 的逆向分析结论、新旧版本机制差异，以及 ZaralynSettings 如何通过”自动识别 + 版本路由”兼容新旧两个版本。</p>
+<h2 id="一、新旧版本机制差异"><a href="#一、新旧版本机制差异" class="headerlink" title="一、新旧版本机制差异"></a>一、新旧版本机制差异</h2><h3 id="1-1-安装管控机制的迁移（核心差异）"><a href="#1-1-安装管控机制的迁移（核心差异）" class="headerlink" title="1.1 安装管控机制的迁移（核心差异）"></a>1.1 安装管控机制的迁移（核心差异）</h3><p>对 <code>家长管理_v6.2.8.apk</code> 解包逆向（apktool）并与旧版对比，发现安装/使用管控的核心表发生了迁移：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>老版本</th>
+<th>新版 6.2.8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>黑名单/白名单</td>
+<td><code>forbidden_app</code>（<code>state</code>: 0=黑/1=白）</td>
+<td><code>install_app_list</code>（<code>disabled_state</code>: 0=允许/1=禁止）</td>
+</tr>
+<tr>
+<td>全局安装开关</td>
+<td><code>un_mall_app_state</code>（<code>state</code>: 0=禁/1=允）</td>
+<td>仍存在，但仅剩云同步使用</td>
+</tr>
+<tr>
+<td>家长密码</td>
+<td><code>user_info.password</code> 明文</td>
+<td>明文（中间版本曾 AES 加密，密钥硬编码）</td>
+</tr>
+<tr>
+<td>数据库</td>
+<td><code>app_record.db</code>（AppContentProvider）</td>
+<td>同左，表结构扩充</td>
+</tr>
+</tbody></table>
+<p>新版 <code>AppContentProvider$DBHelper</code> 创建的核心表：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> install_app_list(</span><br><span class="line">    _id <span class="type">INTEGER</span> <span class="keyword">PRIMARY KEY</span> AUTOINCREMENT,</span><br><span class="line">    package_name <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">UNIQUE</span>,</span><br><span class="line">    app_name <span class="type">varchar</span>(<span class="number">100</span>),</span><br><span class="line">    app_type <span class="type">int</span>,</span><br><span class="line">    disabled_state <span class="type">int</span>,      <span class="comment">-- ← 核心：1=禁用, 0=正常</span></span><br><span class="line">    upload_state <span class="type">int</span>,</span><br><span class="line">    app_state <span class="type">int</span>,</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>新版自带 UI（<code>AllowAppsFragment</code>/<code>DisallowAppsFragment</code>/<code>MenuFragment</code>）全部基于 <code>install_app_list.disabled_state</code>：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 允许安装列表 = disabled_state = 0</span></span><br><span class="line"><span class="comment">// 禁止安装列表 = disabled_state = 1</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>而旧的 <code>forbidden_app</code> / <code>un_mall_app_state</code> 仅剩 <code>SyncDataService</code>（云同步）和 <code>ParentApplication</code> 引用，不再是管控主路径。</p>
+<h3 id="1-2-禁用状态的下游消费者"><a href="#1-2-禁用状态的下游消费者" class="headerlink" title="1.2 禁用状态的下游消费者"></a>1.2 禁用状态的下游消费者</h3><p><code>disabled_state</code> 被多个组件实时消费（这也是为什么修改后立即生效）：</p>
+<ul>
+<li><strong>AppLockService</strong>：应用启动时 <code>disabledState == 1</code> → 弹出家长密码验证拦截</li>
+<li><strong>RecordService</strong>：定期检查运行中的应用，<code>disabledState == 1</code> → 杀掉最近任务、加入限制表</li>
+<li><strong>ControlSettingsFragment</strong>：渲染每个应用的开关状态</li>
+<li><strong>SyncDataService</strong>：把 <code>disabledState</code> 映射为 <code>appState</code> 回传服务端</li>
+</ul>
+<p>更新 <code>install_app_list</code> 时，<code>AppContentProvider.update()</code> 还会发出特殊通知 URI：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content://com.readboy.parentmanager.AppContentProvider/install_app_list/{packageName}/{disabledState}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-3-SqliteProvider-只读"><a href="#1-3-SqliteProvider-只读" class="headerlink" title="1.3 SqliteProvider 只读"></a>1.3 SqliteProvider 只读</h3><p><code>com.coolerfall.Provider.SqliteProvider</code>（authority <code>com.readboy.parentmanager.SqliteProvider</code>）在新版中 <code>insert/update/delete</code> 直接返回 null/0，仅 <code>query</code> 可用。其数据库 <code>mysql.db3</code> 是从 assets 复制的静态分类表（<code>FirsType</code>/<code>SecondType</code> 等），本身没有可写价值。</p>
+<h2 id="二、多种修改-SQL-的方式（已在-6-2-8-验证）"><a href="#二、多种修改-SQL-的方式（已在-6-2-8-验证）" class="headerlink" title="二、多种修改 SQL 的方式（已在 6.2.8 验证）"></a>二、多种修改 SQL 的方式（已在 6.2.8 验证）</h2><table>
+<thead>
+<tr>
+<th>#</th>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>raw_sql 任意 SELECT</strong></td>
+<td><code>content://.../AppContentProvider/raw_sql</code>，<code>selection</code> 参数直接进 <code>rawQuery()</code>，可带 PRAGMA</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>标准 ContentProvider CRUD</strong></td>
+<td><code>content://.../AppContentProvider/&lt;表名&gt;</code> 的 insert/update/delete 操作任意表（如直接改 <code>user_info.password</code>）</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>SqliteProvider 只读查询</strong></td>
+<td>mysql.db3 静态数据</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>非 SQL 攻击面</strong></td>
+<td><code>RecordServiceBinder.allowPackage()</code> 无认证白名单注入、<code>HIDE_APPS_EVENT</code> 广播等</td>
+</tr>
+</tbody></table>
+<p>注意：<code>raw_sql</code> 是 <code>rawQuery</code>，只适合 SELECT；写入必须走标准 CRUD。中间版本家长密码曾用 AES 加密存储（密钥 <code>#reaboy+ZHdream#</code> 硬编码，<code>KeyGenerator + SecureRandom(种子)</code> 弱派生），6.2.8 已恢复明文存储与 <code>String.equals()</code> 比对。</p>
+<h2 id="三、兼容层设计（ZaralynSettings-v66-）"><a href="#三、兼容层设计（ZaralynSettings-v66-）" class="headerlink" title="三、兼容层设计（ZaralynSettings v66+）"></a>三、兼容层设计（ZaralynSettings v66+）</h2><h3 id="3-1-版本自动识别"><a href="#3-1-版本自动识别" class="headerlink" title="3.1 版本自动识别"></a>3.1 版本自动识别</h3><p>以 <code>install_app_list</code> 表结构作为新旧判据（两个版本都存在该表，但列集不同）：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PRAGMA table_info(install_app_list)</span><br><span class="line"><span class="comment">-- 含 disabled_state 列 → 新版（6.2.x）</span></span><br><span class="line"><span class="comment">-- 仅含 state 列 → 老版</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>探测顺序（关键：<strong>先直接 content 查询，再包管理诊断</strong>）：</p>
+<ol>
+<li><code>raw_sql</code> PRAGMA 探测列结构</li>
+<li>回退：标准查询 <code>sqlite_master</code>（app_record.db → mysql.db3）</li>
+<li>全部失败才进入包管理诊断（扫描候选 Provider、检查包是否禁用）</li>
+</ol>
+<p>识别结果只缓存确定值（OLD/NEW），<code>UNKNOWN</code> 每次启动重新探测——避免家长管理后装/启用后检测失效。</p>
+<h3 id="3-2-功能按版本路由"><a href="#3-2-功能按版本路由" class="headerlink" title="3.2 功能按版本路由"></a>3.2 功能按版本路由</h3><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>老版</th>
+<th>新版 6.2.8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全局安装开关</td>
+<td><code>un_mall_app_state.state</code></td>
+<td><code>install_app_list</code> 全表 <code>disabled_state</code> 批量置 0/1 + 兼容写旧门禁</td>
+</tr>
+<tr>
+<td>白名单</td>
+<td><code>forbidden_app</code> state=1</td>
+<td><code>install_app_list.disabled_state=0</code>（upsert，双写 <code>forbidden_app</code>）</td>
+</tr>
+<tr>
+<td>黑名单</td>
+<td><code>forbidden_app</code> state=0</td>
+<td><code>install_app_list.disabled_state=1</code>（同上）</td>
+</tr>
+<tr>
+<td>家长密码</td>
+<td><code>user_info</code> 明文读取</td>
+<td>明文读取 + AES 密文解密回退</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-SQL-修改方式全局设置"><a href="#3-3-SQL-修改方式全局设置" class="headerlink" title="3.3 SQL 修改方式全局设置"></a>3.3 SQL 修改方式全局设置</h3><p>新增设置项（SharedPreferences 持久化，全局生效）：</p>
+<ul>
+<li><strong>自动（推荐）</strong>：查询优先 raw_sql，写入走标准 CRUD</li>
+<li><strong>raw_sql 注入</strong>：仅通过 raw_sql 执行查询（数据库管理仅支持 app_record 库）</li>
+<li><strong>标准 ContentProvider</strong>：完全不依赖 raw_sql，全部走标准增删改查</li>
+</ul>
+<h2 id="四、踩坑记录"><a href="#四、踩坑记录" class="headerlink" title="四、踩坑记录"></a>四、踩坑记录</h2><h3 id="4-1-检测不到已安装的家长管理"><a href="#4-1-检测不到已安装的家长管理" class="headerlink" title="4.1 检测不到已安装的家长管理"></a>4.1 检测不到已安装的家长管理</h3><p>现象：设备上家长管理正常运行，但工具提示”未检测到家长管理/检测失败”，日志显示全量扫描 0 个候选。</p>
+<p>根因（两处）：</p>
+<ol>
+<li><strong>Android 11+ 包可见性</strong>：工具 targetSdk 34，未声明 <code>&lt;queries&gt;</code>/<code>QUERY_ALL_PACKAGES</code> 时，<code>resolveContentProvider()</code>/<code>getInstalledPackages()</code> 根本看不到家长管理这个包</li>
+<li><strong>强制停止状态</strong>：<code>getInstalledPackages</code> 默认不包含被 force-stop 的应用，需加 <code>MATCH_UNINSTALLED_PACKAGES</code> 标志</li>
+</ol>
+<p>修复：</p>
+<ul>
+<li>Manifest 声明 <code>QUERY_ALL_PACKAGES</code> + <code>&lt;queries&gt;</code>（包名 + provider authority）</li>
+<li><strong>探测顺序反转</strong>：先直接发 content 查询（<code>ContentResolver</code> 按 authority 解析，不受包可见性影响），失败才走包管理诊断</li>
+</ul>
+<h3 id="4-2-UNKNOWN-结果被持久化缓存"><a href="#4-2-UNKNOWN-结果被持久化缓存" class="headerlink" title="4.2 UNKNOWN 结果被持久化缓存"></a>4.2 UNKNOWN 结果被持久化缓存</h3><p>旧实现把探测失败的结果也写入 SharedPreferences，导致之后每次启动都直接返回”未检测到”，必须手动重测。修复：只缓存 OLD/NEW，UNKNOWN 每次启动重新探测。</p>
+<h3 id="4-3-文件日志系统"><a href="#4-3-文件日志系统" class="headerlink" title="4.3 文件日志系统"></a>4.3 文件日志系统</h3><p>为了在无 logcat 的环境下排查（学习平板不方便连 adb），为工具增加了文件日志：</p>
+<ul>
+<li>按日期分文件：<code>Android/data/com.readboy.installer/files/logs/yyyy-MM-dd.log</code></li>
+<li>内置「日志」页面：◀▶ 切换日期、一键复制</li>
+<li>版本探测、Provider 解析、所有数据库操作均落盘</li>
+</ul>
+<h3 id="4-4-GitHub-Actions-构建排查"><a href="#4-4-GitHub-Actions-构建排查" class="headerlink" title="4.4 GitHub Actions 构建排查"></a>4.4 GitHub Actions 构建排查</h3><p>本地环境无法编译（SDK/Java 兼容问题），改用 GitHub Actions 构建。构建失败时无法直接下载日志（需管理员权限），于是在 workflow 中增加”构建失败自动上传 build-output.log artifact”，从而定位到 <code>CONTENT</code> 模式路由中残留的已删除常量引用（<code>Unresolved reference: AUTHORITY</code>）。</p>
+<h2 id="五、使用方式"><a href="#五、使用方式" class="headerlink" title="五、使用方式"></a>五、使用方式</h2><ol>
+<li>从 <a target="_blank" rel="noopener" href="https://github.com/OTFiles/ZaralynSetting/releases">Releases</a> 下载最新 APK（标题”修复新版兼容性问题”）</li>
+<li>安装到学习平板</li>
+<li>「设置」页查看自动识别的家长管理版本（老版/新版）与 Provider 包名</li>
+<li>「设置」页可切换全局 SQL 修改方式（默认自动）</li>
+<li>「日志」页可查看/复制运行日志</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>新版家长管理（6.2.8）把安装/使用管控从 <code>forbidden_app</code> + <code>un_mall_app_state</code> 迁移到了 <code>install_app_list.disabled_state</code>，但 <code>AppContentProvider</code> 的 <code>raw_sql</code> 任意 SQL 执行与无权限保护问题依旧存在。ZaralynSettings 通过”表结构探测自动识别版本 + 功能按版本路由 + 全局 SQL 方式设置”兼容了新旧两个版本，并借由文件日志系统解决了无 adb 环境下的排障问题。</p>
+<p><strong>建议</strong>: 本文仅用于安全研究和教育目的，请确认你拥有设备的所有权。未经授权使用本文中的技术可能违反法律，作者不对任何滥用行为负责。</p>
+<p><strong>更新时间</strong>: 2026-08-10</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://OTFiles.github.io">OTFiles</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://otfiles.github.io/ZaralynSettings-New-ParentManager-Compatibility-Fix/">https://otfiles.github.io/ZaralynSettings-New-ParentManager-Compatibility-Fix/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://OTFiles.github.io" target="_blank">OTFiles 的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%B4%E8%A7%A3/">破解</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E8%A3%85/">安装</a><a class="post-meta__tags" href="/tags/%E7%A7%91%E6%8A%80/">科技</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">某学习平板自由安装软件——ParentManager的SQL注入漏洞</div></div><div class="info-2"><div class="info-item-1">深入分析 ParentManager 白名单漏洞：如何利用 SQL 注入绕过应用安装限制前言最近在学习机家长控制应用 ParentManager 的安全分析中，发现了一个极其严重的 SQL 注入漏洞（CVSS 10.0 CRITICAL），这个漏洞允许任意第三方应用完全绕过白名单机制，安装任何软件。本文将详细分析这个漏洞的原理、利用方式以及实际攻击代码。 漏洞概述ParentManager 是一款家长控制应用，用于管理学习机上应用的安装和使用。它通过白名单机制来限制用户只能安装和使用特定的应用。然而，由于开发者的安全意识不足，应用中存在一个严重的 SQL 注入漏洞，使得任何第三方应用都可以完全绕过这个限制。 漏洞位置文件路径: smali/com/readboy/parentmanager/core/provider/AppContentProvider.smali (102-109 行) 代码片段: 12345678910111213141516171819202122232425262728.method public query(Landroid/net/Uri;[Ljav...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-15</div><div class="info-item-2">某学习平板自由安装软件——ParentManager的SQL注入漏洞</div></div><div class="info-2"><div class="info-item-1">深入分析 ParentManager 白名单漏洞：如何利用 SQL 注入绕过应用安装限制前言最近在学习机家长控制应用 ParentManager 的安全分析中，发现了一个极其严重的 SQL 注入漏洞（CVSS 10.0 CRITICAL），这个漏洞允许任意第三方应用完全绕过白名单机制，安装任何软件。本文将详细分析这个漏洞的原理、利用方式以及实际攻击代码。 漏洞概述ParentManager 是一款家长控制应用，用于管理学习机上应用的安装和使用。它通过白名单机制来限制用户只能安装和使用特定的应用。然而，由于开发者的安全意识不足，应用中存在一个严重的 SQL 注入漏洞，使得任何第三方应用都可以完全绕过这个限制。 漏洞位置文件路径: smali/com/readboy/parentmanager/core/provider/AppContentProvider.smali (102-109 行) 代码片段: 12345678910111213141516171819202122232425262728.method public query(Landroid/net/Uri;[Ljav...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">OTFiles</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OTFiles"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暂无</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ZaralynSettings-%E9%80%82%E9%85%8D%E6%96%B0%E7%89%88%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86%EF%BC%88v6-2-8%EF%BC%89%EF%BC%9A%E6%9C%BA%E5%88%B6%E8%BF%81%E7%A7%BB%E5%88%86%E6%9E%90%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%AF%86%E5%88%AB%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%96%B0%E6%97%A7%E7%89%88%E6%9C%AC%E6%9C%BA%E5%88%B6%E5%B7%AE%E5%BC%82"><span class="toc-number">1.2.</span> <span class="toc-text">一、新旧版本机制差异</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%AE%89%E8%A3%85%E7%AE%A1%E6%8E%A7%E6%9C%BA%E5%88%B6%E7%9A%84%E8%BF%81%E7%A7%BB%EF%BC%88%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 安装管控机制的迁移（核心差异）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%A6%81%E7%94%A8%E7%8A%B6%E6%80%81%E7%9A%84%E4%B8%8B%E6%B8%B8%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 禁用状态的下游消费者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-SqliteProvider-%E5%8F%AA%E8%AF%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 SqliteProvider 只读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E7%A7%8D%E4%BF%AE%E6%94%B9-SQL-%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%88%E5%B7%B2%E5%9C%A8-6-2-8-%E9%AA%8C%E8%AF%81%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">二、多种修改 SQL 的方式（已在 6.2.8 验证）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%BC%E5%AE%B9%E5%B1%82%E8%AE%BE%E8%AE%A1%EF%BC%88ZaralynSettings-v66-%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">三、兼容层设计（ZaralynSettings v66+）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E7%89%88%E6%9C%AC%E8%87%AA%E5%8A%A8%E8%AF%86%E5%88%AB"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 版本自动识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%8A%9F%E8%83%BD%E6%8C%89%E7%89%88%E6%9C%AC%E8%B7%AF%E7%94%B1"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 功能按版本路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-SQL-%E4%BF%AE%E6%94%B9%E6%96%B9%E5%BC%8F%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 SQL 修改方式全局设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95"><span class="toc-number">1.5.</span> <span class="toc-text">四、踩坑记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%A3%80%E6%B5%8B%E4%B8%8D%E5%88%B0%E5%B7%B2%E5%AE%89%E8%A3%85%E7%9A%84%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 检测不到已安装的家长管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-UNKNOWN-%E7%BB%93%E6%9E%9C%E8%A2%AB%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 UNKNOWN 结果被持久化缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%96%87%E4%BB%B6%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 文件日志系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-GitHub-Actions-%E6%9E%84%E5%BB%BA%E6%8E%92%E6%9F%A5"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 GitHub Actions 构建排查</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text">五、使用方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.7.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</a><time datetime="2026-08-10T04:00:00.000Z" title="发表于 2026-08-10 12:00:00">2026-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞">某学习平板自由安装软件——ParentManager的SQL注入漏洞</a><time datetime="2026-03-15T04:00:00.000Z" title="发表于 2026-03-15 12:00:00">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Backrooms-level-recommendations/" title="后室层级推荐">后室层级推荐</a><time datetime="2025-08-08T11:20:05.000Z" title="发表于 2025-08-08 19:20:05">2025-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 - 2026 By OTFiles</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="不许搜一些奇怪的东西哦，喵~" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div></div></div><script src="/bundle.js"></script></body></html>
