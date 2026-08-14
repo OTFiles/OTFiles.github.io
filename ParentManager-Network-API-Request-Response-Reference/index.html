@@ -1,0 +1,719 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档） | OTFiles 的小站</title><meta name="author" content="OTFiles"><meta name="copyright" content="OTFiles"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档） 目的：把 6.2.8 中所有网络请求的 URL、请求参数、响应 JSON 结构 完整存档。万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。来源：家长管理_v6.2.8.apk 反编译逐行提取，全部为实测代码，非推测。   〇、公共约定（所有接口通用）0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）">
+<meta property="og:url" content="https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/index.html">
+<meta property="og:site_name" content="OTFiles 的小站">
+<meta property="og:description" content="家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档） 目的：把 6.2.8 中所有网络请求的 URL、请求参数、响应 JSON 结构 完整存档。万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。来源：家长管理_v6.2.8.apk 反编译逐行提取，全部为实测代码，非推测。   〇、公共约定（所有接口通用）0">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://otfiles.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-08-14T04:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-14T11:50:42.413Z">
+<meta property="article:author" content="OTFiles">
+<meta property="article:tag" content="破解">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="科技">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://otfiles.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）",
+  "url": "https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/",
+  "image": "https://otfiles.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-08-14T04:00:00.000Z",
+  "dateModified": "2026-08-14T11:50:42.413Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "OTFiles",
+      "url": "https://OTFiles.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css');loadCss('https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css"></noscript></head><body><div id="web_bg" style="background-image: url(/img/bg1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OTFiles 的小站</span></a><a class="nav-page-title" href="/"><span class="site-name">家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-14T11:50:42.413Z" title="更新于 2026-08-14 19:50:42">2026-08-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="家长管理-6-2-8-全部网络接口：请求-响应格式速查手册（防厂商跑路存档）"><a href="#家长管理-6-2-8-全部网络接口：请求-响应格式速查手册（防厂商跑路存档）" class="headerlink" title="家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档）"></a>家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档）</h1><blockquote>
+<p>目的：把 6.2.8 中所有网络请求的 <strong>URL、请求参数、响应 JSON 结构</strong> 完整存档。<br>万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。<br>来源：<code>家长管理_v6.2.8.apk</code> 反编译逐行提取，全部为实测代码，非推测。</p>
+</blockquote>
+<hr>
+<h2 id="〇、公共约定（所有接口通用）"><a href="#〇、公共约定（所有接口通用）" class="headerlink" title="〇、公共约定（所有接口通用）"></a>〇、公共约定（所有接口通用）</h2><h3 id="0-1-服务器域名"><a href="#0-1-服务器域名" class="headerlink" title="0.1 服务器域名"></a>0.1 服务器域名</h3><table>
+<thead>
+<tr>
+<th>域名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>http://parent-manage.readboy.com</code></td>
+<td>主接口域（HTTP 明文！）</td>
+</tr>
+<tr>
+<td><code>https://parentadmin.readboy.com</code></td>
+<td>管理域（HTTPS，解绑/控制App上传等）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 注意：绝大多数接口是 <strong>HTTP 明文</strong>，只有解绑、miPush 上传等少数走 HTTPS。</p>
+</blockquote>
+<h3 id="0-2-请求公共参数（几乎所有接口都有）"><a href="#0-2-请求公共参数（几乎所有接口都有）" class="headerlink" title="0.2 请求公共参数（几乎所有接口都有）"></a>0.2 请求公共参数（几乎所有接口都有）</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>signature</code></td>
+<td>MD5 签名</td>
+<td><code>MD5(秒时间戳 + APPSECRET + MD5(APP_ID2))</code></td>
+</tr>
+<tr>
+<td><code>imei</code></td>
+<td>设备序列号</td>
+<td><code>Util.getSerial()</code></td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>毫秒时间戳</td>
+<td><code>System.currentTimeMillis()</code></td>
+</tr>
+<tr>
+<td><code>app_id</code></td>
+<td>应用 ID</td>
+<td>固定 <code>parent-manage</code></td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 签名算法（Sign.smali 核心常量，已硬编码在 APK 里）</span></span><br><span class="line">APPSECRET = <span class="string">"de917e0e6b4962061d66d24f6cfdb5bf0d1b9b39"</span>;</span><br><span class="line">APP_ID2   = <span class="string">"parent-manage"</span>;</span><br><span class="line">APP_KEY   = <span class="string">"9b332c2653ce7189da101dac5a63fd4e"</span>;</span><br><span class="line"></span><br><span class="line">String <span class="title function_">getSign2</span><span class="params">()</span> {</span><br><span class="line">    <span class="type">long</span> <span class="variable">seconds</span> <span class="operator">=</span> System.currentTimeMillis() / <span class="number">1000</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">input</span> <span class="operator">=</span> seconds + APPSECRET + MD5(APP_ID2);</span><br><span class="line">    <span class="keyword">return</span> MD5(input);  <span class="comment">// 32 位小写</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>注意：<strong>签名不含任何设备密钥</strong>，纯靠硬编码的 APPSECRET。任何人反编译 APK 都能伪造签名 → 身份鉴别形同虚设。</p>
+</blockquote>
+<h3 id="0-3-响应公共结构（OnlineResponseBean）"><a href="#0-3-响应公共结构（OnlineResponseBean）" class="headerlink" title="0.3 响应公共结构（OnlineResponseBean）"></a>0.3 响应公共结构（OnlineResponseBean）</h3><p>所有接口响应都是统一 JSON 外壳：</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">"success"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>status</code></td>
+<td>int</td>
+<td>1 = 成功；0 = 业务失败（看 errno）</td>
+</tr>
+<tr>
+<td><code>errno</code></td>
+<td>int</td>
+<td>错误码（见 0.4）</td>
+</tr>
+<tr>
+<td><code>errmsg</code></td>
+<td>string</td>
+<td>错误描述</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>string</td>
+<td>服务器时间戳</td>
+</tr>
+</tbody></table>
+<h3 id="0-4-已知错误码（errno）"><a href="#0-4-已知错误码（errno）" class="headerlink" title="0.4 已知错误码（errno）"></a>0.4 已知错误码（errno）</h3><table>
+<thead>
+<tr>
+<th>errno</th>
+<th>十六进制</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7018</td>
+<td><code>0x1B5A</code></td>
+<td><strong>时间戳错误</strong>（客户端只打日志，不重试）</td>
+</tr>
+<tr>
+<td>7214</td>
+<td><code>0x1C2E</code></td>
+<td>RID 或列表不存在</td>
+</tr>
+</tbody></table>
+<h3 id="0-5-请求方式"><a href="#0-5-请求方式" class="headerlink" title="0.5 请求方式"></a>0.5 请求方式</h3><ul>
+<li>Volley 系列：GET/POST 参数走 <code>getParams()</code>（POST body 或 URL query），部分走 Header</li>
+<li>OkHttp 系列：<code>okHttpPost(url, map, callback)</code></li>
+<li>认证头（部分接口）：<code>Authentication: 4G:&lt;MD5签名&gt;</code></li>
+</ul>
+<hr>
+<h2 id="一、配置拉取类（云端-→-平板）"><a href="#一、配置拉取类（云端-→-平板）" class="headerlink" title="一、配置拉取类（云端 → 平板）"></a>一、配置拉取类（云端 → 平板）</h2><h3 id="1-1-全量配置拉取-★核心接口"><a href="#1-1-全量配置拉取-★核心接口" class="headerlink" title="1.1 全量配置拉取 ★核心接口"></a>1.1 全量配置拉取 ★核心接口</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST/GET http://parent-manage.readboy.com/api/v1/jpush/content</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>signature</td>
+<td>getSign2()</td>
+</tr>
+<tr>
+<td>imei</td>
+<td>设备序列号</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>毫秒时间戳</td>
+</tr>
+<tr>
+<td>app_id</td>
+<td>parent-manage</td>
+</tr>
+<tr>
+<td>push_type</td>
+<td>推送类型</td>
+</tr>
+<tr>
+<td>get_all</td>
+<td>1=强制全量（默认非全量时增量）</td>
+</tr>
+</tbody></table>
+<p><strong>响应 JSON（完整结构，字段全部为 6.2.8 实际解析）：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">"success"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">"control_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span>              <span class="comment">// ★ 应用管控列表（核心！）</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"pack_name"</span><span class="punctuation">:</span> <span class="string">"com.tencent.mm"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span>               <span class="comment">// 管控状态（见下方映射）</span></span><br><span class="line">      <span class="attr">"operated"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"updated_at"</span><span class="punctuation">:</span> <span class="string">"2026-08-01 12:00:00"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"details"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"app_name"</span><span class="punctuation">:</span> <span class="string">"微信"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"app_type"</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"password"</span><span class="punctuation">:</span> <span class="punctuation">{</span>                   <span class="comment">// ★ 家长密码（明文下发！）</span></span><br><span class="line">    <span class="attr">"password"</span><span class="punctuation">:</span> <span class="string">"123456"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"is_long_pwd"</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"allow_input_pwd"</span><span class="punctuation">:</span> <span class="punctuation">{</span>            <span class="comment">// ★ 是否允许输入密码</span></span><br><span class="line">    <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span>                   <span class="comment">// 1=允许，其他=禁止</span></span><br><span class="line">  <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"allow_pwd"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span> <span class="punctuation">}</span><span class="punctuation">,</span>   <span class="comment">// 是否允许设置密码</span></span><br><span class="line">  <span class="attr">"shutdown"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span>    <span class="comment">// 远程关机</span></span><br><span class="line">  <span class="attr">"control_time"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_answer"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_bluetooth"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_usb"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_video"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_extend"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"system_mode"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"app_system_mode"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"disable_mode"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"download_level"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"close_disable_mode"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"app_store"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"allow_hide_app"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"allow_unknown_app"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"anti_addiction"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"auto_screenshot"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"homework_video"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"report_loss"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"screenshot"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"desk_induction"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"desk_notify"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"desk_posture"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"eyeshield"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"location"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"current_usage"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"mami_command"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"mami_detail"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"nsfw_app"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"pwd_stop"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"popup"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"reminder"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"reset"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"resume_jpush"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"temp_use"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"to_uninstall"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"upload_device_log"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"upload_unlocking_time"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"voice_limit"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"whitelist"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"applet_limit"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"applet_apply"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_uninstall"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"rby_enable_start_app_by_password"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"rby_enable_start_machine_by_password"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"clear_password"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"is_stop_push"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"is_update_app"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"switch_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span> <span class="attr">"switch_id"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"switch_name"</span><span class="punctuation">:</span> <span class="string">"xxx"</span><span class="punctuation">,</span> <span class="attr">"switch_state"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"switch_rule"</span><span class="punctuation">:</span> <span class="string">""</span> <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"applet_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span> <span class="attr">"applet_id"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"applet_state"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"applet_rule_version"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"applet_config_version"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"app_name"</span><span class="punctuation">:</span> <span class="string">""</span> <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"reminder_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span> <span class="attr">"id"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"title"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"content"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"start_time"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"end_time"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"type"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_answer_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span> <span class="attr">"id"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"pack_name"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_time_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span> <span class="attr">"id"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"period_status"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"periods"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">"total_time"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"use_duration"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"upload_app_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"uninstall_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"model_whitelist"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"store_pack"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"synchronize_data"</span><span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>control_list 的 status → 本地 disabled_state 映射：</strong></p>
+<table>
+<thead>
+<tr>
+<th>云端 status</th>
+<th>本地 disabled_state</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0</td>
+<td>正常（允许）</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>禁用</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>即：<code>disabled_state = (status == 1) ? 0 : 1</code>（反向！云端 1=放行，本地 1=禁止）</p>
+</blockquote>
+<p><strong>客户端处理（覆盖本地）：</strong></p>
+<ul>
+<li><code>control_list</code> → 逐项 update <code>install_app_list</code>（disabled_state/app_state/upload_state/network_app_state 全覆盖）</li>
+<li><code>password</code> → update/add/delete <code>user_info</code>（<strong>无条件覆盖本地密码</strong>）</li>
+<li><code>allow_input_pwd</code> → 写 SharedPreferences <code>no_allow_input_pwd</code> + Settings.Global <code>rby_enable_start_machine_by_password</code></li>
+<li>其余各 <code>xxx.status</code> → 对应各控制开关</li>
+</ul>
+<hr>
+<h3 id="1-2-心跳-★确认在线（不拉配置）"><a href="#1-2-心跳-★确认在线（不拉配置）" class="headerlink" title="1.2 心跳 ★确认在线（不拉配置）"></a>1.2 心跳 ★确认在线（不拉配置）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/heart_beat</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + screen_off(屏幕是否关)</p>
+<p><strong>响应：</strong> 仅解析 <code>status==1</code>（在线），<strong>不解析任何配置</strong>。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span> <span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h3 id="1-3-最后一条推送"><a href="#1-3-最后一条推送" class="headerlink" title="1.3 最后一条推送"></a>1.3 最后一条推送</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/push/get_last_push</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + push_type</p>
+<p><strong>响应：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"push_type"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"content"</span><span class="punctuation">:</span> <span class="string">"..."</span><span class="punctuation">,</span> <span class="attr">"create_time"</span><span class="punctuation">:</span> <span class="string">"..."</span> <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h3 id="1-4-禁用列表（黑白名单）"><a href="#1-4-禁用列表（黑白名单）" class="headerlink" title="1.4 禁用列表（黑白名单）"></a>1.4 禁用列表（黑白名单）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/install/forbidden_list</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id</p>
+<p><strong>响应：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"white_list"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"pack_names"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"com.tencent.mm"</span><span class="punctuation">,</span> <span class="string">"com.tencent.qq"</span><span class="punctuation">]</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"cooperation_list"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"pack_names"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"com.readboy.xxx"</span><span class="punctuation">]</span> <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h3 id="1-5-激活状态查询"><a href="#1-5-激活状态查询" class="headerlink" title="1.5 激活状态查询"></a>1.5 激活状态查询</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/machine/get_active_status</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id</p>
+<p><strong>响应：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"activated"</span><span class="punctuation">:</span> <span class="number">1</span> <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="二、上传类（平板-→-云端）"><a href="#二、上传类（平板-→-云端）" class="headerlink" title="二、上传类（平板 → 云端）"></a>二、上传类（平板 → 云端）</h2><h3 id="2-1-密码上传（设置-修改密码时）"><a href="#2-1-密码上传（设置-修改密码时）" class="headerlink" title="2.1 密码上传（设置/修改密码时）"></a>2.1 密码上传（设置/修改密码时）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/password/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + password + is_long_pwd</p>
+<p><strong>响应：</strong> 标准结构 <code>{status, errno, errmsg, timestamp}</code></p>
+<h3 id="2-2-设备信息上传"><a href="#2-2-设备信息上传" class="headerlink" title="2.2 设备信息上传"></a>2.2 设备信息上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/machine/uploadInfo</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 设备信息字段</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-3-已安装应用列表上传"><a href="#2-3-已安装应用列表上传" class="headerlink" title="2.3 已安装应用列表上传"></a>2.3 已安装应用列表上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/install/upload_list</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + app 列表</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-4-卸载应用上传"><a href="#2-4-卸载应用上传" class="headerlink" title="2.4 卸载应用上传"></a>2.4 卸载应用上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/uninstall/uploadApps</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + app 列表</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-5-管控状态上传（本地修改-→-云端）"><a href="#2-5-管控状态上传（本地修改-→-云端）" class="headerlink" title="2.5 管控状态上传（本地修改 → 云端）"></a>2.5 管控状态上传（本地修改 → 云端）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST https://parentadmin.readboy.com/v1/appinfo/controlApp/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 管控状态列表（add/update/delete）</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-6-隐藏应用上传"><a href="#2-6-隐藏应用上传" class="headerlink" title="2.6 隐藏应用上传"></a>2.6 隐藏应用上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/hide_app/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 隐藏列表</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-7-使用时长上传"><a href="#2-7-使用时长上传" class="headerlink" title="2.7 使用时长上传"></a>2.7 使用时长上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/time/UploadTimeUsage</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 时长数据</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-8-定位上传"><a href="#2-8-定位上传" class="headerlink" title="2.8 定位上传"></a>2.8 定位上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/location/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 定位数据</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-9-设备状态上传"><a href="#2-9-设备状态上传" class="headerlink" title="2.9 设备状态上传"></a>2.9 设备状态上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/device_status/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 设备状态</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-10-密码输入错误记录上传"><a href="#2-10-密码输入错误记录上传" class="headerlink" title="2.10 密码输入错误记录上传"></a>2.10 密码输入错误记录上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/password/correct_record</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 记录</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="2-11-截屏上传"><a href="#2-11-截屏上传" class="headerlink" title="2.11 截屏上传"></a>2.11 截屏上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/screenshot/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 截图数据</p>
+<p><strong>响应：</strong> 标准结构</p>
+<hr>
+<h2 id="三、控制类（云端-→-平板，远程指令）"><a href="#三、控制类（云端-→-平板，远程指令）" class="headerlink" title="三、控制类（云端 → 平板，远程指令）"></a>三、控制类（云端 → 平板，远程指令）</h2><h3 id="3-1-远程关机"><a href="#3-1-远程关机" class="headerlink" title="3.1 远程关机"></a>3.1 远程关机</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/shutdown/uploadFunc</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 指令</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="3-2-JPush-指令执行"><a href="#3-2-JPush-指令执行" class="headerlink" title="3.2 JPush 指令执行"></a>3.2 JPush 指令执行</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/jpush/execute</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + execute_type + 指令内容</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="3-3-系统模式上传-切换"><a href="#3-3-系统模式上传-切换" class="headerlink" title="3.3 系统模式上传/切换"></a>3.3 系统模式上传/切换</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/system_mode/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + system_mode</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="3-4-关闭禁用模式"><a href="#3-4-关闭禁用模式" class="headerlink" title="3.4 关闭禁用模式"></a>3.4 关闭禁用模式</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/disable_mode/close</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id</p>
+<p><strong>响应：</strong> 标准结构</p>
+<h3 id="3-5-控制-App-上传（管控应用列表）"><a href="#3-5-控制-App-上传（管控应用列表）" class="headerlink" title="3.5 控制 App 上传（管控应用列表）"></a>3.5 控制 App 上传（管控应用列表）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST https://parentadmin.readboy.com/v1/appinfo/controlApp/upload</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + 管控列表</p>
+<p><strong>响应：</strong> 标准结构</p>
+<hr>
+<h2 id="四、身份类（激活-解绑）★关键"><a href="#四、身份类（激活-解绑）★关键" class="headerlink" title="四、身份类（激活/解绑）★关键"></a>四、身份类（激活/解绑）★关键</h2><h3 id="4-1-设备激活（重新绑定）"><a href="#4-1-设备激活（重新绑定）" class="headerlink" title="4.1 设备激活（重新绑定）"></a>4.1 设备激活（重新绑定）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/machine/active</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数（全部走 HTTP Header！）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>signature</code></td>
+<td>getSign2()</td>
+</tr>
+<tr>
+<td><code>imei</code></td>
+<td>设备序列号</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>毫秒时间戳</td>
+</tr>
+<tr>
+<td><code>app_id</code></td>
+<td>parent-manage</td>
+</tr>
+<tr>
+<td><code>active_code</code></td>
+<td><strong>激活码（家长端生成，唯一真人凭证）</strong></td>
+</tr>
+</tbody></table>
+<p><strong>响应：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">"success"</span><span class="punctuation">,</span> <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span> <span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>成功处理：</strong> <code>Settings.Global("rby_pad_activate_state") = 1</code> → 触发全量拉取</p>
+<h3 id="4-2-设备解绑"><a href="#4-2-设备解绑" class="headerlink" title="4.2 设备解绑"></a>4.2 设备解绑</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST https://parentadmin.readboy.com/v1/machine/cancel_bindings</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数（Body）：</strong> signature + imei + timestamp + app_id（+ uid）</p>
+<p><strong>响应：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">"success"</span><span class="punctuation">,</span> <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span> <span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>成功处理：</strong> 本地全清（密码/管控/记录/商城控制等）</p>
+<h3 id="4-3-机器信息查询（含密码）"><a href="#4-3-机器信息查询（含密码）" class="headerlink" title="4.3 机器信息查询（含密码）"></a>4.3 机器信息查询（含密码）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/machine/info</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id</p>
+<p><strong>响应：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"password"</span><span class="punctuation">:</span> <span class="string">"123456"</span><span class="punctuation">,</span> <span class="attr">"activated"</span><span class="punctuation">:</span> <span class="number">1</span> <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-4-是否允许输入密码上传"><a href="#4-4-是否允许输入密码上传" class="headerlink" title="4.4 是否允许输入密码上传"></a>4.4 是否允许输入密码上传</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://parent-manage.readboy.com/api/v1/uploadAllowPwd</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数：</strong> signature + imei + timestamp + app_id + allow_pwd</p>
+<p><strong>响应：</strong> 标准结构</p>
+<hr>
+<h2 id="五、功能类（其他所有接口）"><a href="#五、功能类（其他所有接口）" class="headerlink" title="五、功能类（其他所有接口）"></a>五、功能类（其他所有接口）</h2><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>URL</th>
+<th>请求参数</th>
+<th>响应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>下载等级查询</td>
+<td><code>http://parent-manage.readboy.com/api/v1/controlExtend/getDownloadLevel</code></td>
+<td>标准参数</td>
+<td><code>{status, errno, errmsg, timestamp, data:{level}}</code></td>
+</tr>
+<tr>
+<td>更新下载等级</td>
+<td><code>http://parent-manage.readboy.com/api/v1/controlExtend/updateDownloadLevel</code></td>
+<td>标准参数 + level</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>下载等级上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/controlExtend/uploadFunc</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>监听器功能上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/listener/uploadFunc</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>蓝牙控制上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/bluetooth/upload</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>USB 控制上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/control_usb/upload</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>作业聚焦模式</td>
+<td><code>http://parent-manage.readboy.com/api/v1/homework/focus_mode</code></td>
+<td>标准参数</td>
+<td><code>data:{...}</code></td>
+</tr>
+<tr>
+<td>作业功能上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/homework/uploadFunc</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>作业模型功能</td>
+<td><code>http://parent-manage.readboy.com/api/v1/homework/modelFunc</code></td>
+<td>标准参数</td>
+<td><code>data:{...}</code></td>
+</tr>
+<tr>
+<td>语音限制次数</td>
+<td><code>http://parent-manage.readboy.com/api/v1/voiceLimit/getUseCount</code></td>
+<td>标准参数</td>
+<td><code>data:{use_count}</code></td>
+</tr>
+<tr>
+<td>语音限制上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/voiceLimit/uploadFunc</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>轻应用规则</td>
+<td><code>http://parent-manage.readboy.com/api/v1/liteApp/getRules</code></td>
+<td>标准参数</td>
+<td><code>data:{...}</code></td>
+</tr>
+<tr>
+<td>轻应用配置</td>
+<td><code>http://parent-manage.readboy.com/api/v1/liteApp/getConfigs</code></td>
+<td>标准参数</td>
+<td><code>data:{...}</code></td>
+</tr>
+<tr>
+<td>轻应用申请</td>
+<td><code>http://parent-manage.readboy.com/api/v1/liteApp/appletApply</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>轻应用等级上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/liteApp/uploadLevel</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>轻应用功能上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/liteApp/uploadFunc</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>提醒已读</td>
+<td><code>http://parent-manage.readboy.com/api/v1/reminder/read</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>弹窗记录上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/popup/upload_record</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>弹窗状态上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/popup/upload_state</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>辅导控制上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/tutor_control/uploadFunc</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>提醒上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/reminder/upload</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>重置日查询</td>
+<td><code>http://parent-manage.readboy.com/api/v1/time/get_rest_day</code></td>
+<td>标准参数</td>
+<td><code>data:{...}</code></td>
+</tr>
+<tr>
+<td>锁定状态上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/time/uploadLockStatus</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>时间状态更新</td>
+<td><code>http://parent-manage.readboy.com/api/v1/time/updateStatus</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>护眼状态更新</td>
+<td><code>http://parent-manage.readboy.com/api/v1/eyeshield/updateStatus</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>答题控制更新</td>
+<td><code>http://parent-manage.readboy.com/api/v1/controlAnswer/updateStatus</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>AI 课程版本上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/uploadAICourseVersion</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>设备日志上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/uploadDeviceLog</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>统计上传</td>
+<td><code>http://parent-manage.readboy.com/api/v1/uploadStatistics</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>miPush 状态上传</td>
+<td><code>https://parentadmin.readboy.com/v1/machine/miPushStatus/upload</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>jpush 已执行</td>
+<td><code>https://parentadmin.readboy.com/v1/jpush/executed</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+<tr>
+<td>可控状态上传</td>
+<td><code>https://parentadmin.readboy.com/v2/machine/controllableStatus/upload</code></td>
+<td>标准参数</td>
+<td>标准结构</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>“标准参数” = signature + imei + timestamp + app_id（见 0.2）<br>“标准结构” = <code>{status, errno, errmsg, timestamp}</code>（见 0.3）</p>
+</blockquote>
+<hr>
+<h2 id="六、模拟服务端要点（如果厂商跑路后自建）"><a href="#六、模拟服务端要点（如果厂商跑路后自建）" class="headerlink" title="六、模拟服务端要点（如果厂商跑路后自建）"></a>六、模拟服务端要点（如果厂商跑路后自建）</h2><ol>
+<li><strong>域名解析劫持</strong>：改平板 hosts，把 <code>parent-manage.readboy.com</code> 指向自己的服务器（需 root 或系统权限）</li>
+<li><strong>最少实现 3 个接口</strong>：<ul>
+<li><code>/api/v1/jpush/content</code>（下发配置——回复空 <code>control_list</code> + <code>password</code> 空 = 设备完全放行）</li>
+<li><code>/api/v1/heart_beat</code>（回复 <code>{"status":1}</code> 保持在线）</li>
+<li><code>/api/v1/machine/get_active_status</code>（回复 <code>{"data":{"activated":1}}</code>）</li>
+</ul>
+</li>
+<li><strong>响应格式</strong>：所有接口都必须返回 <code>{status, errno, errmsg, timestamp}</code> 外壳，否则客户端解析失败</li>
+<li><strong>签名验证</strong>：客户端不验证服务器响应签名（响应无签名），但<strong>请求必须带正确签名</strong>（signature 用硬编码密钥可算）</li>
+<li><strong>关键放行配置</strong>（在 jpush/content 响应里）：</li>
+</ol>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"errno"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"errmsg"</span><span class="punctuation">:</span> <span class="string">"success"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="string">"1723000000000"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"control_list"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"password"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"password"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"is_long_pwd"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"allow_input_pwd"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"allow_pwd"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"clear_password"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"disable_mode"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"shutdown"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"synchronize_data"</span><span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p><strong>免责声明</strong>：本文仅用于安全研究和教育目的。请确认你拥有设备的所有权。未经授权使用本文中的技术可能违反法律，作者不对任何滥用行为负责。</p>
+<p><strong>分析基准</strong>：家长管理_v6.2.8.apk（反编译于 cache/decompiled），2026-08</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://OTFiles.github.io">OTFiles</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/">https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://OTFiles.github.io" target="_blank">OTFiles 的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%B4%E8%A7%A3/">破解</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E8%A3%85/">安装</a><a class="post-meta__tags" href="/tags/%E7%A7%91%E6%8A%80/">科技</a><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8/">安全</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</div></div><div class="info-2"><div class="info-item-1">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解 适用版本：家长管理 v6.2.8（家长管理_v6.2.8.apk）分析方法：apktool 反编译 + smali 逐行核对（与旧文档交叉验证，一切以 6.2.8 为准）   开篇：一张图看懂三件事123456【你的平板】                          【家长手机 App】          【云端服务器】  家长管理 App  ──签名请求──▶  parent-manage.readboy.com  ◀──家长手机（下发配置）       ▲                                      │       │ ① 解绑：输入家长密码/重置 ──▶  cancel_bindings 接口 ──▶ 服务端解绑       │ ② 重新绑定：输入激活码 ──▶  machine/active 接口 ──▶ 服务端重新绑定       │ ③ 拉配置：开机/推送/联网/密码变化 ──▶  jpush/content 接口 ──▶ 云端配置回来覆盖本地   ① 解绑 ...</div></div></div></a><a class="pagination-related" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</div></div><div class="info-2"><div class="info-item-1">ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长管理升级到 v6.2.8 后，旧版工具的关键功能失效了：黑名单/白名单写入了错误的表、全局安装开关不再生效。本文记录了对新版 6.2.8 的逆向分析结论、新旧版本机制差异，以及 ZaralynSettings 如何通过”自动识别 + 版本路由”兼容新旧两个版本。 一、新旧版本机制差异1.1 安装管控机制的迁移（核心差异）对 家长管理_v6.2.8.apk 解包逆向（apktool）并与旧版对比，发现安装/使用管控的核心表发生了迁移：    功能 老版本 新版 6.2.8    黑名单/白名单 forbidden_app（state: 0=黑...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</div></div><div class="info-2"><div class="info-item-1">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解 适用版本：家长管理 v6.2.8（家长管理_v6.2.8.apk）分析方法：apktool 反编译 + smali 逐行核对（与旧文档交叉验证，一切以 6.2.8 为准）   开篇：一张图看懂三件事123456【你的平板】                          【家长手机 App】          【云端服务器】  家长管理 App  ──签名请求──▶  parent-manage.readboy.com  ◀──家长手机（下发配置）       ▲                                      │       │ ① 解绑：输入家长密码/重置 ──▶  cancel_bindings 接口 ──▶ 服务端解绑       │ ② 重新绑定：输入激活码 ──▶  machine/active 接口 ──▶ 服务端重新绑定       │ ③ 拉配置：开机/推送/联网/密码变化 ──▶  jpush/content 接口 ──▶ 云端配置回来覆盖本地   ① 解绑 ...</div></div></div></a><a class="pagination-related" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-15</div><div class="info-item-2">某学习平板自由安装软件——ParentManager的SQL注入漏洞</div></div><div class="info-2"><div class="info-item-1">深入分析 ParentManager 白名单漏洞：如何利用 SQL 注入绕过应用安装限制前言最近在学习机家长控制应用 ParentManager 的安全分析中，发现了一个极其严重的 SQL 注入漏洞（CVSS 10.0 CRITICAL），这个漏洞允许任意第三方应用完全绕过白名单机制，安装任何软件。本文将详细分析这个漏洞的原理、利用方式以及实际攻击代码。 漏洞概述ParentManager 是一款家长控制应用，用于管理学习机上应用的安装和使用。它通过白名单机制来限制用户只能安装和使用特定的应用。然而，由于开发者的安全意识不足，应用中存在一个严重的 SQL 注入漏洞，使得任何第三方应用都可以完全绕过这个限制。 漏洞位置文件路径: smali/com/readboy/parentmanager/core/provider/AppContentProvider.smali (102-109 行) 代码片段: 12345678910111213141516171819202122232425262728.method public query(Landroid/net/Uri;[Ljav...</div></div></div></a><a class="pagination-related" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-10</div><div class="info-item-2">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</div></div><div class="info-2"><div class="info-item-1">ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长管理升级到 v6.2.8 后，旧版工具的关键功能失效了：黑名单/白名单写入了错误的表、全局安装开关不再生效。本文记录了对新版 6.2.8 的逆向分析结论、新旧版本机制差异，以及 ZaralynSettings 如何通过”自动识别 + 版本路由”兼容新旧两个版本。 一、新旧版本机制差异1.1 安装管控机制的迁移（核心差异）对 家长管理_v6.2.8.apk 解包逆向（apktool）并与旧版对比，发现安装/使用管控的核心表发生了迁移：    功能 老版本 新版 6.2.8    黑名单/白名单 forbidden_app（state: 0=黑...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">OTFiles</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OTFiles"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暂无</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86-6-2-8-%E5%85%A8%E9%83%A8%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%EF%BC%9A%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C%EF%BC%88%E9%98%B2%E5%8E%82%E5%95%86%E8%B7%91%E8%B7%AF%E5%AD%98%E6%A1%A3%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%87%E3%80%81%E5%85%AC%E5%85%B1%E7%BA%A6%E5%AE%9A%EF%BC%88%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%E9%80%9A%E7%94%A8%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">〇、公共约定（所有接口通用）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%9F%E5%90%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">0.1 服务器域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-2-%E8%AF%B7%E6%B1%82%E5%85%AC%E5%85%B1%E5%8F%82%E6%95%B0%EF%BC%88%E5%87%A0%E4%B9%8E%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%E9%83%BD%E6%9C%89%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">0.2 请求公共参数（几乎所有接口都有）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-3-%E5%93%8D%E5%BA%94%E5%85%AC%E5%85%B1%E7%BB%93%E6%9E%84%EF%BC%88OnlineResponseBean%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">0.3 响应公共结构（OnlineResponseBean）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-4-%E5%B7%B2%E7%9F%A5%E9%94%99%E8%AF%AF%E7%A0%81%EF%BC%88errno%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">0.4 已知错误码（errno）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-5-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">0.5 请求方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%85%8D%E7%BD%AE%E6%8B%89%E5%8F%96%E7%B1%BB%EF%BC%88%E4%BA%91%E7%AB%AF-%E2%86%92-%E5%B9%B3%E6%9D%BF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">一、配置拉取类（云端 → 平板）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%85%A8%E9%87%8F%E9%85%8D%E7%BD%AE%E6%8B%89%E5%8F%96-%E2%98%85%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 全量配置拉取 ★核心接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%BF%83%E8%B7%B3-%E2%98%85%E7%A1%AE%E8%AE%A4%E5%9C%A8%E7%BA%BF%EF%BC%88%E4%B8%8D%E6%8B%89%E9%85%8D%E7%BD%AE%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 心跳 ★确认在线（不拉配置）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%9C%80%E5%90%8E%E4%B8%80%E6%9D%A1%E6%8E%A8%E9%80%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 最后一条推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%A6%81%E7%94%A8%E5%88%97%E8%A1%A8%EF%BC%88%E9%BB%91%E7%99%BD%E5%90%8D%E5%8D%95%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.4 禁用列表（黑白名单）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E6%BF%80%E6%B4%BB%E7%8A%B6%E6%80%81%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.2.5.</span> <span class="toc-text">1.5 激活状态查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8A%E4%BC%A0%E7%B1%BB%EF%BC%88%E5%B9%B3%E6%9D%BF-%E2%86%92-%E4%BA%91%E7%AB%AF%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">二、上传类（平板 → 云端）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AF%86%E7%A0%81%E4%B8%8A%E4%BC%A0%EF%BC%88%E8%AE%BE%E7%BD%AE-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E6%97%B6%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 密码上传（设置/修改密码时）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 设备信息上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%B7%B2%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 已安装应用列表上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%8D%B8%E8%BD%BD%E5%BA%94%E7%94%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.4 卸载应用上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E7%AE%A1%E6%8E%A7%E7%8A%B6%E6%80%81%E4%B8%8A%E4%BC%A0%EF%BC%88%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9-%E2%86%92-%E4%BA%91%E7%AB%AF%EF%BC%89"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.5 管控状态上传（本地修改 → 云端）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E9%9A%90%E8%97%8F%E5%BA%94%E7%94%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.6.</span> <span class="toc-text">2.6 隐藏应用上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E4%BD%BF%E7%94%A8%E6%97%B6%E9%95%BF%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.7.</span> <span class="toc-text">2.7 使用时长上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-%E5%AE%9A%E4%BD%8D%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.8.</span> <span class="toc-text">2.8 定位上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.9.</span> <span class="toc-text">2.9 设备状态上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.10.</span> <span class="toc-text">2.10 密码输入错误记录上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11-%E6%88%AA%E5%B1%8F%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.11.</span> <span class="toc-text">2.11 截屏上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%A7%E5%88%B6%E7%B1%BB%EF%BC%88%E4%BA%91%E7%AB%AF-%E2%86%92-%E5%B9%B3%E6%9D%BF%EF%BC%8C%E8%BF%9C%E7%A8%8B%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">三、控制类（云端 → 平板，远程指令）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%BF%9C%E7%A8%8B%E5%85%B3%E6%9C%BA"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 远程关机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-JPush-%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 JPush 指令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%BC%8F%E4%B8%8A%E4%BC%A0-%E5%88%87%E6%8D%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 系统模式上传/切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%85%B3%E9%97%AD%E7%A6%81%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 关闭禁用模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%8E%A7%E5%88%B6-App-%E4%B8%8A%E4%BC%A0%EF%BC%88%E7%AE%A1%E6%8E%A7%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%EF%BC%89"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.5 控制 App 上传（管控应用列表）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%BA%AB%E4%BB%BD%E7%B1%BB%EF%BC%88%E6%BF%80%E6%B4%BB-%E8%A7%A3%E7%BB%91%EF%BC%89%E2%98%85%E5%85%B3%E9%94%AE"><span class="toc-number">1.5.</span> <span class="toc-text">四、身份类（激活/解绑）★关键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%AE%BE%E5%A4%87%E6%BF%80%E6%B4%BB%EF%BC%88%E9%87%8D%E6%96%B0%E7%BB%91%E5%AE%9A%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 设备激活（重新绑定）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%AE%BE%E5%A4%87%E8%A7%A3%E7%BB%91"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 设备解绑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%EF%BC%88%E5%90%AB%E5%AF%86%E7%A0%81%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 机器信息查询（含密码）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%98%AF%E5%90%A6%E5%85%81%E8%AE%B8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 是否允许输入密码上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%8A%9F%E8%83%BD%E7%B1%BB%EF%BC%88%E5%85%B6%E4%BB%96%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">五、功能类（其他所有接口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%A8%A1%E6%8B%9F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%A6%81%E7%82%B9%EF%BC%88%E5%A6%82%E6%9E%9C%E5%8E%82%E5%95%86%E8%B7%91%E8%B7%AF%E5%90%8E%E8%87%AA%E5%BB%BA%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">六、模拟服务端要点（如果厂商跑路后自建）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ParentManager-Network-API-Request-Response-Reference/" title="家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）">家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）</a><time datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</a><time datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</a><time datetime="2026-08-10T04:00:00.000Z" title="发表于 2026-08-10 12:00:00">2026-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞">某学习平板自由安装软件——ParentManager的SQL注入漏洞</a><time datetime="2026-03-15T04:00:00.000Z" title="发表于 2026-03-15 12:00:00">2026-03-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Backrooms-level-recommendations/" title="后室层级推荐">后室层级推荐</a><time datetime="2025-08-08T11:20:05.000Z" title="发表于 2025-08-08 19:20:05">2025-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 - 2026 By OTFiles</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="不许搜一些奇怪的东西哦，喵~" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div></div></div><script src="/bundle.js"></script></body></html>
