@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档） | OTFiles 的小站</title><meta name="author" content="OTFiles"><meta name="copyright" content="OTFiles"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档） 目的：把 6.2.8 中所有网络请求的 URL、请求参数、响应 JSON 结构 完整存档。万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。来源：家长管理_v6.2.8.apk 反编译逐行提取，全部为实测代码，非推测。   🔄 2026-08 修正版：">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档） | OTFiles 的小站</title><meta name="author" content="OTFiles"><meta name="copyright" content="OTFiles"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="家长管理生态全部网络接口：请求/响应格式速查手册（防厂商跑路存档） 目的：把 6.2.8 及周边应用（应用商店、系统设置）中所有网络请求的 URL、请求参数、响应 JSON 结构 完整存档。万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。来源：家长管理_v6.2.8.apk、应用商店.apk、Settings.apk、家长助手.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）">
+<meta property="og:title" content="家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档）">
 <meta property="og:url" content="https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/index.html">
 <meta property="og:site_name" content="OTFiles 的小站">
-<meta property="og:description" content="家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档） 目的：把 6.2.8 中所有网络请求的 URL、请求参数、响应 JSON 结构 完整存档。万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。来源：家长管理_v6.2.8.apk 反编译逐行提取，全部为实测代码，非推测。   🔄 2026-08 修正版：">
+<meta property="og:description" content="家长管理生态全部网络接口：请求/响应格式速查手册（防厂商跑路存档） 目的：把 6.2.8 及周边应用（应用商店、系统设置）中所有网络请求的 URL、请求参数、响应 JSON 结构 完整存档。万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。来源：家长管理_v6.2.8.apk、应用商店.apk、Settings.apk、家长助手.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://otfiles.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2026-08-14T04:00:00.000Z">
-<meta property="article:modified_time" content="2026-08-25T03:40:59.307Z">
+<meta property="article:modified_time" content="2026-09-13T04:00:00.000Z">
 <meta property="article:author" content="OTFiles">
 <meta property="article:tag" content="破解">
 <meta property="article:tag" content="安装">
@@ -18,11 +18,11 @@
 <meta name="twitter:image" content="https://otfiles.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）",
+  "headline": "家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档）",
   "url": "https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/",
   "image": "https://otfiles.github.io/img/butterfly-icon.png",
   "datePublished": "2026-08-14T04:00:00.000Z",
-  "dateModified": "2026-08-25T03:40:59.307Z",
+  "dateModified": "2026-09-13T04:00:00.000Z",
   "author": [
     {
       "@type": "Person",
@@ -159,15 +159,26 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）',
+  title: '家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档）',
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"><script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css');loadCss('https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css"></noscript></head><body><div id="web_bg" style="background-image: url(/img/bg1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OTFiles 的小站</span></a><a class="nav-page-title" href="/"><span class="site-name">家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-25T03:40:59.307Z" title="更新于 2026-08-25 11:40:59">2026-08-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="家长管理-6-2-8-全部网络接口：请求-响应格式速查手册（防厂商跑路存档）"><a href="#家长管理-6-2-8-全部网络接口：请求-响应格式速查手册（防厂商跑路存档）" class="headerlink" title="家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档）"></a>家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档）</h1><blockquote>
-<p>目的：把 6.2.8 中所有网络请求的 <strong>URL、请求参数、响应 JSON 结构</strong> 完整存档。<br>万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。<br>来源：<code>家长管理_v6.2.8.apk</code> 反编译逐行提取，全部为实测代码，非推测。</p>
+}</script><meta name="generator" content="Hexo 7.3.0"><script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css');loadCss('https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css"></noscript></head><body><div id="web_bg" style="background-image: url(/img/bg1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OTFiles 的小站</span></a><a class="nav-page-title" href="/"><span class="site-name">家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-13T04:00:00.000Z" title="更新于 2026-09-13 12:00:00">2026-09-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="家长管理生态全部网络接口：请求-响应格式速查手册（防厂商跑路存档）"><a href="#家长管理生态全部网络接口：请求-响应格式速查手册（防厂商跑路存档）" class="headerlink" title="家长管理生态全部网络接口：请求/响应格式速查手册（防厂商跑路存档）"></a>家长管理生态全部网络接口：请求/响应格式速查手册（防厂商跑路存档）</h1><blockquote>
+<p>目的：把 6.2.8 及周边应用（应用商店、系统设置）中所有网络请求的 <strong>URL、请求参数、响应 JSON 结构</strong> 完整存档。<br>万一厂商倒闭/服务器关闭，这份文档足够让我们自己模拟服务端、或理解设备行为、或搭建本地替代服务器。<br>来源：<code>家长管理_v6.2.8.apk</code>、<code>应用商店.apk</code>、<code>Settings.apk</code>、<code>家长助手.apk</code> 反编译逐行提取，全部为实测代码，非推测。</p>
 </blockquote>
 <blockquote>
 <p>🔄 <strong>2026-08 修正版</strong>：根据真实抓包 + 逆向对照修正了 jpush/content 响应结构（字段在 <code>data</code> 内）、control_list 字段名、status=2 映射、签名秒/毫秒单位、空 control_list 陷阱等关键差异。</p>
+</blockquote>
+<blockquote>
+<p>📦 <strong>2026-09 增补版</strong>：反编译<strong>应用商店</strong>（cn.dream.android.appstore）与<strong>系统设置</strong>（Settings.apk）后新增：</p>
+<ul>
+<li><strong>第八章</strong>：应用商店全部网络接口（含它以 <code>app-store</code> 身份调用家长管理域的 4 个接口、g-apkstore 商店主域 57 个接口、学分/商城/关怀等周边域名），以及完整的「下载等级管控判定流程」</li>
+<li><strong>第九章</strong>：设置中隐藏的 USB 调试选项显示条件全链路分析（<code>un_mall_app_state</code> ↔ 云端 <code>allow_unknown_app</code> 联动、工厂模式自动开启、<code>_wfad_</code> WiFi 高级选项暗门）</li>
+<li><strong>第十章</strong>：Settings 自身的 8 个隐藏网络接口（EWC 设备认证体系、屏幕/LCD 上报、SN 回源、通知黑名单、内网产线预装 API、摄像头配置、自更新）+ killapp 实锤的查杀/禁通知/深度隐藏四张动态列表</li>
+<li><strong>第十一章</strong>：系统更新 DreamUpdate 完整 OTA 链路（完整刷机包/增量包的获取方法，⚠️无鉴权）</li>
+<li><strong>第十二章</strong>：个人设置 personalsetting 的 30+ 域名 API 清单（含 native 签名库说明）；另附计算器后门 <code>ee0760ee</code></li>
+<li>修正 5 章下载等级响应字段名为 <code>download_level</code>（原误记为 <code>level</code>）</li>
+</ul>
 </blockquote>
 <hr>
 <h2 id="〇、公共约定（所有接口通用）"><a href="#〇、公共约定（所有接口通用）" class="headerlink" title="〇、公共约定（所有接口通用）"></a>〇、公共约定（所有接口通用）</h2><h3 id="0-1-服务器域名"><a href="#0-1-服务器域名" class="headerlink" title="0.1 服务器域名"></a>0.1 服务器域名</h3><table>
@@ -189,9 +200,17 @@
 <td><code>https://api-super.readboy.com</code></td>
 <td><strong>手机端家长助手域（家长 App，需 token）</strong>——时间管控/允许输入密码等完整管控</td>
 </tr>
+<tr>
+<td><code>https://parent-manage.readboy.com</code></td>
+<td><strong>同一主域的 HTTPS 变体</strong>——应用商店（app-store 身份）调用，见第八章</td>
+</tr>
+<tr>
+<td><code>http://g-apkstore.strongwind.cn</code></td>
+<td>应用商店主域（HTTP 明文），见 8.2</td>
+</tr>
 </tbody></table>
 <blockquote>
-<p>⚠️ 注意：绝大多数接口是 <strong>HTTP 明文</strong>，只有解绑、miPush 上传等少数走 HTTPS。<br>📱 api-super 域为手机版「家长助手」（com.readboy.rbmanager）使用，详见第七章。</p>
+<p>⚠️ 注意：绝大多数接口是 <strong>HTTP 明文</strong>，只有解绑、miPush 上传等少数走 HTTPS。<br>📱 api-super 域为手机版「家长助手」（com.readboy.rbmanager）使用，详见第七章。<br>🛒 应用商店（cn.dream.android.appstore）以独立的 <code>app-store</code> 身份直接调用 parent-manage 域（HTTPS），详见第八章。</p>
 </blockquote>
 <h3 id="0-2-请求公共参数（几乎所有接口都有）"><a href="#0-2-请求公共参数（几乎所有接口都有）" class="headerlink" title="0.2 请求公共参数（几乎所有接口都有）"></a>0.2 请求公共参数（几乎所有接口都有）</h3><table>
 <thead>
@@ -591,7 +610,7 @@
 <td>下载等级查询</td>
 <td><code>http://parent-manage.readboy.com/api/v1/controlExtend/getDownloadLevel</code></td>
 <td>标准参数</td>
-<td><code>{status, errno, errmsg, timestamp, data:{level}}</code></td>
+<td><code>{status, errno, errmsg, timestamp, data:{download_level}}</code>（⚠️ 2026-09 修正：字段是 <code>download_level</code>，原误记为 <code>level</code>；反编译 GetDownloadLevelResponse 确认 <code>optJSONObject("data").optInt("download_level")</code>，成功后写入本地 <code>control_state</code> 表）</td>
 </tr>
 <tr>
 <td>更新下载等级</td>
@@ -1051,11 +1070,956 @@
 </tr>
 </tbody></table>
 <hr>
+<h2 id="八、应用商店（cn-dream-android-appstore）网络接口-★2026-09-新增"><a href="#八、应用商店（cn-dream-android-appstore）网络接口-★2026-09-新增" class="headerlink" title="八、应用商店（cn.dream.android.appstore）网络接口 ★2026-09 新增"></a>八、应用商店（cn.dream.android.appstore）网络接口 ★2026-09 新增</h2><blockquote>
+<p>来源：读书郎应用商店 APK 反编译（Retrofit + OkHttp + Gson）。<br>应用商店是安装限制体系的<strong>客户端执行者</strong>：家长管理负责下发策略，但实际拦截下载/安装动作的是应用商店与系统 Settings。<br>本章含两套接口：① 应用商店以独立 <code>app-store</code> 身份调用<strong>家长管理域</strong>的 4 个接口（与平板端家长管理同一套服务端！）；② 商店主域 g-apkstore.strongwind.cn 的 57 个接口。</p>
+</blockquote>
+<h3 id="8-1-应用商店-→-家长管理域（app-store-身份）⭐重点"><a href="#8-1-应用商店-→-家长管理域（app-store-身份）⭐重点" class="headerlink" title="8.1 应用商店 → 家长管理域（app-store 身份）⭐重点"></a>8.1 应用商店 → 家长管理域（app-store 身份）⭐重点</h3><p><strong>认证体系（与平板端同构但密钥不同）：</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ParentManagerUtils.smali 硬编码</span></span><br><span class="line">app_id  = <span class="string">"app-store"</span>;                          <span class="comment">// ← 不是 parent-manage！</span></span><br><span class="line">appsec  = <span class="string">"c070fbad7db26253ce166a3991a3660e"</span>;   <span class="comment">// 应用商店自己的密钥</span></span><br><span class="line">baseUrl = <span class="string">"https://parent-manage.readboy.com"</span>; <span class="comment">// 注意 HTTPS（平板端走 http://）</span></span><br><span class="line"></span><br><span class="line">String <span class="title function_">generateSignature</span><span class="params">(timestamp秒)</span> {</span><br><span class="line">    <span class="keyword">return</span> MD5(timestamp秒 + appsec + MD5(<span class="string">"app-store"</span>));  <span class="comment">// 与平板端 getSign2 同构</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>⚠️ 安全观察：服务端同时接受两套身份（parent-manage / app-store），各自密钥都硬编码在各自 APK 里，拿到任一密钥即可伪造对应身份的请求。商店请求走 HTTPS，抓包需解密。</p>
+</blockquote>
+<h4 id="8-1-1-下载等级查询"><a href="#8-1-1-下载等级查询" class="headerlink" title="8.1.1 下载等级查询"></a>8.1.1 下载等级查询</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https://parent-manage.readboy.com/api/v1/controlExtend/getDownloadLevel</span><br><span class="line">    ?timestamp=&lt;10位秒&gt;&amp;app_id=app-store&amp;signature=&lt;MD5&gt;&amp;imei=&lt;设备序列号&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>响应（ControlStateBean，⚠️ 与第五章同一接口，但商店端解析字段更多）：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"status"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"download_level"</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"password"</span><span class="punctuation">:</span> <span class="string">"123456"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"imei"</span><span class="punctuation">:</span> <span class="string">"95eab027"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"control_store_premium"</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>商店端用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>status</code></td>
+<td>int</td>
+<td>1 才使用 data；否则回退本地 provider</td>
+</tr>
+<tr>
+<td><code>data.download_level</code></td>
+<td>int</td>
+<td>下载等级 0/1/2/3（见 8.4）</td>
+</tr>
+<tr>
+<td><code>data.password</code></td>
+<td>string</td>
+<td>家长密码（8.1.2 回源用）</td>
+</tr>
+</tbody></table>
+<h4 id="8-1-2-家长密码回源"><a href="#8-1-2-家长密码回源" class="headerlink" title="8.1.2 家长密码回源"></a>8.1.2 家长密码回源</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https://parent-manage.readboy.com/api/v1/machine/info</span><br><span class="line">    ?timestamp=&lt;秒&gt;&amp;app_id=app-store&amp;signature=&lt;MD5&gt;&amp;imei=&lt;序列号&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>响应：同 ControlStateBean</strong>。商店本地 <code>user_info</code> 表查不到家长密码时用此接口回源：<code>data.password</code> 非空 → 视作「受限模式」（进入下载等级判定）；空 → 放行。</p>
+<h4 id="8-1-3-申请解锁（向手机家长端发送下载请求）⭐平板端没有的接口"><a href="#8-1-3-申请解锁（向手机家长端发送下载请求）⭐平板端没有的接口" class="headerlink" title="8.1.3 申请解锁（向手机家长端发送下载请求）⭐平板端没有的接口"></a>8.1.3 申请解锁（向手机家长端发送下载请求）⭐平板端没有的接口</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST https://parent-manage.readboy.com/api/v1/install/apply</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>FormBody 参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>app_id</code></td>
+<td>app-store</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>10位秒</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td>MD5(秒+appsec+MD5(app-store))</td>
+</tr>
+<tr>
+<td><code>serial</code></td>
+<td>设备序列号</td>
+</tr>
+<tr>
+<td><code>pack_name</code></td>
+<td>被拦截的应用包名</td>
+</tr>
+<tr>
+<td><code>firmware</code></td>
+<td>机型（Constants.model）</td>
+</tr>
+<tr>
+<td><code>firmwareversion</code></td>
+<td>固件版本</td>
+</tr>
+<tr>
+<td><code>storeversion</code></td>
+<td>商店自身 versionCode</td>
+</tr>
+<tr>
+<td><code>systemversion</code></td>
+<td>Build.VERSION.SDK_INT</td>
+</tr>
+</tbody></table>
+<p><strong>响应：仅检查 HTTP 2xx，不解析 body</strong>（UIHandler 0xc8/0xc9）：</p>
+<ul>
+<li>HTTP 成功 → Toast「已向手机家长端发送下载请求」（手机家长 App 收到后处理）</li>
+<li>失败 → Toast「向手机家长端发送下载请求失败」</li>
+</ul>
+<h4 id="8-1-4-更新包列表上报"><a href="#8-1-4-更新包列表上报" class="headerlink" title="8.1.4 更新包列表上报"></a>8.1.4 更新包列表上报</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST https://parent-manage.readboy.com/api/v1/install/upload_update_list</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>FormBody 参数：</strong> <code>app_id</code> + <code>timestamp</code> + <code>signature</code> + <code>imei</code> + <code>pack_names</code>（包名列表字符串）。回调仅记日志，失败不重试。</p>
+<h3 id="8-2-商店主域-g-apkstore-strongwind-cn（57-个接口）"><a href="#8-2-商店主域-g-apkstore-strongwind-cn（57-个接口）" class="headerlink" title="8.2 商店主域 g-apkstore.strongwind.cn（57 个接口）"></a>8.2 商店主域 g-apkstore.strongwind.cn（57 个接口）</h3><p><strong>基础配置：</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">正式环境: http://g-apkstore.strongwind.cn   （HTTP 明文！）</span><br><span class="line">测试环境: http://dreamtest.strongwind.cn:7513</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>全局拦截器（CallManager$HeaderInterceptor，每个请求自动附加）：</strong></p>
+<ul>
+<li>Query 参数：<code>firmware</code>(机型)、<code>firmwareversion</code>、<code>storeversion</code>(商店版本码)、<code>systemversion</code>(SDK_INT)、<code>device</code>(机型)、<code>chipset</code>、<code>isParent</code>(是否家长模式)、<code>innername</code>(内部型号)、<code>hardware</code>(product)</li>
+<li>请求头：<code>Authorization: Bearer &lt;token&gt;</code> + <code>uid: &lt;uid&gt;</code>（来自读书郎账号 provider <code>com.readboy.provider.UserDbSearch</code> 的 UserBaseInfo，未登录为空/0）+ <code>Accept-Encoding: gzip,deflate,sdch</code></li>
+</ul>
+<p><strong>接口清单（Q=Query参数，F=FormBody参数）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>路径</th>
+<th>参数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/apps?query&amp;page&amp;size</code></td>
+<td>Q</td>
+<td>搜索应用</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/apps/{id}</code> / <code>/apps/{package}</code></td>
+<td>—</td>
+<td>应用详情（返回原始 JSON 字符串）</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/apps2/{package}</code></td>
+<td>—</td>
+<td>应用详情（带类型）</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/preapps2?query&amp;page&amp;size</code></td>
+<td>Q</td>
+<td>预装应用搜索</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/categories/v2</code> / <code>/v4</code> / <code>/v5</code></td>
+<td>—</td>
+<td>分类列表（三个版本）</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/categories/{id}/apps?page&amp;size</code></td>
+<td>Q</td>
+<td>分类下应用列表</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/categories/{id}/ranking</code></td>
+<td>—</td>
+<td>分类榜单</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/category/recommend</code></td>
+<td>—</td>
+<td>分类推荐</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/themes?firmware&amp;page&amp;size</code></td>
+<td>Q</td>
+<td>专题列表</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/themes/{id}/apps?page&amp;size</code></td>
+<td>Q</td>
+<td>专题应用</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/recommends3</code> / <code>/xuefenrecommend</code> / <code>/getxuefenlist</code></td>
+<td>—</td>
+<td>推荐/学分推荐</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/searchrecommend</code> / <code>/hotsearch</code> / <code>/hotquery</code></td>
+<td>—</td>
+<td>搜索推荐/热门</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getforbidinfo?version</code></td>
+<td>Q</td>
+<td><strong>⚠️全服禁装包名列表</strong>（见下方）</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getOtaAppInfo?applist</code></td>
+<td>Q</td>
+<td>OTA 应用信息（预装/更新检查）</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getbetaapp?pkgname</code></td>
+<td>Q</td>
+<td>Beta 应用</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getdiffupdate?pkgname&amp;oldhash&amp;newhash</code></td>
+<td>Q</td>
+<td>差分更新包</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/update?pkg&amp;version</code></td>
+<td>Q</td>
+<td>单应用更新检查</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/download</code></td>
+<td>F: appId, versionCode, device, serial, mac, type, <strong>level</strong></td>
+<td>下载计数上报（level=当前下载等级）</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/cwdownload</code></td>
+<td>F: appId, versionCode, device, serial, mac, type</td>
+<td>CW 渠道下载上报</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/appstatus</code></td>
+<td>—</td>
+<td>应用状态上报</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getwelcomelist</code></td>
+<td>—</td>
+<td>开屏欢迎页</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/bannersign?u_id</code></td>
+<td>Q</td>
+<td>签到横幅</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/usersign?u_id&amp;type</code> / <code>/getsigninfo?u_id</code> / <code>/userdowncount?u_id&amp;type</code></td>
+<td>Q</td>
+<td>签到/下载统计</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getallvoteinfo?timestamp</code> / <code>/getvoteapp?timestamp</code> / <code>/isvoted?uid&amp;voteId&amp;timestamp</code> / <code>/rewardName?voteId</code></td>
+<td>Q</td>
+<td>投票活动</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/vote</code> / <code>/vote_credit</code></td>
+<td>F: appId, comment, uid, userName, voteId</td>
+<td>投票</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getRedeems?timestamp</code> / <code>/getNewRedeem</code> / <code>/getAllRedeemCode?uid&amp;timestamp</code> / <code>/getRedeemCode?redeemId&amp;uid</code> / <code>/getRedeemById/{id}</code></td>
+<td>Q</td>
+<td>兑换码</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/gettradelist</code></td>
+<td>—</td>
+<td>交易列表</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/comment</code> / PUT <code>/comment/{id}</code></td>
+<td>F: appId, content, star</td>
+<td>评论增改</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/apps/{id}/comments?page&amp;size</code> / <code>/apps/{id}/comment/{uid}</code></td>
+<td>Q</td>
+<td>评论查询</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/apps/{id}/recommend/{uid}</code> / <code>/apps/{id}/recommend2/{uid}</code></td>
+<td>—</td>
+<td>详情页推荐</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getappvideo</code> / <code>/getallvideoinfo</code> / <code>/getVideoById/{id}</code></td>
+<td>—</td>
+<td>应用视频</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getimagetext/{id}</code></td>
+<td>—</td>
+<td>图文介绍</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/getcwinfo</code> / <code>/getcw_detail</code></td>
+<td>Q: pkgname, ua, webua, serial, sw, sh, dpi, mac, versionname</td>
+<td>CW 渠道信息</td>
+</tr>
+</tbody></table>
+<p><strong>⚠️ /getforbidinfo 响应与存储（服务端全局禁装名单，独立于家长管理）：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span> <span class="attr">"version"</span><span class="punctuation">:</span> <span class="string">"12"</span><span class="punctuation">,</span> <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"com.xxx.a"</span><span class="punctuation">,</span> <span class="string">"com.xxx.b"</span><span class="punctuation">]</span> <span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>应用商店启动时携带本地版本号请求；<code>data</code> 非空 → 清空并重建本地 <code>forbid_install_table</code>（<code>_id, list_version, list_value</code>）</li>
+<li>对外暴露 provider：<code>content://cn.dream.android.appstore.provider.ForbidPkgProvider/forbid_install_table</code>（仅 query）——家长管理等其它应用可读</li>
+</ul>
+<h3 id="8-3-周边域名"><a href="#8-3-周边域名" class="headerlink" title="8.3 周边域名"></a>8.3 周边域名</h3><table>
+<thead>
+<tr>
+<th>域名/URL</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>https://api.dteacher.readboy.com/credit/v2/user/credit?app_id=…</code></td>
+<td>学分查询（Bearer token，读书郎账号）</td>
+</tr>
+<tr>
+<td><code>https://api.dteacher.readboy.com/credit/v2/order/create</code></td>
+<td>创建学分订单。参数：amount/app_id/body/nonce/out_trade_id/sign_type=MD5/subject/timestamp/user_id + <code>sign=MD5(参数串&amp;key=8da3932a546494577c4f3a80f308de36)</code></td>
+</tr>
+<tr>
+<td><code>https://api-care.readboy.com/api/machine/actTime?sn=&lt;sn&gt;&amp;number=…&amp;device_id=…&amp;t=&lt;秒&gt;</code></td>
+<td>激活/活动时间查询</td>
+</tr>
+<tr>
+<td><code>http://mall.readboy.com:12680/rb_g_mall/toAndroid.php?machineType=&lt;机型&gt;</code></td>
+<td>商城入口 URL，写入商店自身 provider（UpdateProvider）供商城应用读取</td>
+</tr>
+</tbody></table>
+<h3 id="8-4-安装管控判定全流程（点击下载按钮）⭐"><a href="#8-4-安装管控判定全流程（点击下载按钮）⭐" class="headerlink" title="8.4 安装管控判定全流程（点击下载按钮）⭐"></a>8.4 安装管控判定全流程（点击下载按钮）⭐</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">点击下载</span><br><span class="line">  │</span><br><span class="line">  ├─ pkgName 以 "test." 开头 ──────────────→ 直接下载（测试后门）</span><br><span class="line">  │</span><br><span class="line">  └─ parentManagerDownload() → fetchParantLimit() 判定家长模式：</span><br><span class="line">       │</span><br><span class="line">       ├─ 结果 ≤ 0（直接下载）：</span><br><span class="line">       │    -4  ignoreParentLimit（静默更新等场景）</span><br><span class="line">       │    -1  Dream 机器家长模式（Settings.System dream_launcher_mode_lable==1）</span><br><span class="line">       │    -2  处于家长模式（hasParentMode &amp;&amp; isInParentMode==1）</span><br><span class="line">       │    -3  本地无家长密码 且 服务器 machine/info 回源 password 为空</span><br><span class="line">       │</span><br><span class="line">       └─ 结果 &gt; 0（受限，需查下载等级）：</span><br><span class="line">            11  家长管理 versionCode ≥ 181225001（新版）</span><br><span class="line">            12  家长管理未安装/查询异常</span><br><span class="line">            13  老版家长管理 或 服务器回源到家长密码</span><br><span class="line">            14  machine/info 网络失败</span><br><span class="line">            │</span><br><span class="line">            ↓ GET /api/v1/controlExtend/getDownloadLevel（8.1.1）</span><br><span class="line">            │   失败/status≠1 → 回退本地 provider control_state.state</span><br><span class="line">            ↓</span><br><span class="line">       judgeParentDownload(level)：</span><br><span class="line">            0 → 放行</span><br><span class="line">            1 → 老版：拦分类 10/11；新版：app.levelId&gt;1 拦</span><br><span class="line">            2 → 老版：拦分类 8/9/10/11/12/13；新版：app.levelId&gt;2 拦</span><br><span class="line">            3 → 一律拦截 → showDownLoadLimitDialog 弹窗</span><br><span class="line">                 └─ 弹窗内可「申请解锁」→ POST /api/v1/install/apply（8.1.3）</span><br><span class="line">       放行 → download()（CW 渠道应用走 fetchCW）</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>关键常量：</strong></p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新版阈值</td>
+<td>versionCode ≥ <strong>181225001</strong> (0xacd4629)</td>
+<td>fetchParantLimit 判定「新版家长管理」</td>
+</tr>
+<tr>
+<td>levelId 判定阈值</td>
+<td>versionCode ≥ <strong>200608001</strong> (0xbf50901)</td>
+<td>canParentDownload 用 levelId 比较；低于则用分类 ID 判定（老版）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 两个阈值不一致（181225001 vs 200608001），推测对应家长管理不同中间版本的行为差异。<br>⚠️ 本地兜底：网络不可用时读 <code>content://com.readboy.parentmanager.AppContentProvider/control_state</code> 的 <code>state</code> 列（家长管理 GetDownloadLevelResponse 成功后写入该表）。</p>
+</blockquote>
+<hr>
+<h2 id="九、设置中隐藏的-USB-调试选项：显示条件全链路分析-★2026-09-新增"><a href="#九、设置中隐藏的-USB-调试选项：显示条件全链路分析-★2026-09-新增" class="headerlink" title="九、设置中隐藏的 USB 调试选项：显示条件全链路分析 ★2026-09 新增"></a>九、设置中隐藏的 USB 调试选项：显示条件全链路分析 ★2026-09 新增</h2><blockquote>
+<p>来源：系统 Settings.apk（Android 10 定制）反编译。结论先行：<strong>USB 调试选项是否显示，由家长管理的 <code>un_mall_app_state</code> 表决定</strong>（即云端 <code>allow_unknown_app</code> 开关）。</p>
+</blockquote>
+<h3 id="9-1-标准「USB-调试」被永久隐藏"><a href="#9-1-标准「USB-调试」被永久隐藏" class="headerlink" title="9.1 标准「USB 调试」被永久隐藏"></a>9.1 标准「USB 调试」被永久隐藏</h3><p>Android 原生的 <code>enable_adb</code>（「USB 调试」开关，AdbPreferenceController）在固件里被硬编码隐藏：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AdbPreferenceController 构造器（反编译原文）</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">AdbPreferenceController</span><span class="params">(Context context, DevelopmentSettingsDashboardFragment fragment)</span> {</span><br><span class="line">    <span class="built_in">super</span>(context);</span><br><span class="line">    mFragment = fragment;</span><br><span class="line">    setIsAvailable(<span class="literal">false</span>);   <span class="comment">// ★ 永久不可见，无任何条件判断</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>用户在开发者选项里能看到的唯一 ADB 开关是读书郎定制项（布局 <code>development_settings_part.xml</code>，由 <code>DevelopmentSettingsDashboardFragmentPart</code> 加载）：</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>标题</th>
+<th>摘要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>enable_usb_connect_pc</code></td>
+<td>连接电脑设备允许ADB调试</td>
+<td>授权允许USB连接电脑设备，开启ADB调试</td>
+</tr>
+</tbody></table>
+<h3 id="9-2-显示条件（ReadboyUsbCnnPreferenceController）⭐核心"><a href="#9-2-显示条件（ReadboyUsbCnnPreferenceController）⭐核心" class="headerlink" title="9.2 显示条件（ReadboyUsbCnnPreferenceController）⭐核心"></a>9.2 显示条件（ReadboyUsbCnnPreferenceController）⭐核心</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造器逻辑（反编译还原）</span></span><br><span class="line">mUserShowEnable = isThiredAppInstallEnabledByFwq();  <span class="comment">// 查家长管理 provider</span></span><br><span class="line">setIsAvailable(isSystemShowEnable() &amp;&amp; mUserShowEnable);</span><br><span class="line"></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isAvailable</span><span class="params">()</span> { <span class="keyword">return</span> mIsAvailable &amp;&amp; UserManager.isAdminUser(); }</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isThiredAppInstallEnabledByFwq</span><span class="params">()</span> {</span><br><span class="line">    <span class="type">Uri</span> <span class="variable">uri</span> <span class="operator">=</span> Uri.parse(<span class="string">"content://com.readboy.parentmanager.AppContentProvider/un_mall_app_state"</span>);</span><br><span class="line">    <span class="type">int</span> <span class="variable">state</span> <span class="operator">=</span> <span class="number">0</span>;                                    <span class="comment">// 查询失败/空表/异常都按 0</span></span><br><span class="line">    <span class="keyword">try</span> (<span class="type">Cursor</span> <span class="variable">c</span> <span class="operator">=</span> resolver.query(uri, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>)) {</span><br><span class="line">        <span class="keyword">if</span> (c != <span class="literal">null</span> &amp;&amp; c.getCount() &gt; <span class="number">0</span> &amp;&amp; c.moveToFirst())</span><br><span class="line">            state = c.getInt(c.getColumnIndex(<span class="string">"state"</span>));</span><br><span class="line">    } <span class="keyword">catch</span> (Exception ignored) {}</span><br><span class="line">    <span class="keyword">return</span> state == <span class="number">1</span>;                                <span class="comment">// ★ 只有 state==1 才返回 true</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isSystemShowEnable</span><span class="params">()</span> {</span><br><span class="line">    <span class="keyword">return</span> SystemProperties.getInt(<span class="string">"ro.readboy.control_usb_debug"</span>, -<span class="number">1</span>) != <span class="number">0</span>;  <span class="comment">// 未设置=-1 也算 true</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>USB 调试选项显示 ⟺ 同时满足：</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>un_mall_app_state.state == 1</code></td>
+<td>通过家长管理 AppContentProvider 查询；空表/未装家长管理/异常 → 一律不显示</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ro.readboy.control_usb_debug ≠ 0</code></td>
+<td>固件属性，出厂未设置（=-1）即满足；仅显式设 0 的机型才隐藏</td>
+</tr>
+<tr>
+<td>3</td>
+<td>当前是主用户（isAdminUser）</td>
+<td>副用户/访客不显示</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 该查询只在控制器构造时执行一次并缓存——<strong>进入开发者选项页面的那一次</strong>决定开关是否出现；退出重进才会重新判定。</p>
+</blockquote>
+<h3 id="9-3-与云端配置的联动链（谁写-un-mall-app-state）⭐"><a href="#9-3-与云端配置的联动链（谁写-un-mall-app-state）⭐" class="headerlink" title="9.3 与云端配置的联动链（谁写 un_mall_app_state）⭐"></a>9.3 与云端配置的联动链（谁写 un_mall_app_state）⭐</h3><p><code>un_mall_app_state.state</code> 的写入方（家长管理 6.2.8 GetOnlineAppResponse2 反编译）：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jpush/content 响应处理（节选还原）</span></span><br><span class="line"><span class="keyword">if</span> (data.has(<span class="string">"allow_unknown_app"</span>)) {</span><br><span class="line">    <span class="type">JSONObject</span> <span class="variable">obj</span> <span class="operator">=</span> data.optJSONObject(<span class="string">"allow_unknown_app"</span>);</span><br><span class="line">    <span class="keyword">if</span> (obj != <span class="literal">null</span> &amp;&amp; obj.has(<span class="string">"status"</span>)) {</span><br><span class="line">        <span class="type">int</span> <span class="variable">status</span> <span class="operator">=</span> obj.optInt(<span class="string">"status"</span>);</span><br><span class="line">        <span class="keyword">if</span> (PreferencesUtils.getboolean(context, <span class="string">"is_prototype"</span>)) {</span><br><span class="line">            mUnMallappStateHelper.update(<span class="number">1</span>);        <span class="comment">// 原型机强制允许</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            mUnMallappStateHelper.update(status);   <span class="comment">// ★ un_mall_app_state.state = allow_unknown_app.status</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>完整链路：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">手机家长App「允许安装未知应用」</span><br><span class="line">  → 云端 allow_unknown_app.status (0/1)</span><br><span class="line">  → 平板家长管理 jpush/content 同步 → un_mall_app_state.state</span><br><span class="line">  → Settings 开发者选项页面查询 state==1</span><br><span class="line">  → 显示/隐藏「连接电脑设备允许ADB调试」开关</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>实测印证</strong>（见第一章实测抓包）：该设备 <code>"allow_unknown_app": {"status": 0}</code> → state=0 → USB 调试选项不显示。</p>
+<blockquote>
+<p>⚠️ 新版家长管理（6.2.8+）实测陷阱：若云端未下发 <code>allow_unknown_app</code> 配置，该表可能为空（此前逆向 ZaralynSetting 修复时确认）→ 查询无行 → state=0 → 选项永不显示，即便家长已在新版机制（install_app_list）里放行。<br>💡 用 ZaralynSetting 打开「全局安装限制」（允许）会同时 upsert <code>un_mall_app_state.state=1</code> → 退出重进开发者选项后 USB 调试开关恢复显示。</p>
+</blockquote>
+<h3 id="9-4-开关状态与写入行为"><a href="#9-4-开关状态与写入行为" class="headerlink" title="9.4 开关状态与写入行为"></a>9.4 开关状态与写入行为</h3><p><strong>显示状态</strong>：<code>isUsbConnectPcEnabled() = Settings.Global adb_enabled==1 且 readboy_developer_enabled_adb==1</code>（两个都开才勾选）</p>
+<p><strong>切换写入</strong>（writeUsbCnnPcEnableSetting）：同步写 <code>adb_enabled</code> + <code>readboy_developer_enabled_adb</code> 两个 Global 设置，并 notifyChange + 发本地广播 <code>com.android.settingslib.development.AbstractEnableAdbController.ENABLE_ADB_STATE_CHANGED</code>。</p>
+<p><strong>可交互条件</strong>：仅当开发者选项页顶部总开关（SwitchBar）打开时 setEnabled(true)（isReadboyAdbEnable = isDevelopmentRootSwitchOn）；ADB 被系统关闭时（onAdbSettingChanged）自动取消勾选。</p>
+<h3 id="9-5-开发者选项页面本身的门槛"><a href="#9-5-开发者选项页面本身的门槛" class="headerlink" title="9.5 开发者选项页面本身的门槛"></a>9.5 开发者选项页面本身的门槛</h3><p>进入页面（关于平板→连点版本号 7 次，标准 AOSP 流程，需主用户）后，onResume 触发 <code>runCheckParentPassword(0x271a)</code>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非 user 编译（userdebug/eng 固件）</td>
+<td>自动通过</td>
+</tr>
+<tr>
+<td>EBagPad 机型</td>
+<td>拉起 <code>cn.dream.ebag.action.SETTING_TEACHER_CHECK</code> 教师验证</td>
+</tr>
+<tr>
+<td>家长模式 / Dream 模式（dream_launcher_mode_lable==1）</td>
+<td>自动通过</td>
+</tr>
+<tr>
+<td>普通模式</td>
+<td>拉起 <code>android.readboy.parentmanager.INPUT_PASSWORD</code>（家长管理输密码界面）；家长管理未安装则失败</td>
+</tr>
+</tbody></table>
+<p>密码通过后 <code>mListContainer</code> 才可见——<strong>整个开发者选项列表都藏在家长密码验证之后</strong>。</p>
+<h3 id="9-6-USB-调试的自动管理（工厂-产线逻辑）"><a href="#9-6-USB-调试的自动管理（工厂-产线逻辑）" class="headerlink" title="9.6 USB 调试的自动管理（工厂/产线逻辑）"></a>9.6 USB 调试的自动管理（工厂/产线逻辑）</h3><p><code>AutoPreInstallFtpListApkService</code>（开机自动执行，同时也是产线预装 APK 下载服务，见 10.6）中的 ADB 自动治理：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isWifiSsidExsisted()) {                     <span class="comment">// 检测到产线专用 WiFi SSID</span></span><br><span class="line">    <span class="keyword">if</span> (!isUsbConnectPcEnabled())</span><br><span class="line">        writeUsbCnnPcEnableSetting(context, <span class="literal">true</span>);   <span class="comment">// 强制开启 USB 调试</span></span><br><span class="line">} <span class="keyword">else</span> <span class="keyword">if</span> (Settings.Global.getInt(<span class="string">"readboy_pad_now_is_in_factory"</span>, <span class="number">0</span>) == <span class="number">1</span>) {</span><br><span class="line">    <span class="keyword">if</span> (!isUsbConnectPcEnabled())</span><br><span class="line">        writeUsbCnnPcEnableSetting(context, <span class="literal">true</span>);   <span class="comment">// 工厂模式强制开启</span></span><br><span class="line">} <span class="keyword">else</span> <span class="keyword">if</span> (isUsbConnectPcAnyOneNeedClose()) {        <span class="comment">// adb_enabled 或 readboy_developer_enabled_adb 任一开着</span></span><br><span class="line">    writeUsbCnnPcEnableSetting(context, <span class="literal">false</span>);      <span class="comment">// 强制关闭</span></span><br><span class="line">    SettingsCleanCachedReceiver.cleanAdbDebuggingKeys(context);  <span class="comment">// 并清除全部 ADB 授权密钥！</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>即：普通环境下即使手动开了 USB 调试，该服务也会在后续时机<strong>强制关闭并清除已授权电脑指纹</strong>。</p>
+</blockquote>
+<h3 id="9-7-同款暗门：WiFi「高级选项」（-wfad-）"><a href="#9-7-同款暗门：WiFi「高级选项」（-wfad-）" class="headerlink" title="9.7 同款暗门：WiFi「高级选项」（_wfad_）"></a>9.7 同款暗门：WiFi「高级选项」（_wfad_）</h3><p><code>WifiConfigController</code> 里 WiFi 配置页的「高级选项」勾选框使用同一套判定（<code>SettingsApp.isCheckedReadboyForAdvancedEnable("_wfad_", N)</code>）：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="title function_">isCheckedReadboyForAdvancedEnable</span><span class="params">(String key, <span class="type">int</span> times)</span> {</span><br><span class="line">    <span class="keyword">if</span> (!Build.IS_USER) <span class="keyword">return</span> <span class="literal">true</span>;                    <span class="comment">// 非量产固件直接放行</span></span><br><span class="line">    <span class="keyword">if</span> (isThiredAppInstallEnabledByFwq()) <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">// ★ 同样看 un_mall_app_state.state==1</span></span><br><span class="line">    <span class="comment">// 后门1：本机蓝牙名称 = key + 密码</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">bt</span> <span class="operator">=</span> BluetoothAdapter.getDefaultAdapter().getName();</span><br><span class="line">    <span class="keyword">if</span> (bt.contains(key)) {</span><br><span class="line">        <span class="type">String</span> <span class="variable">tail</span> <span class="operator">=</span> bt.substring(bt.indexOf(key) + key.length());</span><br><span class="line">        <span class="keyword">if</span> (isCheckComplexPwdCorrect(tail)) <span class="keyword">return</span> <span class="literal">true</span>;                  <span class="comment">// 固定复杂密码（基于日期列表校验）</span></span><br><span class="line">        <span class="keyword">if</span> (lunar.getShortLunarNumbersAndMd5().equals(tail)) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 当日农历动态 MD5 密码</span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 后门2：扫描周围 WiFi，SSID = key + 密码 同样放行（售后远程救砖用）</span></span><br><span class="line">    <span class="keyword">for</span> (ScanResult wifi : wm.getScanResults()) { ...同上逻辑... }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>售后逻辑：把平板蓝牙改名（或让平板靠近一个名为 <code>_wfad_&lt;密码&gt;</code> 的 WiFi 热点）即可临时解禁高级选项；密码随农历日期变化。</p>
+</blockquote>
+<h3 id="9-8-结论速查表"><a href="#9-8-结论速查表" class="headerlink" title="9.8 结论速查表"></a>9.8 结论速查表</h3><p><strong>「连接电脑设备允许ADB调试」开关什么时候显示？</strong></p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>进入开发者选项</td>
+<td>主用户 + 连点版本号 7 次</td>
+</tr>
+<tr>
+<td>看到选项列表</td>
+<td>家长密码验证通过（或处于家长/Dream 模式、非量产固件）</td>
+</tr>
+<tr>
+<td><strong>看到 USB 调试开关</strong></td>
+<td>**<code>un_mall_app_state.state==1</code>**（云端 <code>allow_unknown_app.status=1</code>）且 <code>ro.readboy.control_usb_debug≠0</code> 且主用户</td>
+</tr>
+<tr>
+<td>开关可点击</td>
+<td>开发者选项顶部总开关已打开</td>
+</tr>
+<tr>
+<td>开关保持开启</td>
+<td>非产线 WiFi、非工厂模式（否则会被自动关闭并清授权）</td>
+</tr>
+</tbody></table>
+<p><strong>让开关显示的可行途径：</strong></p>
+<ol>
+<li>手机家长端打开「允许安装未知应用」（allow_unknown_app=1）→ 云端同步后 state=1</li>
+<li>用 ZaralynSetting「全局安装限制」设为允许（会 upsert un_mall_app_state=1）→ 退出重进开发者选项</li>
+<li>直接用 root/adb 写 <code>content://com.readboy.parentmanager.AppContentProvider/un_mall_app_state</code>（state=1）</li>
+</ol>
+<hr>
+<h2 id="十、系统设置（Settings-apk）自身的网络接口-★2026-09-补充"><a href="#十、系统设置（Settings-apk）自身的网络接口-★2026-09-补充" class="headerlink" title="十、系统设置（Settings.apk）自身的网络接口 ★2026-09 补充"></a>十、系统设置（Settings.apk）自身的网络接口 ★2026-09 补充</h2><blockquote>
+<p>回答一个常见疑问：Settings 不只是调本地 provider——它内置了 <strong>8 个网络接口</strong>，覆盖售后产线、设备认证、通知黑名单、自更新等场景。<br>域名清单：<code>api-care.readboy.com</code>、<code>c25-screen-stat.readboy.com</code>、<code>app-notice-blacklist.readboy.com</code>、<code>img.readboy.com</code>、<code>g-apkstore.strongwind.cn</code>、内网 <code>192.168.16.247</code>。</p>
+</blockquote>
+<h3 id="10-1-EWC-设备认证体系（api-care-c25-域公共参数）⭐"><a href="#10-1-EWC-设备认证体系（api-care-c25-域公共参数）⭐" class="headerlink" title="10.1 EWC 设备认证体系（api-care / c25 域公共参数）⭐"></a>10.1 EWC 设备认证体系（api-care / c25 域公共参数）⭐</h3><p>Settings 里有一套独立的「EWC」认证体系（SettingsEwcCommonUtils），用于售后/产线相关接口，与家长管理、应用商店的签名都不同：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 反编译还原（SettingsEwcCommonUtils）</span></span><br><span class="line"><span class="type">String</span> <span class="variable">AUTH_KEY</span> <span class="operator">=</span> <span class="string">"8df5bce4b208be84b5c76a6a00364467"</span>;  <span class="comment">// 硬编码密钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 公共 query 参数（四个接口通用）：</span></span><br><span class="line"><span class="comment">//   number    = 屏幕序列号（DSI/MIPI 读取的 LCD SN，read_dsi_mipi_rw）</span></span><br><span class="line"><span class="comment">//   sn        = SettingsEwcCommonUtils.getDeviceSN() 签名（见下）</span></span><br><span class="line"><span class="comment">//   device_id = Build.getSerial()</span></span><br><span class="line"><span class="comment">//   t         = 秒时间戳</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// deviceInfo = model/"/" + deviceId + "/" + appId + "/" + versionCode（'/' 分隔）</span></span><br><span class="line">String <span class="title function_">getDeviceSN</span><span class="params">(context, t, number)</span> {</span><br><span class="line">    <span class="keyword">return</span> MD5(deviceInfo + number + t);   <span class="comment">// 缓存 60 秒（checkAuthToken 节流）</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="10-2-屏幕-LCD-信息上报（开机）"><a href="#10-2-屏幕-LCD-信息上报（开机）" class="headerlink" title="10.2 屏幕/LCD 信息上报（开机）"></a>10.2 屏幕/LCD 信息上报（开机）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://c25-screen-stat.readboy.com/api/screenState?number=%s&amp;sn=%s&amp;device_id=%s&amp;t=%s</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>触发：<code>SettingsBootCompletedReceiver.writeLcdInfoToFtpTask</code>（开机广播）</li>
+<li>上报内容：LCD 序列号、读写 DSI/MIPI 寄存器值（write_dsi_mipi_rw / read_dsi_mipi_rw）</li>
+<li>方法名带「Ftp」是历史遗留（早年写 FTP，后改 HTTP POST/GET）</li>
+</ul>
+<h3 id="10-3-设备-SN-barcode-回源（关于平板页）"><a href="#10-3-设备-SN-barcode-回源（关于平板页）" class="headerlink" title="10.3 设备 SN/barcode 回源（关于平板页）"></a>10.3 设备 SN/barcode 回源（关于平板页）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://api-care.readboy.com/api/machine/info?number=%s&amp;sn=%s&amp;device_id=%s&amp;t=%s</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>触发：<code>DeviceInfoSettings$MyUpdateDeviceSnInfoTask</code>（进入「关于平板」，节流间隔内不重复请求）</li>
+<li>响应（readDeviceSN_InfoFromFWQ 解析）：</li>
+</ul>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span> <span class="attr">"code"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"msg"</span><span class="punctuation">:</span> <span class="string">"ok"</span><span class="punctuation">,</span> <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="attr">"barcode"</span><span class="punctuation">:</span> <span class="string">"R50XXXXXX..."</span> <span class="punctuation">}</span> <span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><code>data.barcode</code> 写入 <code>Settings.Global readboy_pad_device_serial_number</code>（关于平板页显示的 SN 来源；也供应用商店等读取）</li>
+<li>同域 <code>api-care.readboy.com/api/machine/actTime</code> 见 8.3（应用商店在用）</li>
+</ul>
+<h3 id="10-4-AI-学习房间检查"><a href="#10-4-AI-学习房间检查" class="headerlink" title="10.4 AI 学习房间检查"></a>10.4 AI 学习房间检查</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://api-care.readboy.com/api/ai_learn_room/check?number=%s&amp;sn=%s&amp;device_id=%s&amp;t=%s</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>触发：<code>PowerOffKeeperService</code>（常驻服务）</li>
+</ul>
+<h3 id="10-5-通知黑名单（版本化拉取）⭐"><a href="#10-5-通知黑名单（版本化拉取）⭐" class="headerlink" title="10.5 通知黑名单（版本化拉取）⭐"></a>10.5 通知黑名单（版本化拉取）⭐</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://app-notice-blacklist.readboy.com/blacklist/&lt;本地版本号&gt;?prop=true</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>这不是单纯的”黑名单”，而是一份多用途云端应用管控配置</strong>，由 <code>PowerOffKeeperService</code> 随机延迟轮询拉取（同名下载逻辑也存在于独立系统应用 com.readboy.killapp，两份各存各的）。</p>
+<p><strong>响应（版本化 JSON）：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"code"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"latest_version"</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"4"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"com.xxx.a"</span><span class="punctuation">,</span> <span class="string">"com.xxx.b"</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"Prop"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">{</span></span><br><span class="line">          <span class="attr">"pkg_name"</span><span class="punctuation">:</span> <span class="string">"com.xxx"</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">"models_and10"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"NB-H90"</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">"delay"</span><span class="punctuation">:</span> <span class="punctuation">{</span> <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">"content"</span><span class="punctuation">:</span> <span class="string">""</span></span><br><span class="line">        <span class="punctuation">}</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>存储：</strong> <code>data.latest_version &gt; 本地 fwq_cfg_version</code> 才更新；内容存 SharedPreferences（<code>fwq_cfg_data/fwq_cfg_version/fwq_cfg_md5/fwq_cfg_last_update_time</code>）。</p>
+<p><strong>两个已实锤的用途：</strong></p>
+<ol>
+<li><strong>深度休眠隐藏应用（键 <code>"4"</code>，Settings 消费）</strong>：<code>AppInfoDashboardFragment.setActivityDisplayByComponentName</code> —— 隐藏应用时若包名在 <code>"4"</code> 列表中，除了 disable 桌面入口 Activity 隐藏图标，还连带 <code>setServiceEnabledByPkgName</code> + <code>setReceiversEnabledByPkgName</code> <strong>禁用该包全部 Service 和广播接收器</strong> → 应用完全休眠：不跑后台、收不到广播、发不出通知。开机时 <code>SettingsBootCompletedReceiver</code> 逐一恢复隐藏状态。</li>
+<li><strong>后台查杀与禁通知（键 <code>"1"</code>/<code>"2"</code>/<code>"3"</code>，com.readboy.killapp 消费）</strong>：<code>FwqConfigureIntentService.refreshSystemFilterList</code> 解析：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>存入</th>
+<th>实际动作（已实锤）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>"1"</code></td>
+<td><code>MyApplication.mSystemClosedNotifycationAppPkgNames</code></td>
+<td><code>resetAllNeedCloseNotifycationApp()</code> 遍历桌面全部应用，命中列表的包调 <code>INotificationManager.setNotificationsEnabledForPackage(pkg, uid, false)</code> → <strong>系统级禁用该应用全部通知</strong>（设置里显示”已关闭”）</td>
+</tr>
+<tr>
+<td><code>"2"</code></td>
+<td><code>DetectOverCpuFrequencyService.killApp</code></td>
+<td><code>needKill()</code> 判定：不在强制白名单/用户白名单/最近启动者名单 → <code>ActivityManager.killBackgroundProcesses()</code> + <strong><code>forceStopPackage()</code> 强杀</strong></td>
+</tr>
+<tr>
+<td><code>"3"</code></td>
+<td><code>DetectOverCpuFrequencyService.mForceThridWhiteListPkgNameAll</code></td>
+<td>强制免杀白名单（云端下发，用户不可见不可改，优先级最高）</td>
+</tr>
+<tr>
+<td><code>"4"</code></td>
+<td>Settings 消费（见上）</td>
+<td>深度休眠隐藏</td>
+</tr>
+<tr>
+<td><code>Prop</code></td>
+<td>数组</td>
+<td>按包名+安卓版本（<code>models_and7</code>~`models_and12<code>）+机型过滤，返回 </code>{code, delay, content}` —— 查杀延迟/提示文案策略，供 killapp 白名单弹窗等消费</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li><strong>跨应用共享配置</strong>：<code>SettingsSharedContentProvider</code>（authority <code>com.android.settings_rby_shared_data</code>，call 方法分发）：<ul>
+<li><code>com.readboy.killapp_shareddata</code> → 返回整个 fwq_cfg_data JSON</li>
+<li><code>checkDelayTimeInFwqCfgByPackageName(Bundle)</code> → 入参 <code>reqPkgName</code>+<code>filterPkgNames</code>+<code>reqMdExtraName</code>，在 <code>Prop</code> 数组里过滤（与上表 Prop 同逻辑）</li>
+<li>另有 <code>helpRemoveTaskFromRecentAppList</code>（从最近任务移除）、<code>helpAddPowerSaveWhitelistApp</code>（加入省电白名单）等供 killapp 反向调用的辅助接口</li>
+</ul>
+</li>
+</ol>
+<p><strong>跨应用读取机制：</strong> <code>AppInfoDashboardFragment.getKillappSharedPreferencesData()</code> 用 <code>createPackageContext("com.readboy.killapp")</code> 直接读 killapp 的 SharedPreferences（同 system uid 才可行）。killapp 自己也独立拉取同一 URL 存一份（FwqConfigureIntentService，带同一套 MD5 版本化更新判断）；Settings 下载的那份在 Settings 内反而无人读内容（仅版本号用于更新判断），疑似 copy-paste 冗余。</p>
+<blockquote>
+<p>⚠️ killapp 侧确认：该配置是<strong>云端可随时增删的免杀/强杀/禁通知/深度隐藏四张动态列表</strong>，无需发版即可改变任意应用的查杀策略。</p>
+</blockquote>
+<h3 id="10-6-内网产线预装-API（192-168-16-247）⚠️"><a href="#10-6-内网产线预装-API（192-168-16-247）⚠️" class="headerlink" title="10.6 内网产线预装 API（192.168.16.247）⚠️"></a>10.6 内网产线预装 API（192.168.16.247）⚠️</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET http://192.168.16.247/V3/index.php?s=/ApiTool/ApiApps/apps.html&amp;authKey=&lt;authKey&gt;&amp;model=&lt;MODEL&gt;</span><br><span class="line">GET http://192.168.16.247/V3/index.php?s=/ApiTool/ApiDeviceType/getModelLauncherConfig.html&amp;authKey=...&amp;model=...</span><br><span class="line">GET http://192.168.16.247/V3/index.php?s=/ApiTool/ApiEnvCheck/getCurEnv.html&amp;...</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>触发：<code>AutoPreInstallFtpListApkService</code>（开机服务，即 9.6 那个 ADB 治理服务——产线预装+ADB 管理一体）</li>
+<li><strong>内网 IP，量产设备不可达</strong>，仅产线/售后内网有效；失败静默忽略</li>
+<li>authKey 算法（密钥硬编码）：</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">APP_ID</span> <span class="operator">=</span> <span class="string">"apps"</span>, SECRET = <span class="string">"M4S8tUB8OBBvIUN7"</span>;</span><br><span class="line">String <span class="title function_">getAuthKey</span><span class="params">()</span> {</span><br><span class="line">    <span class="type">String</span> <span class="variable">t</span> <span class="operator">=</span> String.valueOf(System.currentTimeMillis() / <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> APP_ID + <span class="string">"-"</span> + t + <span class="string">"-"</span> + MD5(APP_ID + <span class="string">"-"</span> + t + <span class="string">"-"</span> + SECRET);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>预装列表响应字段：<code>download_url</code>、<code>zip_url</code>、<code>install_path</code>（自动下载 APK/zip 并安装）；launcher 配置控制桌面预置</li>
+<li>model 参数会去掉 <code>Readboy_</code> 前缀与空格</li>
+</ul>
+<h3 id="10-7-摄像头配置下发"><a href="#10-7-摄像头配置下发" class="headerlink" title="10.7 摄像头配置下发"></a>10.7 摄像头配置下发</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http://img.readboy.com/config/pad/c20/camera_config.json</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>触发：<code>SettingsCameraConfigureIntentService</code>（需 SD 卡 mounted）</li>
+<li>下载后写入 <code>/sdcard/.readboy/CameraFix/camerafixinfo_2.xml</code>（摄像头产测/修复参数）</li>
+</ul>
+<h3 id="10-8-Settings-自更新检查（嵌入-com-readboy-store-包）"><a href="#10-8-Settings-自更新检查（嵌入-com-readboy-store-包）" class="headerlink" title="10.8 Settings 自更新检查（嵌入 com.readboy.store 包）"></a>10.8 Settings 自更新检查（嵌入 com.readboy.store 包）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET http://g-apkstore.strongwind.cn/update?firmware=&lt;机型&gt;&amp;firmwareversion=&lt;固件版本&gt;</span><br><span class="line">    &amp;storeversion=&lt;版本码&gt;&amp;systemversion=&lt;SDK&gt;&amp;device=&lt;机型&gt;&amp;pkg=&lt;包名&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>实现：<code>com.readboy.store.AppUpdate.CheckHelper/ReCheckUpdate</code>（Apache HttpClient，内嵌了商店更新模块的精简版）</li>
+<li>响应（UpdateInfoBean，Gson）：</li>
+</ul>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"appName"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"pkgName"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"version"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"versionName"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"file"</span><span class="punctuation">:</span> <span class="string">"&lt;APK 下载地址&gt;"</span><span class="punctuation">,</span> <span class="attr">"hash"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"isForce"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">"isAppForce"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"title"</span><span class="punctuation">:</span> <span class="string">""</span><span class="punctuation">,</span> <span class="attr">"content"</span><span class="punctuation">:</span> <span class="string">"&lt;更新说明&gt;"</span><span class="punctuation">,</span> <span class="attr">"errorcode"</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>命中更新 → <code>DownloadService</code> 直接下载 APK（也可校验 hash）；与商店自身更新共用同一后端 <code>/update</code> 接口</li>
+</ul>
+<h3 id="10-9-其他"><a href="#10-9-其他" class="headerlink" title="10.9 其他"></a>10.9 其他</h3><table>
+<thead>
+<tr>
+<th>URL</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>https://www.readboy.com/simpleServicePoint</code></td>
+<td>「服务网点」页 WebView 地址（Intent extra <code>url</code> 传给浏览器，非直接请求）</td>
+</tr>
+<tr>
+<td><code>https://www.google.com</code></td>
+<td>仅 Guava 库内部常量，无实际请求</td>
+</tr>
+</tbody></table>
+<h3 id="10-10-与其它端的认证对比"><a href="#10-10-与其它端的认证对比" class="headerlink" title="10.10 与其它端的认证对比"></a>10.10 与其它端的认证对比</h3><table>
+<thead>
+<tr>
+<th>端</th>
+<th>参数</th>
+<th>签名</th>
+<th>密钥</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平板家长管理</td>
+<td>signature</td>
+<td>MD5(秒+APPSECRET+MD5(APP_ID2))</td>
+<td>de917e0e6b49…（0.2 节）</td>
+</tr>
+<tr>
+<td>应用商店→家长域</td>
+<td>signature</td>
+<td>MD5(秒+appsec+MD5(“app-store”))</td>
+<td>c070fbad7db2…（8.1 节）</td>
+</tr>
+<tr>
+<td>手机家长助手</td>
+<td>sn</td>
+<td>uid8+ts+MD5(ts+SECRET+arg3)+包名</td>
+<td>2f6de49d30f3…（7.1 节）</td>
+</tr>
+<tr>
+<td><strong>Settings EWC</strong></td>
+<td><strong>sn</strong></td>
+<td><strong>MD5(deviceInfo+number+秒时间戳)</strong></td>
+<td><strong>8df5bce4b208…（10.1 节）</strong></td>
+</tr>
+<tr>
+<td>产线预装</td>
+<td>authKey</td>
+<td>apps-秒-MD5(apps-秒-SECRET)</td>
+<td>M4S8tUB8OBBvIUN7（10.6 节）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 安全观察：四套独立认证体系的密钥全部硬编码在 APK 中，且 EWC 体系的签名输入完全由客户端自报（deviceInfo+number+t），无服务器下发 nonce，重放窗口由 60 秒客户端缓存无意间缩小。</p>
+</blockquote>
+<hr>
+<h2 id="十一、系统更新-DreamUpdate（com-dream-ota-update）：完整刷机包-增量包获取方法-★2026-09-新增"><a href="#十一、系统更新-DreamUpdate（com-dream-ota-update）：完整刷机包-增量包获取方法-★2026-09-新增" class="headerlink" title="十一、系统更新 DreamUpdate（com.dream.ota.update）：完整刷机包/增量包获取方法 ★2026-09 新增"></a>十一、系统更新 DreamUpdate（com.dream.ota.update）：完整刷机包/增量包获取方法 ★2026-09 新增</h2><blockquote>
+<p>来源：DreamUpdate.apk 反编译。⚠️ <strong>整个 OTA 体系无任何鉴权/签名/token</strong>，HTTP 明文，任何人 POST 设备参数即可拿到对应机型的刷机包直链。</p>
+</blockquote>
+<h3 id="11-1-检查更新接口（核心）"><a href="#11-1-检查更新接口（核心）" class="headerlink" title="11.1 检查更新接口（核心）"></a>11.1 检查更新接口（核心）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST http://ota.readboy.com/update.php</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>请求参数（Form，无签名）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id</code></td>
+<td><strong>渠道号：0=正式 / 1=测试 / 2=公测</strong>（CardManager.isTest/isPublicBetaTest 决定）</td>
+</tr>
+<tr>
+<td><code>model</code> / <code>brand</code> / <code>name</code> / <code>device</code> / <code>board</code> / <code>chipset</code></td>
+<td>Build 各字段</td>
+</tr>
+<tr>
+<td><code>fingerprint</code></td>
+<td><strong>Build.FINGERPRINT（⚠️ 决定服务端下发增量还是完整包）</strong></td>
+</tr>
+<tr>
+<td><code>firmware</code> / <code>android</code> / <code>time</code> / <code>builder</code> / <code>display</code> / <code>hard</code> / <code>serial</code> / <code>mac</code></td>
+<td>固件/系统/序列号/硬件信息</td>
+</tr>
+<tr>
+<td><code>updating_apk_version</code></td>
+<td>当前 OTA 应用版本</td>
+</tr>
+<tr>
+<td><code>uid</code> / <code>username</code> / <code>realname</code></td>
+<td>读书郎账号信息（未登录为空）</td>
+</tr>
+<tr>
+<td><code>debug</code> / <code>is_log</code> / <code>ip</code></td>
+<td>调试标志</td>
+</tr>
+</tbody></table>
+<p><strong>响应两种形态：</strong></p>
+<p><strong>形态 A：直接返回升级包信息（parseJson）</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"id"</span><span class="punctuation">:</span> <span class="number">123</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"md5"</span><span class="punctuation">:</span> <span class="string">"..."</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"packageUrl"</span><span class="punctuation">:</span> <span class="string">"http://.../ota.zip"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"description"</span><span class="punctuation">:</span> <span class="string">"更新说明"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"force"</span><span class="punctuation">:</span> <span class="string">"false"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"size"</span><span class="punctuation">:</span> <span class="string">"1000000000"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"name"</span><span class="punctuation">:</span> <span class="string">"固件名"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"version"</span><span class="punctuation">:</span> <span class="string">"1.2.3"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"time"</span><span class="punctuation">:</span> <span class="string">"2026-01-01"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"start_install"</span><span class="punctuation">:</span> <span class="string">"..."</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"end_install"</span><span class="punctuation">:</span> <span class="string">"..."</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>形态 B：返回 XML 配置地址（url 字段）→ 下载 XML 解析</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span> <span class="attr">"url"</span><span class="punctuation">:</span> <span class="string">"http://ota.readboy.com/xxx/update.xml"</span> <span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>XML 结构（DOM 解析，根节点属性 + 子节点）：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">root</span> <span class="attr">command</span>=<span class="string">"update_with_inc_ota"</span> <span class="attr">name</span>=<span class="string">"固件名"</span> <span class="attr">force</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://.../ota.zip<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">md5</span>&gt;</span>...<span class="tag">&lt;/<span class="name">md5</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>更新说明<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">country</span>&gt;</span>...<span class="tag">&lt;/<span class="name">country</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">size</span>&gt;</span>1000000000<span class="tag">&lt;/<span class="name">size</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>⚠️ <code>command</code> 必须 = <code>update_with_inc_ota</code>（增量 OTA 通道），否则客户端报错不处理。</p>
+</blockquote>
+<h3 id="11-2-下载与安装链路"><a href="#11-2-下载与安装链路" class="headerlink" title="11.2 下载与安装链路"></a>11.2 下载与安装链路</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">update.php 响应 → CheckInfo{version, md5, url, description, size, forceupdate}</span><br><span class="line">  → 存 Preferences（download_URL/md5/download_size/package_descriptor/force_update）</span><br><span class="line">  → DownloadTask 读 URL → downloader 包多线程下载（TaskManager.createDownloadTask，分片 Range）</span><br><span class="line">  → 下载到 /sdcard/ota.zip（DOWNLOAD_PATH = Environment.getExternalStorageDirectory()/ota.zip）</span><br><span class="line">  → md5 校验（checkFileValid）</span><br><span class="line">  → 安装（二选一）：</span><br><span class="line">     ① A/B 无缝升级：zip 内含 payload.bin + payload_properties.txt（UpdateParser 解析偏移/大小）</span><br><span class="line">        → UpdateEngine.applyPayload(payloadUrl, offset, size, headers)</span><br><span class="line">     ② Recovery 升级：拷贝到 /cache/update.zip → RecoverySystem.installPackage() 重启刷机</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="11-3-⭐获取完整刷机包-增量包的方法（可直接复现）"><a href="#11-3-⭐获取完整刷机包-增量包的方法（可直接复现）" class="headerlink" title="11.3 ⭐获取完整刷机包/增量包的方法（可直接复现）"></a>11.3 ⭐获取完整刷机包/增量包的方法（可直接复现）</h3><ol>
+<li><strong>标准获取</strong>：用真机参数 POST <code>update.php</code>（无鉴权），从响应的 <code>packageUrl</code> 或 XML 的 <code>url</code> 拿到直链（HTTP），wget/curl 即可下载完整 zip。</li>
+<li><strong>强制全量（推测）</strong>：POST 时传一个服务端不认识的 <code>fingerprint</code>，标准 OTA 服务端逻辑会回退下发完整包（增量包要求基线 fingerprint 精确匹配）。</li>
+<li><strong>测试版通道</strong>：<code>id=1</code>（测试）/ <code>id=2</code>（公测）可能拿到未推送的测试固件。</li>
+<li><strong>本地刷机</strong>：DreamUpdate 支持从 TF 卡/外置 SD/USB 存储（<code>UpdaterInfo.recovery_sdcard/recovery_extsd/recovery_usb</code>）读取升级包；DownloadActivity 扫描存储<strong>根目录的 ota.zip</strong>（”根目录未发现ota.zip文件”）→ 把任意官方 zip 改名 ota.zip 放根目录即可本地升级（还能绕过服务器检查）。</li>
+</ol>
+<h3 id="11-4-辅助接口"><a href="#11-4-辅助接口" class="headerlink" title="11.4 辅助接口"></a>11.4 辅助接口</h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET http://ota.readboy.com/adddown.php?id=&lt;id&gt;</code></td>
+<td>下载计数上报（data.id）</td>
+</tr>
+<tr>
+<td><code>GET http://ota.readboy.com/space.php?model=..&amp;display=..&amp;android=..&amp;board=..&amp;chipset=..</code></td>
+<td>设备分区/空间统计（fetchSpace，启动时上报）</td>
+</tr>
+</tbody></table>
+<h3 id="11-5-备注"><a href="#11-5-备注" class="headerlink" title="11.5 备注"></a>11.5 备注</h3><ul>
+<li>请求头无任何认证，参数空格转 %20，响应 UTF-8。</li>
+<li><code>OtaUpgradeUtils.checkIncVersion(fingerprint, product)</code>（校验本机 FINGERPRINT+DEVICE/PRODUCT 是否匹配升级包基线）在本 APK 内<strong>无调用者</strong>（死代码）——包类型选择完全在服务端完成。</li>
+<li>下载用系统 DownloadManager（XML）+ 自研多线程下载器（zip 本体）双套实现。</li>
+</ul>
+<hr>
+<h2 id="十二、个人设置-personalsetting（com-readboy-personalsetting）API-清单-★2026-09-新增"><a href="#十二、个人设置-personalsetting（com-readboy-personalsetting）API-清单-★2026-09-新增" class="headerlink" title="十二、个人设置 personalsetting（com.readboy.personalsetting）API 清单 ★2026-09 新增"></a>十二、个人设置 personalsetting（com.readboy.personalsetting）API 清单 ★2026-09 新增</h2><blockquote>
+<p>来源：com.readboy.personalsetting base.apk 反编译（16139 smali，平板上最大的系统应用之一）。<br>它是读书郎账号/个人中心入口，聚合了 30+ 域名的服务。</p>
+</blockquote>
+<h3 id="12-1-⚠️-签名体系：native-库加固（与前述全部应用不同）"><a href="#12-1-⚠️-签名体系：native-库加固（与前述全部应用不同）" class="headerlink" title="12.1 ⚠️ 签名体系：native 库加固（与前述全部应用不同）"></a>12.1 ⚠️ 签名体系：native 库加固（与前述全部应用不同）</h3><p>个人中心的 sn 签名不在 Java 层，而在 <strong>librbEncrypt.so</strong>（ForeignAuth JNI）：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.readboy.foreignauth.ForeignAuth（JNI，签名算法在 native 层）</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">native</span> String <span class="title function_">getSn1</span><span class="params">(String, String, String)</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">native</span> String <span class="title function_">getSn2</span><span class="params">(String, String, String, String)</span>;</span><br><span class="line">... getSn3~getSn7 ...</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">native</span> String getSnKey0~getSnKey5(...);</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">native</span> String <span class="title function_">getEncryptedCode1</span><span class="params">(String)</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">native</span> String <span class="title function_">getSerial</span><span class="params">(Context, String)</span>;   <span class="comment">// 设备序列号</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">native</span> String getWifiMAC/getBluetoothMAC(Context);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>静态提取不出算法——需逆向 librbEncrypt.so。这是读书郎唯一见到 native 签名的应用。</p>
+<p><strong>Java 层可见的明文密钥（PersonalApi 域名→密钥映射）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>域名/包名</th>
+<th>密钥</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>aide.readboy.com</code></td>
+<td><code>2aeb3869d9b8ed736d6c572b08db1851</code>（另有字串密钥 <code>KD3@b!12#409489Ld98_e3&gt;[#</code>）</td>
+</tr>
+<tr>
+<td><code>api-tutor.readboy.com</code></td>
+<td><code>17b67d0cc116dadb931a8d20a9ba22b8</code></td>
+</tr>
+<tr>
+<td><code>com.readboy.personalsetting</code></td>
+<td><code>ded7b710c6014e78da2055037d1bf7ab</code></td>
+</tr>
+<tr>
+<td><code>com.beiens.personalsetting</code></td>
+<td><code>aac1038b13833f47ae685ff3d92f1c5f</code>（北恩版本包名）</td>
+</tr>
+<tr>
+<td><code>com.zq.personalsetting</code></td>
+<td><code>b0621475eb15be8d580d85753392bc3e</code>（中启版本包名）</td>
+</tr>
+<tr>
+<td><code>parentsadmin</code></td>
+<td><code>9b332c2653ce7189da101dac5a63fd4e</code>（★与手机家长助手 APP_KEY 相同，见 7.1）</td>
+</tr>
+</tbody></table>
+<p>公共请求头：<code>User-Agent</code>、<code>Device</code>、<code>Serial-Number</code>、<code>Version-Code: 250904001</code>、<code>Version-Name: 4.3.801</code>；app_id = <code>ac_android_common_1.0</code>。</p>
+<blockquote>
+<p>⚠️ 同一套代码多品牌发行（readboy/being/beiens/zq），各品牌独立密钥。</p>
+</blockquote>
+<h3 id="12-2-自有域名接口清单"><a href="#12-2-自有域名接口清单" class="headerlink" title="12.2 自有域名接口清单"></a>12.2 自有域名接口清单</h3><table>
+<thead>
+<tr>
+<th>域名</th>
+<th>路径/说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>api-speech-eval.readboy.com</code></td>
+<td>口语评测 15 个接口（三套版本并存）：<code>distributeContent</code>/<code>getConfigureParams</code>/<code>getJoinTimes</code>/<code>setJoinTimes</code>/<code>submitEvaluationResult</code> + 同名 <code>2</code>/<code>3</code> 版后缀，均 <code>?sn=</code> 签名</td>
+</tr>
+<tr>
+<td><code>api-wakeupword.readboy.com</code></td>
+<td>唤醒词采集：<code>/audio-collect?version=</code>、<code>/collect-guard?version=</code></td>
+</tr>
+<tr>
+<td><code>upload-pen-posture.readboy.com</code></td>
+<td>点读笔坐姿/图像数据上传</td>
+</tr>
+<tr>
+<td><code>api.video.readboy.com</code></td>
+<td>视频服务：<code>/videoSts?</code>（STS 授权）、<code>:8000</code> 端口直连</td>
+</tr>
+<tr>
+<td><code>api.log.readboy.com</code></td>
+<td><code>/logStsAuth?</code>（阿里云日志 STS 授权，配合 <code>/logstores/</code>、<code>/shards/lb</code>）</td>
+</tr>
+<tr>
+<td><code>stat.readboy.com</code></td>
+<td><code>/api/events?</code> 统计事件上报</td>
+</tr>
+<tr>
+<td><code>contres.readboy.com</code></td>
+<td>服务配置</td>
+</tr>
+<tr>
+<td><code>ai-learn-admin.readboy.com</code></td>
+<td>AI 自习室：<code>/ai_learn/tp/v1/auth</code>、<code>/ai_learn/tp/v1/student_beans</code>（测试域 ai-learn-admin-test）</td>
+</tr>
+<tr>
+<td><code>api-tutor.readboy.com/api</code></td>
+<td>辅导服务（EasyHttp/Retrofit）</td>
+</tr>
+<tr>
+<td><code>api.dteacher.readboy.com</code></td>
+<td>学分/会员：<code>/credit</code>、<code>/credit/v2/user/credit</code>、<code>/credit/v2/order/create</code>、<code>/v1/order</code>、<code>/v1/order/notify</code>、<code>/v1/member</code>、<code>/v1/member/panel</code>、<code>/v1/redeem_cards</code>、<code>/v2/user/credit</code>（测试域 api.dteacher-test）；另有 <code>room.dteacher.readboy.com</code>、<code>dt1.readboy.com</code>、<code>/room/</code>、<code>/schedule</code>、<code>/subjectInfo</code></td>
+</tr>
+<tr>
+<td><code>account.readboy.com</code> / <code>api-account.readboy.com</code> / <code>user.readboy.com</code> / <code>third-auth.readboy.com</code></td>
+<td>账号体系：`/mobile/register</td>
+</tr>
+<tr>
+<td><code>api-super.readboy.com/api</code></td>
+<td>家长助手域复用（签名同 7.1，见上表 parentsadmin）</td>
+</tr>
+<tr>
+<td><code>parent-manage.readboy.com</code></td>
+<td><code>/api/v1/machine/info</code>、<code>/api/v1/password/upload</code>（与家长管理同域同接口）</td>
+</tr>
+<tr>
+<td><code>parentadmin.readboy.com</code></td>
+<td><code>/v1/machine/user/login</code></td>
+</tr>
+<tr>
+<td><code>api-care.readboy.com</code> / <code>api2-care.readboy.com</code></td>
+<td>关怀服务（与 Settings 同域，见第十章）</td>
+</tr>
+<tr>
+<td><code>cont.readboy.com:8085</code></td>
+<td><code>/schoolPicUploadCallback?sn=</code>（校园照片上传回调）</td>
+</tr>
+<tr>
+<td><code>admin-aide.readboy.com</code></td>
+<td><code>/apk/download</code>（辅导端 APK 下发）</td>
+</tr>
+<tr>
+<td><code>api-quanjie.readboy.com</code></td>
+<td>全解服务：<code>/qj/recommend/book</code>（荐书）</td>
+</tr>
+<tr>
+<td><code>annualreport.readboy.com</code></td>
+<td>年度学习报告</td>
+</tr>
+<tr>
+<td><code>img.readboy.com/avatar/</code></td>
+<td>头像静态资源；另有 <code>res.readboy.com</code>、<code>static-file.readboy.com</code>、<code>apps.readboy.com/static_page/*</code>（隐私协议/用户协议页）</td>
+</tr>
+<tr>
+<td><code>padcounter.strongwind.cn:7240</code></td>
+<td><code>/v1/machine</code>、<code>/v1/machine/2</code>（平板计数）</td>
+</tr>
+<tr>
+<td><code>rbxuexiquan.strongwind.cn:7060</code></td>
+<td><code>/v1/user</code>（学习圈）</td>
+</tr>
+<tr>
+<td><code>g-apkstore.strongwind.cn</code></td>
+<td>应用商店域复用（见第八章）</td>
+</tr>
+</tbody></table>
+<p><strong>第三方服务（仅列主域）：</strong> 百度地图 SDK（api.map.baidu.com）、阿里云 OSS/播放器、讯飞语音（iss.openspeech.cn、log.iflytek.com）、腾讯 Bugly（astat.bugly）、华为 GRS（grs.dbankcloud.*）、浙江省政务接口（mapi.zjzwfw.gov.cn）、okzm.cn（第三方管控）、bemall.dream.cn、120.25.104.199:8082（room/study/join|change、user/login/register 学习房间测试服）、192.168.20.*（内网测试环境残留）。</p>
+<h3 id="12-3-权限-行为注意点"><a href="#12-3-权限-行为注意点" class="headerlink" title="12.3 权限/行为注意点"></a>12.3 权限/行为注意点</h3><ul>
+<li>应用内置 <strong>root 检测</strong>（遍历 <code>/system/bin/su</code>、<code>/system/xbin/su</code>、<code>/sbin/su</code>、<code>/data/local/su</code> 等路径）。</li>
+<li>集成人脸识别引擎（libSeetaFace*，SeetaFace600 系列）——<code>/face/login</code>、<code>/face/bind</code> 接口配套。</li>
+<li>点读笔绑定/数据上报（<code>/scan_pen/*</code>：add/get/quit_pen_bind、send_scan_data、get_device_bind）。</li>
+</ul>
+<hr>
+<h3 id="附：计算器后门（com-dream-calculator）"><a href="#附：计算器后门（com-dream-calculator）" class="headerlink" title="附：计算器后门（com.dream.calculator）"></a>附：计算器后门（com.dream.calculator）</h3><p>计算器输入特定算式结果触发隐藏入口（MainActivity$2，TextUtils.equals 精确匹配）：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ee0760ee</code></td>
+<td>跳转工程测试模式：优先 <code>com.sim.cit/com.sim.cit.MainList</code>（CIT 主列表）；未安装则回退 <code>com.mediatek.factorymode.FactoryMode</code>（MTK 工厂模式）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>一个纯本地跳转后门，无网络、无数据回传（全应用唯一 URL 是 schemas 命名空间常量）。此为厂商/售后调试入口，非安全后门。</p>
+</blockquote>
+<hr>
 <p><strong>免责声明</strong>：本文仅用于安全研究和教育目的。请确认你拥有设备的所有权。未经授权使用本文中的技术可能违反法律，作者不对任何滥用行为负责。</p>
 <p><strong>分析基准</strong>：</p>
 <ul>
 <li>家长管理_v6.2.8.apk（反编译于 cache/decompiled）——平板端全部接口</li>
 <li>家长助手_v2.9.57.apk / v2.6.4.apk（com.readboy.rbmanager）——第七章 api-super 域接口</li>
-<li>2026-08</li>
+<li>应用商店.apk（cn.dream.android.appstore，反编译于 cache/decompiled2/appstore）——第八章</li>
+<li>Settings.apk（系统设置，反编译于 cache/decompiled2/settings）——第九、十章</li>
+<li>kill.apk（com.readboy.killapp，反编译于 cache/decompiled2/killapp）——第十章键位语义</li>
+<li>DreamUpdate.apk（com.dream.ota.update，反编译于 cache/decompiled2/dreamupdate）——第十一章</li>
+<li>com.readboy.personalsetting base.apk（反编译于 cache/decompiled2/personalsetting）——第十二章</li>
+<li>com.dream.calculator base.apk（反编译于 cache/decompiled2/calculator）——附录计算器后门</li>
+<li>2026-08/09</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://OTFiles.github.io">OTFiles</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/">https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://OTFiles.github.io" target="_blank">OTFiles 的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%B4%E8%A7%A3/">破解</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E8%A3%85/">安装</a><a class="post-meta__tags" href="/tags/%E7%A7%91%E6%8A%80/">科技</a><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8/">安全</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</div></div><div class="info-2"><div class="info-item-1">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解 适用版本：家长管理 v6.2.8（家长管理_v6.2.8.apk）分析方法：apktool 反编译 + smali 逐行核对（与旧文档交叉验证，一切以 6.2.8 为准）   开篇：一张图看懂三件事123456【你的平板】                          【家长手机 App】          【云端服务器】  家长管理 App  ──签名请求──▶  parent-manage.readboy.com  ◀──家长手机（下发配置）       ▲                                      │       │ ① 解绑：输入家长密码/重置 ──▶  cancel_bindings 接口 ──▶ 服务端解绑       │ ② 重新绑定：输入激活码 ──▶  machine/active 接口 ──▶ 服务端重新绑定       │ ③ 拉配置：开机/推送/联网/密码变化 ──▶  jpush/content 接口 ──▶ 云端配置回来覆盖本地   ① 解绑 ...</div></div></div></a><a class="pagination-related" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</div></div><div class="info-2"><div class="info-item-1">ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长管理升级到 v6.2.8 后，旧版工具的关键功能失效了：黑名单/白名单写入了错误的表、全局安装开关不再生效。本文记录了对新版 6.2.8 的逆向分析结论、新旧版本机制差异，以及 ZaralynSettings 如何通过”自动识别 + 版本路由”兼容新旧两个版本。 一、新旧版本机制差异1.1 安装管控机制的迁移（核心差异）对 家长管理_v6.2.8.apk 解包逆向（apktool）并与旧版对比，发现安装/使用管控的核心表发生了迁移：    功能 老版本 新版 6.2.8    黑名单/白名单 forbidden_app（state: 0=黑...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</div></div><div class="info-2"><div class="info-item-1">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解 适用版本：家长管理 v6.2.8（家长管理_v6.2.8.apk）分析方法：apktool 反编译 + smali 逐行核对（与旧文档交叉验证，一切以 6.2.8 为准）   开篇：一张图看懂三件事123456【你的平板】                          【家长手机 App】          【云端服务器】  家长管理 App  ──签名请求──▶  parent-manage.readboy.com  ◀──家长手机（下发配置）       ▲                                      │       │ ① 解绑：输入家长密码/重置 ──▶  cancel_bindings 接口 ──▶ 服务端解绑       │ ② 重新绑定：输入激活码 ──▶  machine/active 接口 ──▶ 服务端重新绑定       │ ③ 拉配置：开机/推送/联网/密码变化 ──▶  jpush/content 接口 ──▶ 云端配置回来覆盖本地   ① 解绑 ...</div></div></div></a><a class="pagination-related" href="/ZaralynControl-User-Guide/" title="ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-21</div><div class="info-item-2">ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具</div></div><div class="info-2"><div class="info-item-1">ZaralynControl 使用指南这是什么ZaralynControl 是一个基于读书郎家长管理 App（6.2.8 版本）反编译代码开发的管控修改工具。它维护一个自己的镜像数据库，通过双向同步机制覆盖家长管理 App 的本地数据库及云端配置，实现对被管控设备应用列表的自主修改。  适用人群：拥有设备所有权的家长，或技术研究者。不需 root，但需要 ADB 安装一次（或通过文件管理器直接安装 APK）。   功能速览   功能 说明    镜像库权威 自己维护一个 Room SQLite 数据库，所有修改先写入镜像库，再同步给家长管理   本地双向同步 从家长管理 ContentProvider 拉取配置；修改后覆盖写入 Provider   云端双向同步 从 jpush/content 拉取云端配置；通过 controlApp/upload 上传管控列表   版本自动适配 自动检测新版（install_app_list disabled_state）和旧版（forbidden_app state）   后台自动同步 WorkManager 周期任务，默认 1 分钟，可配置...</div></div></div></a><a class="pagination-related" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-15</div><div class="info-item-2">某学习平板自由安装软件——ParentManager的SQL注入漏洞</div></div><div class="info-2"><div class="info-item-1">深入分析 ParentManager 白名单漏洞：如何利用 SQL 注入绕过应用安装限制前言最近在学习机家长控制应用 ParentManager 的安全分析中，发现了一个极其严重的 SQL 注入漏洞（CVSS 10.0 CRITICAL），这个漏洞允许任意第三方应用完全绕过白名单机制，安装任何软件。本文将详细分析这个漏洞的原理、利用方式以及实际攻击代码。 漏洞概述ParentManager 是一款家长控制应用，用于管理学习机上应用的安装和使用。它通过白名单机制来限制用户只能安装和使用特定的应用。然而，由于开发者的安全意识不足，应用中存在一个严重的 SQL 注入漏洞，使得任何第三方应用都可以完全绕过这个限制。 漏洞位置文件路径: smali/com/readboy/parentmanager/core/provider/AppContentProvider.smali (102-109 行) 代码片段: 12345678910111213141516171819202122232425262728.method public query(Landroid/net/Uri;[Ljav...</div></div></div></a><a class="pagination-related" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-10</div><div class="info-item-2">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</div></div><div class="info-2"><div class="info-item-1">ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长管理升级到 v6.2.8 后，旧版工具的关键功能失效了：黑名单/白名单写入了错误的表、全局安装开关不再生效。本文记录了对新版 6.2.8 的逆向分析结论、新旧版本机制差异，以及 ZaralynSettings 如何通过”自动识别 + 版本路由”兼容新旧两个版本。 一、新旧版本机制差异1.1 安装管控机制的迁移（核心差异）对 家长管理_v6.2.8.apk 解包逆向（apktool）并与旧版对比，发现安装/使用管控的核心表发生了迁移：    功能 老版本 新版 6.2.8    黑名单/白名单 forbidden_app（state: 0=黑...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">OTFiles</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OTFiles"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暂无</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86-6-2-8-%E5%85%A8%E9%83%A8%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%EF%BC%9A%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C%EF%BC%88%E9%98%B2%E5%8E%82%E5%95%86%E8%B7%91%E8%B7%AF%E5%AD%98%E6%A1%A3%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">家长管理 6.2.8 全部网络接口：请求/响应格式速查手册（防厂商跑路存档）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%87%E3%80%81%E5%85%AC%E5%85%B1%E7%BA%A6%E5%AE%9A%EF%BC%88%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%E9%80%9A%E7%94%A8%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">〇、公共约定（所有接口通用）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%9F%E5%90%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">0.1 服务器域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-2-%E8%AF%B7%E6%B1%82%E5%85%AC%E5%85%B1%E5%8F%82%E6%95%B0%EF%BC%88%E5%87%A0%E4%B9%8E%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%E9%83%BD%E6%9C%89%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">0.2 请求公共参数（几乎所有接口都有）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-3-%E5%93%8D%E5%BA%94%E5%85%AC%E5%85%B1%E7%BB%93%E6%9E%84%EF%BC%88OnlineResponseBean%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">0.3 响应公共结构（OnlineResponseBean）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-4-%E5%B7%B2%E7%9F%A5%E9%94%99%E8%AF%AF%E7%A0%81%EF%BC%88errno%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">0.4 已知错误码（errno）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-5-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">0.5 请求方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%85%8D%E7%BD%AE%E6%8B%89%E5%8F%96%E7%B1%BB%EF%BC%88%E4%BA%91%E7%AB%AF-%E2%86%92-%E5%B9%B3%E6%9D%BF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">一、配置拉取类（云端 → 平板）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%85%A8%E9%87%8F%E9%85%8D%E7%BD%AE%E6%8B%89%E5%8F%96-%E2%98%85%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 全量配置拉取 ★核心接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%BF%83%E8%B7%B3-%E2%98%85%E7%A1%AE%E8%AE%A4%E5%9C%A8%E7%BA%BF%EF%BC%88%E4%B8%8D%E6%8B%89%E9%85%8D%E7%BD%AE%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 心跳 ★确认在线（不拉配置）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%9C%80%E5%90%8E%E4%B8%80%E6%9D%A1%E6%8E%A8%E9%80%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 最后一条推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%A6%81%E7%94%A8%E5%88%97%E8%A1%A8%EF%BC%88%E9%BB%91%E7%99%BD%E5%90%8D%E5%8D%95%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.4 禁用列表（黑白名单）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E6%BF%80%E6%B4%BB%E7%8A%B6%E6%80%81%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.2.5.</span> <span class="toc-text">1.5 激活状态查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8A%E4%BC%A0%E7%B1%BB%EF%BC%88%E5%B9%B3%E6%9D%BF-%E2%86%92-%E4%BA%91%E7%AB%AF%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">二、上传类（平板 → 云端）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AF%86%E7%A0%81%E4%B8%8A%E4%BC%A0%EF%BC%88%E8%AE%BE%E7%BD%AE-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E6%97%B6%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 密码上传（设置/修改密码时）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 设备信息上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%B7%B2%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 已安装应用列表上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%8D%B8%E8%BD%BD%E5%BA%94%E7%94%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.4 卸载应用上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E7%AE%A1%E6%8E%A7%E7%8A%B6%E6%80%81%E4%B8%8A%E4%BC%A0%EF%BC%88%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9-%E2%86%92-%E4%BA%91%E7%AB%AF%EF%BC%89"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.5 管控状态上传（本地修改 → 云端）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E9%9A%90%E8%97%8F%E5%BA%94%E7%94%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.6.</span> <span class="toc-text">2.6 隐藏应用上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E4%BD%BF%E7%94%A8%E6%97%B6%E9%95%BF%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.7.</span> <span class="toc-text">2.7 使用时长上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-%E5%AE%9A%E4%BD%8D%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.8.</span> <span class="toc-text">2.8 定位上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.9.</span> <span class="toc-text">2.9 设备状态上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.10.</span> <span class="toc-text">2.10 密码输入错误记录上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11-%E6%88%AA%E5%B1%8F%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.11.</span> <span class="toc-text">2.11 截屏上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%A7%E5%88%B6%E7%B1%BB%EF%BC%88%E4%BA%91%E7%AB%AF-%E2%86%92-%E5%B9%B3%E6%9D%BF%EF%BC%8C%E8%BF%9C%E7%A8%8B%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">三、控制类（云端 → 平板，远程指令）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%BF%9C%E7%A8%8B%E5%85%B3%E6%9C%BA"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 远程关机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-JPush-%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 JPush 指令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%BC%8F%E4%B8%8A%E4%BC%A0-%E5%88%87%E6%8D%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 系统模式上传/切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%85%B3%E9%97%AD%E7%A6%81%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 关闭禁用模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%8E%A7%E5%88%B6-App-%E4%B8%8A%E4%BC%A0%EF%BC%88%E7%AE%A1%E6%8E%A7%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%EF%BC%89"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.5 控制 App 上传（管控应用列表）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%BA%AB%E4%BB%BD%E7%B1%BB%EF%BC%88%E6%BF%80%E6%B4%BB-%E8%A7%A3%E7%BB%91%EF%BC%89%E2%98%85%E5%85%B3%E9%94%AE"><span class="toc-number">1.5.</span> <span class="toc-text">四、身份类（激活/解绑）★关键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%AE%BE%E5%A4%87%E6%BF%80%E6%B4%BB%EF%BC%88%E9%87%8D%E6%96%B0%E7%BB%91%E5%AE%9A%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 设备激活（重新绑定）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%AE%BE%E5%A4%87%E8%A7%A3%E7%BB%91"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 设备解绑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%EF%BC%88%E5%90%AB%E5%AF%86%E7%A0%81%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 机器信息查询（含密码）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%98%AF%E5%90%A6%E5%85%81%E8%AE%B8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 是否允许输入密码上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%8A%9F%E8%83%BD%E7%B1%BB%EF%BC%88%E5%85%B6%E4%BB%96%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">五、功能类（其他所有接口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%A8%A1%E6%8B%9F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%A6%81%E7%82%B9%EF%BC%88%E5%A6%82%E6%9E%9C%E5%8E%82%E5%95%86%E8%B7%91%E8%B7%AF%E5%90%8E%E8%87%AA%E5%BB%BA%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">六、模拟服务端要点（如果厂商跑路后自建）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%AE%B6%E9%95%BF%E5%8A%A9%E6%89%8B%EF%BC%88%E5%AE%B6%E9%95%BF-App%EF%BC%89api-super-%E5%9F%9F%E6%8E%A5%E5%8F%A3-%E2%98%85%E6%96%B0%E5%8F%91%E7%8E%B0"><span class="toc-number">1.8.</span> <span class="toc-text">七、手机端家长助手（家长 App）api-super 域接口 ★新发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%EF%BC%88Util-smali-getSn%EF%BC%89"><span class="toc-number">1.8.1.</span> <span class="toc-text">7.1 签名算法（Util.smali getSn）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B%EF%BC%88token-%E5%BC%BA%E5%88%B6%EF%BC%89"><span class="toc-number">1.8.2.</span> <span class="toc-text">7.2 认证流程（token 强制）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E3%80%81%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E-ua-%E5%8F%82%E6%95%B0%EF%BC%88%E2%98%85%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E%EF%BC%89"><span class="toc-number">1.8.3.</span> <span class="toc-text">7.3 请求方式、请求头与 ua 参数（★完整说明）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E6%97%B6%E9%97%B4%E7%AE%A1%E6%8E%A7%E6%8E%A5%E5%8F%A3%EF%BC%88%E2%AD%90-%E5%B9%B3%E6%9D%BF%E7%AB%AF%E6%B2%A1%E6%9C%89%EF%BC%89"><span class="toc-number">1.8.4.</span> <span class="toc-text">7.4 时间管控接口（⭐ 平板端没有）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E5%8F%96%E6%97%B6%E9%97%B4%E7%AE%A1%E6%8E%A7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.8.4.1.</span> <span class="toc-text">拉取时间管控配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%B6%E9%97%B4%E7%AE%A1%E6%8E%A7"><span class="toc-number">1.8.4.2.</span> <span class="toc-text">设置时间管控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%97%B6%E9%97%B4%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.8.4.3.</span> <span class="toc-text">其他时间接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E5%AF%86%E7%A0%81%E6%8E%A5%E5%8F%A3%EF%BC%88%E2%AD%90-%E5%85%81%E8%AE%B8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%B9%B3%E6%9D%BF%E7%AB%AF%E6%B2%A1%E6%9C%89%EF%BC%89"><span class="toc-number">1.8.5.</span> <span class="toc-text">7.5 密码接口（⭐ 允许输入密码平板端没有）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-%E6%B8%85%E9%99%A4%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86%E5%AF%86%E7%A0%81"><span class="toc-number">1.8.5.1.</span> <span class="toc-text">修改 / 清除家长管理密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%81%E8%AE%B8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%EF%BC%88%E2%AD%90-%E5%AF%B9%E5%BA%94%E5%B9%B3%E6%9D%BF%E7%AB%AF-allow-input-pwd%EF%BC%8C%E8%AE%BE%E5%A4%87%E7%AB%AF%E6%97%A0%E6%AD%A4%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.8.5.2.</span> <span class="toc-text">允许输入密码（⭐ 对应平板端 allow_input_pwd，设备端无此接口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%81%E8%AE%B8%E5%90%AF%E5%8A%A8%E5%AF%86%E7%A0%81%EF%BC%88allow-pwd%EF%BC%89"><span class="toc-number">1.8.5.3.</span> <span class="toc-text">允许启动密码（allow_pwd）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AF%86%E7%A0%81%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.8.5.4.</span> <span class="toc-text">其他密码接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.8.6.</span> <span class="toc-text">7.6 设备接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-%E4%B8%8E%E5%B9%B3%E6%9D%BF%E7%AB%AF%E5%B7%AE%E5%BC%82%E5%AF%B9%E7%85%A7"><span class="toc-number">1.8.7.</span> <span class="toc-text">7.7 与平板端差异对照</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ZaralynControl-User-Guide/" title="ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具">ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具</a><time datetime="2026-08-21T04:00:00.000Z" title="发表于 2026-08-21 12:00:00">2026-08-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ParentManager-Network-API-Request-Response-Reference/" title="家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）">家长管理 6.2.8 全部网络接口请求/响应速查手册（防厂商跑路存档）</a><time datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</a><time datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</a><time datetime="2026-08-10T04:00:00.000Z" title="发表于 2026-08-10 12:00:00">2026-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞">某学习平板自由安装软件——ParentManager的SQL注入漏洞</a><time datetime="2026-03-15T04:00:00.000Z" title="发表于 2026-03-15 12:00:00">2026-03-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 - 2026 By OTFiles</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="不许搜一些奇怪的东西哦，喵~" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div></div></div><script src="/bundle.js"></script></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://OTFiles.github.io">OTFiles</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/">https://otfiles.github.io/ParentManager-Network-API-Request-Response-Reference/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://OTFiles.github.io" target="_blank">OTFiles 的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%B4%E8%A7%A3/">破解</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E8%A3%85/">安装</a><a class="post-meta__tags" href="/tags/%E7%A7%91%E6%8A%80/">科技</a><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8/">安全</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/ZaralynControl-User-Guide/" title="ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具</div></div><div class="info-2"><div class="info-item-1">ZaralynControl 使用指南这是什么ZaralynControl 是一个基于读书郎家长管理 App（6.2.8 版本）反编译代码开发的管控修改工具。它维护一个自己的镜像数据库，通过双向同步机制覆盖家长管理 App 的本地数据库及云端配置，实现对被管控设备应用列表的自主修改。  适用人群：拥有设备所有权的家长，或技术研究者。不需 root，但需要 ADB 安装一次（或通过文件管理器直接安装 APK）。   功能速览   功能 说明    镜像库权威 自己维护一个 Room SQLite 数据库，所有修改先写入镜像库，再同步给家长管理   本地双向同步 从家长管理 ContentProvider 拉取配置；修改后覆盖写入 Provider   云端双向同步 从 jpush/content 拉取云端配置；通过 controlApp/upload 上传管控列表   版本自动适配 自动检测新版（install_app_list disabled_state）和旧版（forbidden_app state）   后台自动同步 WorkManager 周期任务，默认 1 分钟，可配置...</div></div></div></a><a class="pagination-related" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</div></div><div class="info-2"><div class="info-item-1">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解 适用版本：家长管理 v6.2.8（家长管理_v6.2.8.apk）分析方法：apktool 反编译 + smali 逐行核对（与旧文档交叉验证，一切以 6.2.8 为准）   开篇：一张图看懂三件事123456【你的平板】                          【家长手机 App】          【云端服务器】  家长管理 App  ──签名请求──▶  parent-manage.readboy.com  ◀──家长手机（下发配置）       ▲                                      │       │ ① 解绑：输入家长密码/重置 ──▶  cancel_bindings 接口 ──▶ 服务端解绑       │ ② 重新绑定：输入激活码 ──▶  machine/active 接口 ──▶ 服务端重新绑定       │ ③ 拉配置：开机/推送/联网/密码变化 ──▶  jpush/content 接口 ──▶ 云端配置回来覆盖本地   ① 解绑 ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</div></div><div class="info-2"><div class="info-item-1">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解 适用版本：家长管理 v6.2.8（家长管理_v6.2.8.apk）分析方法：apktool 反编译 + smali 逐行核对（与旧文档交叉验证，一切以 6.2.8 为准）   开篇：一张图看懂三件事123456【你的平板】                          【家长手机 App】          【云端服务器】  家长管理 App  ──签名请求──▶  parent-manage.readboy.com  ◀──家长手机（下发配置）       ▲                                      │       │ ① 解绑：输入家长密码/重置 ──▶  cancel_bindings 接口 ──▶ 服务端解绑       │ ② 重新绑定：输入激活码 ──▶  machine/active 接口 ──▶ 服务端重新绑定       │ ③ 拉配置：开机/推送/联网/密码变化 ──▶  jpush/content 接口 ──▶ 云端配置回来覆盖本地   ① 解绑 ...</div></div></div></a><a class="pagination-related" href="/ZaralynControl-User-Guide/" title="ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-21</div><div class="info-item-2">ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具</div></div><div class="info-2"><div class="info-item-1">ZaralynControl 使用指南这是什么ZaralynControl 是一个基于读书郎家长管理 App（6.2.8 版本）反编译代码开发的管控修改工具。它维护一个自己的镜像数据库，通过双向同步机制覆盖家长管理 App 的本地数据库及云端配置，实现对被管控设备应用列表的自主修改。  适用人群：拥有设备所有权的家长，或技术研究者。不需 root，但需要 ADB 安装一次（或通过文件管理器直接安装 APK）。   功能速览   功能 说明    镜像库权威 自己维护一个 Room SQLite 数据库，所有修改先写入镜像库，再同步给家长管理   本地双向同步 从家长管理 ContentProvider 拉取配置；修改后覆盖写入 Provider   云端双向同步 从 jpush/content 拉取云端配置；通过 controlApp/upload 上传管控列表   版本自动适配 自动检测新版（install_app_list disabled_state）和旧版（forbidden_app state）   后台自动同步 WorkManager 周期任务，默认 1 分钟，可配置...</div></div></div></a><a class="pagination-related" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-15</div><div class="info-item-2">某学习平板自由安装软件——ParentManager的SQL注入漏洞</div></div><div class="info-2"><div class="info-item-1">深入分析 ParentManager 白名单漏洞：如何利用 SQL 注入绕过应用安装限制前言最近在学习机家长控制应用 ParentManager 的安全分析中，发现了一个极其严重的 SQL 注入漏洞（CVSS 10.0 CRITICAL），这个漏洞允许任意第三方应用完全绕过白名单机制，安装任何软件。本文将详细分析这个漏洞的原理、利用方式以及实际攻击代码。 漏洞概述ParentManager 是一款家长控制应用，用于管理学习机上应用的安装和使用。它通过白名单机制来限制用户只能安装和使用特定的应用。然而，由于开发者的安全意识不足，应用中存在一个严重的 SQL 注入漏洞，使得任何第三方应用都可以完全绕过这个限制。 漏洞位置文件路径: smali/com/readboy/parentmanager/core/provider/AppContentProvider.smali (102-109 行) 代码片段: 12345678910111213141516171819202122232425262728.method public query(Landroid/net/Uri;[Ljav...</div></div></div></a><a class="pagination-related" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-10</div><div class="info-item-2">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</div></div><div class="info-2"><div class="info-item-1">ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长管理升级到 v6.2.8 后，旧版工具的关键功能失效了：黑名单/白名单写入了错误的表、全局安装开关不再生效。本文记录了对新版 6.2.8 的逆向分析结论、新旧版本机制差异，以及 ZaralynSettings 如何通过”自动识别 + 版本路由”兼容新旧两个版本。 一、新旧版本机制差异1.1 安装管控机制的迁移（核心差异）对 家长管理_v6.2.8.apk 解包逆向（apktool）并与旧版对比，发现安装/使用管控的核心表发生了迁移：    功能 老版本 新版 6.2.8    黑名单/白名单 forbidden_app（state: 0=黑...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">OTFiles</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OTFiles"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暂无</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86%E7%94%9F%E6%80%81%E5%85%A8%E9%83%A8%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%EF%BC%9A%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C%EF%BC%88%E9%98%B2%E5%8E%82%E5%95%86%E8%B7%91%E8%B7%AF%E5%AD%98%E6%A1%A3%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">家长管理生态全部网络接口：请求/响应格式速查手册（防厂商跑路存档）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%87%E3%80%81%E5%85%AC%E5%85%B1%E7%BA%A6%E5%AE%9A%EF%BC%88%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%E9%80%9A%E7%94%A8%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">〇、公共约定（所有接口通用）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%9F%E5%90%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">0.1 服务器域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-2-%E8%AF%B7%E6%B1%82%E5%85%AC%E5%85%B1%E5%8F%82%E6%95%B0%EF%BC%88%E5%87%A0%E4%B9%8E%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%E9%83%BD%E6%9C%89%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">0.2 请求公共参数（几乎所有接口都有）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-3-%E5%93%8D%E5%BA%94%E5%85%AC%E5%85%B1%E7%BB%93%E6%9E%84%EF%BC%88OnlineResponseBean%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">0.3 响应公共结构（OnlineResponseBean）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-4-%E5%B7%B2%E7%9F%A5%E9%94%99%E8%AF%AF%E7%A0%81%EF%BC%88errno%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">0.4 已知错误码（errno）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-5-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">0.5 请求方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%85%8D%E7%BD%AE%E6%8B%89%E5%8F%96%E7%B1%BB%EF%BC%88%E4%BA%91%E7%AB%AF-%E2%86%92-%E5%B9%B3%E6%9D%BF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">一、配置拉取类（云端 → 平板）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%85%A8%E9%87%8F%E9%85%8D%E7%BD%AE%E6%8B%89%E5%8F%96-%E2%98%85%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 全量配置拉取 ★核心接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%BF%83%E8%B7%B3-%E2%98%85%E7%A1%AE%E8%AE%A4%E5%9C%A8%E7%BA%BF%EF%BC%88%E4%B8%8D%E6%8B%89%E9%85%8D%E7%BD%AE%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 心跳 ★确认在线（不拉配置）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%9C%80%E5%90%8E%E4%B8%80%E6%9D%A1%E6%8E%A8%E9%80%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 最后一条推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%A6%81%E7%94%A8%E5%88%97%E8%A1%A8%EF%BC%88%E9%BB%91%E7%99%BD%E5%90%8D%E5%8D%95%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.4 禁用列表（黑白名单）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E6%BF%80%E6%B4%BB%E7%8A%B6%E6%80%81%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.2.5.</span> <span class="toc-text">1.5 激活状态查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8A%E4%BC%A0%E7%B1%BB%EF%BC%88%E5%B9%B3%E6%9D%BF-%E2%86%92-%E4%BA%91%E7%AB%AF%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">二、上传类（平板 → 云端）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AF%86%E7%A0%81%E4%B8%8A%E4%BC%A0%EF%BC%88%E8%AE%BE%E7%BD%AE-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%E6%97%B6%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 密码上传（设置/修改密码时）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 设备信息上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%B7%B2%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 已安装应用列表上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%8D%B8%E8%BD%BD%E5%BA%94%E7%94%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.4 卸载应用上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E7%AE%A1%E6%8E%A7%E7%8A%B6%E6%80%81%E4%B8%8A%E4%BC%A0%EF%BC%88%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9-%E2%86%92-%E4%BA%91%E7%AB%AF%EF%BC%89"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.5 管控状态上传（本地修改 → 云端）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E9%9A%90%E8%97%8F%E5%BA%94%E7%94%A8%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.6.</span> <span class="toc-text">2.6 隐藏应用上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E4%BD%BF%E7%94%A8%E6%97%B6%E9%95%BF%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.7.</span> <span class="toc-text">2.7 使用时长上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-%E5%AE%9A%E4%BD%8D%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.8.</span> <span class="toc-text">2.8 定位上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.9.</span> <span class="toc-text">2.9 设备状态上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.10.</span> <span class="toc-text">2.10 密码输入错误记录上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11-%E6%88%AA%E5%B1%8F%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.11.</span> <span class="toc-text">2.11 截屏上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%A7%E5%88%B6%E7%B1%BB%EF%BC%88%E4%BA%91%E7%AB%AF-%E2%86%92-%E5%B9%B3%E6%9D%BF%EF%BC%8C%E8%BF%9C%E7%A8%8B%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">三、控制类（云端 → 平板，远程指令）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%BF%9C%E7%A8%8B%E5%85%B3%E6%9C%BA"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 远程关机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-JPush-%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 JPush 指令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%BC%8F%E4%B8%8A%E4%BC%A0-%E5%88%87%E6%8D%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 系统模式上传/切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%85%B3%E9%97%AD%E7%A6%81%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 关闭禁用模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%8E%A7%E5%88%B6-App-%E4%B8%8A%E4%BC%A0%EF%BC%88%E7%AE%A1%E6%8E%A7%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%EF%BC%89"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.5 控制 App 上传（管控应用列表）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%BA%AB%E4%BB%BD%E7%B1%BB%EF%BC%88%E6%BF%80%E6%B4%BB-%E8%A7%A3%E7%BB%91%EF%BC%89%E2%98%85%E5%85%B3%E9%94%AE"><span class="toc-number">1.5.</span> <span class="toc-text">四、身份类（激活/解绑）★关键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%AE%BE%E5%A4%87%E6%BF%80%E6%B4%BB%EF%BC%88%E9%87%8D%E6%96%B0%E7%BB%91%E5%AE%9A%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 设备激活（重新绑定）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%AE%BE%E5%A4%87%E8%A7%A3%E7%BB%91"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 设备解绑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%EF%BC%88%E5%90%AB%E5%AF%86%E7%A0%81%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 机器信息查询（含密码）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%98%AF%E5%90%A6%E5%85%81%E8%AE%B8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.4 是否允许输入密码上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%8A%9F%E8%83%BD%E7%B1%BB%EF%BC%88%E5%85%B6%E4%BB%96%E6%89%80%E6%9C%89%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">五、功能类（其他所有接口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%A8%A1%E6%8B%9F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%A6%81%E7%82%B9%EF%BC%88%E5%A6%82%E6%9E%9C%E5%8E%82%E5%95%86%E8%B7%91%E8%B7%AF%E5%90%8E%E8%87%AA%E5%BB%BA%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">六、模拟服务端要点（如果厂商跑路后自建）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%AE%B6%E9%95%BF%E5%8A%A9%E6%89%8B%EF%BC%88%E5%AE%B6%E9%95%BF-App%EF%BC%89api-super-%E5%9F%9F%E6%8E%A5%E5%8F%A3-%E2%98%85%E6%96%B0%E5%8F%91%E7%8E%B0"><span class="toc-number">1.8.</span> <span class="toc-text">七、手机端家长助手（家长 App）api-super 域接口 ★新发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95%EF%BC%88Util-smali-getSn%EF%BC%89"><span class="toc-number">1.8.1.</span> <span class="toc-text">7.1 签名算法（Util.smali getSn）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B%EF%BC%88token-%E5%BC%BA%E5%88%B6%EF%BC%89"><span class="toc-number">1.8.2.</span> <span class="toc-text">7.2 认证流程（token 强制）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E3%80%81%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E-ua-%E5%8F%82%E6%95%B0%EF%BC%88%E2%98%85%E5%AE%8C%E6%95%B4%E8%AF%B4%E6%98%8E%EF%BC%89"><span class="toc-number">1.8.3.</span> <span class="toc-text">7.3 请求方式、请求头与 ua 参数（★完整说明）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E6%97%B6%E9%97%B4%E7%AE%A1%E6%8E%A7%E6%8E%A5%E5%8F%A3%EF%BC%88%E2%AD%90-%E5%B9%B3%E6%9D%BF%E7%AB%AF%E6%B2%A1%E6%9C%89%EF%BC%89"><span class="toc-number">1.8.4.</span> <span class="toc-text">7.4 时间管控接口（⭐ 平板端没有）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E5%8F%96%E6%97%B6%E9%97%B4%E7%AE%A1%E6%8E%A7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.8.4.1.</span> <span class="toc-text">拉取时间管控配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%B6%E9%97%B4%E7%AE%A1%E6%8E%A7"><span class="toc-number">1.8.4.2.</span> <span class="toc-text">设置时间管控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%97%B6%E9%97%B4%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.8.4.3.</span> <span class="toc-text">其他时间接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E5%AF%86%E7%A0%81%E6%8E%A5%E5%8F%A3%EF%BC%88%E2%AD%90-%E5%85%81%E8%AE%B8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%B9%B3%E6%9D%BF%E7%AB%AF%E6%B2%A1%E6%9C%89%EF%BC%89"><span class="toc-number">1.8.5.</span> <span class="toc-text">7.5 密码接口（⭐ 允许输入密码平板端没有）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-%E6%B8%85%E9%99%A4%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86%E5%AF%86%E7%A0%81"><span class="toc-number">1.8.5.1.</span> <span class="toc-text">修改 / 清除家长管理密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%81%E8%AE%B8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%EF%BC%88%E2%AD%90-%E5%AF%B9%E5%BA%94%E5%B9%B3%E6%9D%BF%E7%AB%AF-allow-input-pwd%EF%BC%8C%E8%AE%BE%E5%A4%87%E7%AB%AF%E6%97%A0%E6%AD%A4%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.8.5.2.</span> <span class="toc-text">允许输入密码（⭐ 对应平板端 allow_input_pwd，设备端无此接口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%81%E8%AE%B8%E5%90%AF%E5%8A%A8%E5%AF%86%E7%A0%81%EF%BC%88allow-pwd%EF%BC%89"><span class="toc-number">1.8.5.3.</span> <span class="toc-text">允许启动密码（allow_pwd）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AF%86%E7%A0%81%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.8.5.4.</span> <span class="toc-text">其他密码接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-%E8%AE%BE%E5%A4%87%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.8.6.</span> <span class="toc-text">7.6 设备接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-7-%E4%B8%8E%E5%B9%B3%E6%9D%BF%E7%AB%AF%E5%B7%AE%E5%BC%82%E5%AF%B9%E7%85%A7"><span class="toc-number">1.8.7.</span> <span class="toc-text">7.7 与平板端差异对照</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97%EF%BC%88cn-dream-android-appstore%EF%BC%89%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3-%E2%98%852026-09-%E6%96%B0%E5%A2%9E"><span class="toc-number">1.9.</span> <span class="toc-text">八、应用商店（cn.dream.android.appstore）网络接口 ★2026-09 新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97-%E2%86%92-%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86%E5%9F%9F%EF%BC%88app-store-%E8%BA%AB%E4%BB%BD%EF%BC%89%E2%AD%90%E9%87%8D%E7%82%B9"><span class="toc-number">1.9.1.</span> <span class="toc-text">8.1 应用商店 → 家长管理域（app-store 身份）⭐重点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-1-%E4%B8%8B%E8%BD%BD%E7%AD%89%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">8.1.1 下载等级查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-2-%E5%AE%B6%E9%95%BF%E5%AF%86%E7%A0%81%E5%9B%9E%E6%BA%90"><span class="toc-number">1.9.1.2.</span> <span class="toc-text">8.1.2 家长密码回源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-3-%E7%94%B3%E8%AF%B7%E8%A7%A3%E9%94%81%EF%BC%88%E5%90%91%E6%89%8B%E6%9C%BA%E5%AE%B6%E9%95%BF%E7%AB%AF%E5%8F%91%E9%80%81%E4%B8%8B%E8%BD%BD%E8%AF%B7%E6%B1%82%EF%BC%89%E2%AD%90%E5%B9%B3%E6%9D%BF%E7%AB%AF%E6%B2%A1%E6%9C%89%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.9.1.3.</span> <span class="toc-text">8.1.3 申请解锁（向手机家长端发送下载请求）⭐平板端没有的接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-4-%E6%9B%B4%E6%96%B0%E5%8C%85%E5%88%97%E8%A1%A8%E4%B8%8A%E6%8A%A5"><span class="toc-number">1.9.1.4.</span> <span class="toc-text">8.1.4 更新包列表上报</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E5%95%86%E5%BA%97%E4%B8%BB%E5%9F%9F-g-apkstore-strongwind-cn%EF%BC%8857-%E4%B8%AA%E6%8E%A5%E5%8F%A3%EF%BC%89"><span class="toc-number">1.9.2.</span> <span class="toc-text">8.2 商店主域 g-apkstore.strongwind.cn（57 个接口）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E5%91%A8%E8%BE%B9%E5%9F%9F%E5%90%8D"><span class="toc-number">1.9.3.</span> <span class="toc-text">8.3 周边域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-%E5%AE%89%E8%A3%85%E7%AE%A1%E6%8E%A7%E5%88%A4%E5%AE%9A%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BC%88%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE%EF%BC%89%E2%AD%90"><span class="toc-number">1.9.4.</span> <span class="toc-text">8.4 安装管控判定全流程（点击下载按钮）⭐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%AE%BE%E7%BD%AE%E4%B8%AD%E9%9A%90%E8%97%8F%E7%9A%84-USB-%E8%B0%83%E8%AF%95%E9%80%89%E9%A1%B9%EF%BC%9A%E6%98%BE%E7%A4%BA%E6%9D%A1%E4%BB%B6%E5%85%A8%E9%93%BE%E8%B7%AF%E5%88%86%E6%9E%90-%E2%98%852026-09-%E6%96%B0%E5%A2%9E"><span class="toc-number">1.10.</span> <span class="toc-text">九、设置中隐藏的 USB 调试选项：显示条件全链路分析 ★2026-09 新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-%E6%A0%87%E5%87%86%E3%80%8CUSB-%E8%B0%83%E8%AF%95%E3%80%8D%E8%A2%AB%E6%B0%B8%E4%B9%85%E9%9A%90%E8%97%8F"><span class="toc-number">1.10.1.</span> <span class="toc-text">9.1 标准「USB 调试」被永久隐藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-%E6%98%BE%E7%A4%BA%E6%9D%A1%E4%BB%B6%EF%BC%88ReadboyUsbCnnPreferenceController%EF%BC%89%E2%AD%90%E6%A0%B8%E5%BF%83"><span class="toc-number">1.10.2.</span> <span class="toc-text">9.2 显示条件（ReadboyUsbCnnPreferenceController）⭐核心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-%E4%B8%8E%E4%BA%91%E7%AB%AF%E9%85%8D%E7%BD%AE%E7%9A%84%E8%81%94%E5%8A%A8%E9%93%BE%EF%BC%88%E8%B0%81%E5%86%99-un-mall-app-state%EF%BC%89%E2%AD%90"><span class="toc-number">1.10.3.</span> <span class="toc-text">9.3 与云端配置的联动链（谁写 un_mall_app_state）⭐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-%E5%BC%80%E5%85%B3%E7%8A%B6%E6%80%81%E4%B8%8E%E5%86%99%E5%85%A5%E8%A1%8C%E4%B8%BA"><span class="toc-number">1.10.4.</span> <span class="toc-text">9.4 开关状态与写入行为</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-%E5%BC%80%E5%8F%91%E8%80%85%E9%80%89%E9%A1%B9%E9%A1%B5%E9%9D%A2%E6%9C%AC%E8%BA%AB%E7%9A%84%E9%97%A8%E6%A7%9B"><span class="toc-number">1.10.5.</span> <span class="toc-text">9.5 开发者选项页面本身的门槛</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-6-USB-%E8%B0%83%E8%AF%95%E7%9A%84%E8%87%AA%E5%8A%A8%E7%AE%A1%E7%90%86%EF%BC%88%E5%B7%A5%E5%8E%82-%E4%BA%A7%E7%BA%BF%E9%80%BB%E8%BE%91%EF%BC%89"><span class="toc-number">1.10.6.</span> <span class="toc-text">9.6 USB 调试的自动管理（工厂/产线逻辑）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-7-%E5%90%8C%E6%AC%BE%E6%9A%97%E9%97%A8%EF%BC%9AWiFi%E3%80%8C%E9%AB%98%E7%BA%A7%E9%80%89%E9%A1%B9%E3%80%8D%EF%BC%88-wfad-%EF%BC%89"><span class="toc-number">1.10.7.</span> <span class="toc-text">9.7 同款暗门：WiFi「高级选项」（_wfad_）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-8-%E7%BB%93%E8%AE%BA%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.10.8.</span> <span class="toc-text">9.8 结论速查表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%EF%BC%88Settings-apk%EF%BC%89%E8%87%AA%E8%BA%AB%E7%9A%84%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3-%E2%98%852026-09-%E8%A1%A5%E5%85%85"><span class="toc-number">1.11.</span> <span class="toc-text">十、系统设置（Settings.apk）自身的网络接口 ★2026-09 补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-EWC-%E8%AE%BE%E5%A4%87%E8%AE%A4%E8%AF%81%E4%BD%93%E7%B3%BB%EF%BC%88api-care-c25-%E5%9F%9F%E5%85%AC%E5%85%B1%E5%8F%82%E6%95%B0%EF%BC%89%E2%AD%90"><span class="toc-number">1.11.1.</span> <span class="toc-text">10.1 EWC 设备认证体系（api-care / c25 域公共参数）⭐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-%E5%B1%8F%E5%B9%95-LCD-%E4%BF%A1%E6%81%AF%E4%B8%8A%E6%8A%A5%EF%BC%88%E5%BC%80%E6%9C%BA%EF%BC%89"><span class="toc-number">1.11.2.</span> <span class="toc-text">10.2 屏幕/LCD 信息上报（开机）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-%E8%AE%BE%E5%A4%87-SN-barcode-%E5%9B%9E%E6%BA%90%EF%BC%88%E5%85%B3%E4%BA%8E%E5%B9%B3%E6%9D%BF%E9%A1%B5%EF%BC%89"><span class="toc-number">1.11.3.</span> <span class="toc-text">10.3 设备 SN/barcode 回源（关于平板页）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-AI-%E5%AD%A6%E4%B9%A0%E6%88%BF%E9%97%B4%E6%A3%80%E6%9F%A5"><span class="toc-number">1.11.4.</span> <span class="toc-text">10.4 AI 学习房间检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-%E9%80%9A%E7%9F%A5%E9%BB%91%E5%90%8D%E5%8D%95%EF%BC%88%E7%89%88%E6%9C%AC%E5%8C%96%E6%8B%89%E5%8F%96%EF%BC%89%E2%AD%90"><span class="toc-number">1.11.5.</span> <span class="toc-text">10.5 通知黑名单（版本化拉取）⭐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-%E5%86%85%E7%BD%91%E4%BA%A7%E7%BA%BF%E9%A2%84%E8%A3%85-API%EF%BC%88192-168-16-247%EF%BC%89%E2%9A%A0%EF%B8%8F"><span class="toc-number">1.11.6.</span> <span class="toc-text">10.6 内网产线预装 API（192.168.16.247）⚠️</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-7-%E6%91%84%E5%83%8F%E5%A4%B4%E9%85%8D%E7%BD%AE%E4%B8%8B%E5%8F%91"><span class="toc-number">1.11.7.</span> <span class="toc-text">10.7 摄像头配置下发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-8-Settings-%E8%87%AA%E6%9B%B4%E6%96%B0%E6%A3%80%E6%9F%A5%EF%BC%88%E5%B5%8C%E5%85%A5-com-readboy-store-%E5%8C%85%EF%BC%89"><span class="toc-number">1.11.8.</span> <span class="toc-text">10.8 Settings 自更新检查（嵌入 com.readboy.store 包）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-9-%E5%85%B6%E4%BB%96"><span class="toc-number">1.11.9.</span> <span class="toc-text">10.9 其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-10-%E4%B8%8E%E5%85%B6%E5%AE%83%E7%AB%AF%E7%9A%84%E8%AE%A4%E8%AF%81%E5%AF%B9%E6%AF%94"><span class="toc-number">1.11.10.</span> <span class="toc-text">10.10 与其它端的认证对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0-DreamUpdate%EF%BC%88com-dream-ota-update%EF%BC%89%EF%BC%9A%E5%AE%8C%E6%95%B4%E5%88%B7%E6%9C%BA%E5%8C%85-%E5%A2%9E%E9%87%8F%E5%8C%85%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95-%E2%98%852026-09-%E6%96%B0%E5%A2%9E"><span class="toc-number">1.12.</span> <span class="toc-text">十一、系统更新 DreamUpdate（com.dream.ota.update）：完整刷机包/增量包获取方法 ★2026-09 新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-%E6%A3%80%E6%9F%A5%E6%9B%B4%E6%96%B0%E6%8E%A5%E5%8F%A3%EF%BC%88%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="toc-number">1.12.1.</span> <span class="toc-text">11.1 检查更新接口（核心）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85%E9%93%BE%E8%B7%AF"><span class="toc-number">1.12.2.</span> <span class="toc-text">11.2 下载与安装链路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-%E2%AD%90%E8%8E%B7%E5%8F%96%E5%AE%8C%E6%95%B4%E5%88%B7%E6%9C%BA%E5%8C%85-%E5%A2%9E%E9%87%8F%E5%8C%85%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-number">1.12.3.</span> <span class="toc-text">11.3 ⭐获取完整刷机包/增量包的方法（可直接复现）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4-%E8%BE%85%E5%8A%A9%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.12.4.</span> <span class="toc-text">11.4 辅助接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-%E5%A4%87%E6%B3%A8"><span class="toc-number">1.12.5.</span> <span class="toc-text">11.5 备注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E4%B8%AA%E4%BA%BA%E8%AE%BE%E7%BD%AE-personalsetting%EF%BC%88com-readboy-personalsetting%EF%BC%89API-%E6%B8%85%E5%8D%95-%E2%98%852026-09-%E6%96%B0%E5%A2%9E"><span class="toc-number">1.13.</span> <span class="toc-text">十二、个人设置 personalsetting（com.readboy.personalsetting）API 清单 ★2026-09 新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-1-%E2%9A%A0%EF%B8%8F-%E7%AD%BE%E5%90%8D%E4%BD%93%E7%B3%BB%EF%BC%9Anative-%E5%BA%93%E5%8A%A0%E5%9B%BA%EF%BC%88%E4%B8%8E%E5%89%8D%E8%BF%B0%E5%85%A8%E9%83%A8%E5%BA%94%E7%94%A8%E4%B8%8D%E5%90%8C%EF%BC%89"><span class="toc-number">1.13.1.</span> <span class="toc-text">12.1 ⚠️ 签名体系：native 库加固（与前述全部应用不同）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-%E8%87%AA%E6%9C%89%E5%9F%9F%E5%90%8D%E6%8E%A5%E5%8F%A3%E6%B8%85%E5%8D%95"><span class="toc-number">1.13.2.</span> <span class="toc-text">12.2 自有域名接口清单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-%E6%9D%83%E9%99%90-%E8%A1%8C%E4%B8%BA%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.13.3.</span> <span class="toc-text">12.3 权限/行为注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%99%A8%E5%90%8E%E9%97%A8%EF%BC%88com-dream-calculator%EF%BC%89"><span class="toc-number">1.13.4.</span> <span class="toc-text">附：计算器后门（com.dream.calculator）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ZaralynControl-User-Guide/" title="ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具">ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具</a><time datetime="2026-08-21T04:00:00.000Z" title="发表于 2026-08-21 12:00:00">2026-08-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/" title="解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解">解绑、重新绑定与云端配置拉取：家长管理（6.2.8）的身份与同步机制详解</a><time datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ParentManager-Network-API-Request-Response-Reference/" title="家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档）">家长管理生态全部网络接口请求/响应速查手册（含应用商店与隐藏USB调试链路，防厂商跑路存档）</a><time datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</a><time datetime="2026-08-10T04:00:00.000Z" title="发表于 2026-08-10 12:00:00">2026-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/" title="某学习平板自由安装软件——ParentManager的SQL注入漏洞">某学习平板自由安装软件——ParentManager的SQL注入漏洞</a><time datetime="2026-03-15T04:00:00.000Z" title="发表于 2026-03-15 12:00:00">2026-03-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 - 2026 By OTFiles</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="不许搜一些奇怪的东西哦，喵~" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div></div></div><script src="/bundle.js"></script></body></html>
