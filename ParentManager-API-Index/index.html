@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>家长管理生态接口手册 · 索引与总览（防厂商跑路存档） | OTFiles 的小站</title><meta name="author" content="OTFiles"><meta name="copyright" content="OTFiles"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="家长管理生态全部网络接口：索引与总览 为什么拆成多篇：整套材料覆盖 7 个应用（家长管理 6.2.8、家长助手、应用商店、系统设置、killapp、DreamUpdate、personalsetting）、数百个接口与若干整机行为链。原先挤在一篇 1800 行的长文里，检索困难；现按「协议层 → 业务域 → 应用」拆为 4 篇分册，章节编号沿用原稿的 〇～十二，所以你在任何地方看到「见 11.6」">
+<meta property="og:type" content="article">
+<meta property="og:title" content="家长管理生态接口手册 · 索引与总览（防厂商跑路存档）">
+<meta property="og:url" content="https://otfiles.github.io/ParentManager-API-Index/index.html">
+<meta property="og:site_name" content="OTFiles 的小站">
+<meta property="og:description" content="家长管理生态全部网络接口：索引与总览 为什么拆成多篇：整套材料覆盖 7 个应用（家长管理 6.2.8、家长助手、应用商店、系统设置、killapp、DreamUpdate、personalsetting）、数百个接口与若干整机行为链。原先挤在一篇 1800 行的长文里，检索困难；现按「协议层 → 业务域 → 应用」拆为 4 篇分册，章节编号沿用原稿的 〇～十二，所以你在任何地方看到「见 11.6」">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://otfiles.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-08-14T04:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-10T04:00:00.000Z">
+<meta property="article:author" content="OTFiles">
+<meta property="article:tag" content="破解">
+<meta property="article:tag" content="安装">
+<meta property="article:tag" content="科技">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://otfiles.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "家长管理生态接口手册 · 索引与总览（防厂商跑路存档）",
+  "url": "https://otfiles.github.io/ParentManager-API-Index/",
+  "image": "https://otfiles.github.io/img/butterfly-icon.png",
+  "datePublished": "2026-08-14T04:00:00.000Z",
+  "dateModified": "2026-10-10T04:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "OTFiles",
+      "url": "https://OTFiles.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://otfiles.github.io/ParentManager-API-Index/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '家长管理生态接口手册 · 索引与总览（防厂商跑路存档）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css');loadCss('https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css"></noscript></head><body><div id="web_bg" style="background-image: url(/img/bg1.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OTFiles 的小站</span></a><a class="nav-page-title" href="/"><span class="site-name">家长管理生态接口手册 · 索引与总览（防厂商跑路存档）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">家长管理生态接口手册 · 索引与总览（防厂商跑路存档）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-14T04:00:00.000Z" title="发表于 2026-08-14 12:00:00">2026-08-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-10-10T04:00:00.000Z" title="更新于 2026-10-10 12:00:00">2026-10-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="家长管理生态全部网络接口：索引与总览"><a href="#家长管理生态全部网络接口：索引与总览" class="headerlink" title="家长管理生态全部网络接口：索引与总览"></a>家长管理生态全部网络接口：索引与总览</h1><blockquote>
+<p><strong>为什么拆成多篇</strong>：整套材料覆盖 7 个应用（家长管理 6.2.8、家长助手、应用商店、系统设置、killapp、DreamUpdate、personalsetting）、<br>数百个接口与若干整机行为链。原先挤在一篇 1800 行的长文里，检索困难；现按「协议层 → 业务域 → 应用」拆为 4 篇分册，<br><strong>章节编号沿用原稿的 〇～十二</strong>，所以你在任何地方看到「见 11.6」都能直接对号入座。</p>
+<p><strong>本系列的目标</strong>：万一厂商倒闭 / 服务器关闭，这份材料要足够让人<strong>自建服务端</strong>、理解设备行为、或做本地替代实现。<br>因此每篇都尽量做到「不看原始 APK 也能复现结论」——关键证据（smali 片段、常量、字段名、类路径、行号、抓包样本）都内联在正文里。</p>
+</blockquote>
+<h2 id="分册索引"><a href="#分册索引" class="headerlink" title="分册索引"></a>分册索引</h2><table>
+<thead>
+<tr>
+<th>#</th>
+<th>分册</th>
+<th>覆盖章节</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>①</td>
+<td><a href="/ParentManager-API-01-Core-Protocol/">核心协议：签名、配置拉取、上传、控制、身份</a></td>
+<td>〇 一 二 三 四 五 六</td>
+<td>公共约定（域名/签名/响应外壳/错误码）、jpush/content 全量配置、11 个上传接口、5 个远程控制接口、激活/解绑身份链、功能类 30+ 接口、以及<strong>自建服务端要点</strong></td>
+</tr>
+<tr>
+<td>②</td>
+<td><a href="/ParentManager-API-02-Parent-Assistant-ApiSuper/">家长助手（手机端）api-super 域</a></td>
+<td>七</td>
+<td>与平板端<strong>完全不同</strong>的一套认证（getSn + token），时间管控/密码/设备接口，以及两端差异对照</td>
+</tr>
+<tr>
+<td>③</td>
+<td><a href="/ParentManager-API-03-AppStore-And-Settings/">应用商店与系统设置</a></td>
+<td>八 九 十</td>
+<td>应用商店的 app-store 身份接口 + g-apkstore 57 接口 + 安装管控判定全流程；Settings 隐藏的 USB 调试显示条件全链路、通知黑名单、EWC 认证、内网产线 API</td>
+</tr>
+<tr>
+<td>④</td>
+<td><a href="/ParentManager-API-04-OTA-And-SystemApps/">系统更新 OTA 与系统组件</a></td>
+<td>十一 十二 附录</td>
+<td>DreamUpdate 完整刷机包/增量包获取（四元组匹配规则）、personalsetting 30+ 域名清单与 native 签名、计算器后门</td>
+</tr>
+</tbody></table>
+<h2 id="方法篇"><a href="#方法篇" class="headerlink" title="方法篇"></a>方法篇</h2><ul>
+<li><strong><a href="/Reverse-Engineering-Reproduction-Guide/">逆向复现指南</a><strong>：怎么反编译、怎么按类全限定名定位代码、怎么核对常量与行号、抓包怎么抓、smali 字节码怎么看。</strong>本文档所有结论都能用它独立验证。</strong></li>
+</ul>
+<h2 id="一句话结论（先看这个）"><a href="#一句话结论（先看这个）" class="headerlink" title="一句话结论（先看这个）"></a>一句话结论（先看这个）</h2><ol>
+<li><strong>平板端全部接口无 token/会话</strong>，身份 = <code>MD5(秒时间戳 + APPSECRET + MD5("parent-manage"))</code>，密钥硬编码在 APK 里 → <strong>任何人可伪造</strong>。</li>
+<li><strong><code>jpush/content</code> 的配置全在响应 <code>data</code> 对象内</strong>（不是顶层），且<strong>返回空 <code>control_list</code> 不等于放行</strong>——设备对空数组不做任何处理。</li>
+<li><strong>手机端家长助手是另一套体系</strong>（<code>api-super</code> 域，getSn 签名 + 强制 token），能力和平板端<strong>不对等</strong>：时间管控、允许输入密码等只有手机端能给。</li>
+<li><strong>应用商店安装管控是”下载等级 + 已安装列表 + 云端 control_list”三方判定</strong>，改单一处会被下一次全量拉取覆盖。</li>
+<li><strong>USB 调试选项被永久隐藏</strong>，是否显示由家长管理的 <code>un_mall_app_state</code> 表（对应云端 <code>allow_unknown_app</code>）决定，另有 <code>_wfad_</code> WiFi 高级选项暗门。</li>
+<li><strong>OTA（<code>ota.readboy.com/update.php</code>）完全无鉴权</strong>，HTTP 明文；机型库按 <code>(model, board, android, chipset)</code> <strong>四元组精确匹配</strong>，<code>id</code> 恒为 1000、通道由 <code>debug</code> 承载。</li>
+</ol>
+<h2 id="分析基准（原始样本，仅作溯源，正文不依赖这些文件）"><a href="#分析基准（原始样本，仅作溯源，正文不依赖这些文件）" class="headerlink" title="分析基准（原始样本，仅作溯源，正文不依赖这些文件）"></a>分析基准（原始样本，仅作溯源，正文不依赖这些文件）</h2><table>
+<thead>
+<tr>
+<th>样本</th>
+<th>版本</th>
+<th>覆盖内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>家长管理_v6.2.8.apk</code>（<code>com.readboy.parentmanager</code>）</td>
+<td>6.2.8 / versionCode 2101200172</td>
+<td>分册 ①（平板端全部接口）+ 解绑/配置机制专文</td>
+</tr>
+<tr>
+<td>家长助手 <code>com.readboy.rbmanager</code></td>
+<td>2.9.57 / 2.6.4</td>
+<td>分册 ②（api-super 域）</td>
+</tr>
+<tr>
+<td>应用商店 <code>cn.dream.android.appstore</code></td>
+<td>—</td>
+<td>分册 ③ 第八章</td>
+</tr>
+<tr>
+<td>系统设置 Settings.apk</td>
+<td>Android 10 定制</td>
+<td>分册 ③ 第九、十章</td>
+</tr>
+<tr>
+<td>killapp <code>com.readboy.killapp</code></td>
+<td>—</td>
+<td>分册 ③ 第十章（键位语义）</td>
+</tr>
+<tr>
+<td>DreamUpdate <code>com.dream.ota.update</code></td>
+<td>2.1.0</td>
+<td>分册 ④ 第十一章</td>
+</tr>
+<tr>
+<td>personalsetting <code>com.readboy.personalsetting</code></td>
+<td>16k smali</td>
+<td>分册 ④ 第十二章</td>
+</tr>
+<tr>
+<td>计算器 <code>com.dream.calculator</code></td>
+<td>—</td>
+<td>分册 ④ 附录（后门）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>本文档<strong>内联了全部关键证据</strong>（smali 片段、常量、字段名、类全限定名、行号、真实抓包 JSON）。<br>即使上面这些 APK 与反编译目录全部删除，正文仍可独立复现每一条结论。</p>
+</blockquote>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><blockquote>
+<p> <strong>2026-08 修正版</strong>：根据真实抓包 + 逆向对照修正了 jpush/content 响应结构（字段在 <code>data</code> 内）、control_list 字段名、status=2 映射、签名秒/毫秒单位、空 control_list 陷阱等关键差异。</p>
+</blockquote>
+<blockquote>
+<p> <strong>2026-09 增补版</strong>：反编译<strong>应用商店</strong>（cn.dream.android.appstore）与<strong>系统设置</strong>（Settings.apk）后新增：</p>
+<ul>
+<li><strong>第八章</strong>：应用商店全部网络接口（含它以 <code>app-store</code> 身份调用家长管理域的 4 个接口、g-apkstore 商店主域 57 个接口、学分/商城/关怀等周边域名），以及完整的「下载等级管控判定流程」</li>
+<li><strong>第九章</strong>：设置中隐藏的 USB 调试选项显示条件全链路分析（<code>un_mall_app_state</code> ↔ 云端 <code>allow_unknown_app</code> 联动、工厂模式自动开启、<code>_wfad_</code> WiFi 高级选项暗门）</li>
+<li><strong>第十章</strong>：Settings 自身的 8 个隐藏网络接口（EWC 设备认证体系、屏幕/LCD 上报、SN 回源、通知黑名单、内网产线预装 API、摄像头配置、自更新）+ killapp 实锤的查杀/禁通知/深度隐藏四张动态列表</li>
+<li><strong>第十一章</strong>：系统更新 DreamUpdate 完整 OTA 链路（完整刷机包/增量包的获取方法，⚠️无鉴权）</li>
+<li><strong>第十二章</strong>：个人设置 personalsetting 的 30+ 域名 API 清单（含 native 签名库说明）；另附计算器后门 <code>ee0760ee</code></li>
+<li>修正 5 章下载等级响应字段名为 <code>download_level</code>（原误记为 <code>level</code>）</li>
+</ul>
+</blockquote>
+<blockquote>
+<p> <strong>2026-09-26 重要更正（第十一章 OTA 参数）</strong>：对着 <code>ota.readboy.com</code> 实测后确认，原稿有三处关键错误——<br>① <code>id</code> <strong>不是</strong>通道号（官方 <code>Preferences.getID()</code> 恒返回 <strong>1000</strong>），通道由 <strong><code>debug</code></strong> 承载（0 正式 / 1 测试 / 2 公测）；<br>② <code>chipset</code> 取自 <strong><code>ro.build.chipset</code><strong>，不是 <code>/sys/devices/soc0/soc_id</code>；<br>③ “伪造 <code>fingerprint</code> 可强制下发完整包” <strong>实测不成立</strong>——包类型完全由服务端机型库条目决定。<br>同时补上服务端机型库的</strong>四元组匹配规则</strong> <code>(model, board, android, chipset)</code>、真实的四态 <code>status</code> 响应结构、<br><code>display</code> 必填、<code>ConfigXml</code> 规范名与 OSS 直链规律。详见 11.1 / 11.3 / 11.6。</p>
+</blockquote>
+<hr>
+<p><strong>免责声明</strong>：本文仅用于安全研究和教育目的。请确认你拥有设备的所有权。未经授权使用本文中的技术可能违反法律，作者不对任何滥用行为负责。</p>
+<blockquote>
+<p> <strong>2026-10-10 重构</strong>：全文按主题拆为 4 篇分册 + 本索引页（章节编号 〇～十二 不变）。<br> 同时修正两处与 smali 不符的记载：① 请求参数 <code>timestamp</code> 统一为 <strong>10 位秒</strong>（原文 1.1 处误写 13 位毫秒）；<br> ② 错误码 <code>0x1B5A</code> = <strong>7002</strong>（<code>ERROR_TIME</code>，原文误写 7018）。并把所有「反编译于 cache/xxx」的本地路径<br> 改为「类全限定名 + 方法签名 + apktool 复现步骤」，保证删除 APK 与反编译目录后文档仍可自证。</p>
+</blockquote>
+<hr>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
+<li><a href="/Unbinding-Rebinding-and-Cloud-Config-Pull-Mechanism/">解绑、重新绑定与云端配置拉取机制详解</a></li>
+<li><a href="/Analysis-of-Software-Installation-Restrictions-on-Learning-Machines/">ParentManager 白名单 SQL 注入漏洞分析</a></li>
+<li><a href="/ZaralynControl-User-Guide/">ZaralynControl 使用指南</a></li>
+<li><a href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/">ZaralynSetting 新版家长管理兼容性修复</a></li>
+</ul>
+<hr>
+<p><strong>免责声明</strong>：本系列仅用于安全研究和教育目的。请确认你拥有设备的所有权。未经授权使用其中的技术可能违反法律，作者不对任何滥用行为负责。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://OTFiles.github.io">OTFiles</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://otfiles.github.io/ParentManager-API-Index/">https://otfiles.github.io/ParentManager-API-Index/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://OTFiles.github.io" target="_blank">OTFiles 的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%B4%E8%A7%A3/">破解</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E8%A3%85/">安装</a><a class="post-meta__tags" href="/tags/%E7%A7%91%E6%8A%80/">科技</a><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a><a class="post-meta__tags" href="/tags/%E5%AE%89%E5%85%A8/">安全</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/ParentManager-Network-API-Request-Response-Reference/" title="家长管理接口手册（旧地址已拆分为多篇，此处为跳转页）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">家长管理接口手册（旧地址已拆分为多篇，此处为跳转页）</div></div><div class="info-2"><div class="info-item-1">手册已拆分，请从索引进入 这篇原来是 1800 行的《家长管理生态全部网络接口速查手册》。2026-10 起按主题拆成 4 篇分册 + 1 篇索引，章节编号（〇～十二）保持不变，所以你之前收藏的「第 11.6 节」之类，在新分册里仍能对上号。  去向对照   原来的章节 现在在哪    〇 公共约定（域名 / 签名 / 响应外壳 / 错误码） ① 核心协议   一 配置拉取（jpush/content 等） ① 核心协议   二 上传类（11 个） ① 核心协议   三 控制类（远程指令） ① 核心协议   四 身份类（激活 / 解绑） ① 核心协议   五 功能类（30+ 接口） ① 核心协议   六 模拟服务端要点 ① 核心协议   七 家长助手 api-super 域 ② 家长助手 api-super 域   八 应用商店 ③ 应用商店与系统设置   九 隐藏的 USB 调试 ③ 应用商店与系统设置   十 Settings 自身接口 ③ 应用商店与系统设置   十一 DreamUpdate OTA ④ OTA 与系统组件   十二 ...</div></div></div></a><a class="pagination-related" href="/ZaralynSettings-New-ParentManager-Compatibility-Fix/" title="ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">ZaralynSettings 适配新版家长管理——机制迁移分析与自动识别实现</div></div><div class="info-2"><div class="info-item-1">ZaralynSettings 适配新版家长管理（v6.2.8）：机制迁移分析与自动识别实现前言此前发布的 《某学习平板自由安装软件——ParentManager的SQL注入漏洞》 分析了家长管理应用 ParentManager 的 AppContentProvider SQL 注入漏洞，并基于该漏洞开发了工具 ZaralynSettings（解除安装限制、黑白名单管理、数据库管理）。 然而当家长管理升级到 v6.2.8 后，旧版工具的关键功能失效了：黑名单/白名单写入了错误的表、全局安装开关不再生效。本文记录了对新版 6.2.8 的逆向分析结论、新旧版本机制差异，以及 ZaralynSettings 如何通过”自动识别 + 版本路由”兼容新旧两个版本。 一、新旧版本机制差异1.1 安装管控机制的迁移（核心差异）对 家长管理_v6.2.8.apk 解包逆向（apktool）并与旧版对比，发现安装/使用管控的核心表发生了迁移：    功能 老版本 新版 6.2.8    黑名单/白名单 forbidden_app（state: 0=黑...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/ParentManager-API-01-Core-Protocol/" title="家长管理接口手册①：核心协议（签名、配置拉取、上传、控制、身份、自建服务端）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">家长管理接口手册①：核心协议（签名、配置拉取、上传、控制、身份、自建服务端）</div></div><div class="info-2"><div class="info-item-1">① 核心协议：签名、配置拉取、上传、控制与身份 本分册覆盖原手册的 〇 ～ 六 章：公共约定、jpush/content 全量配置、上传类、控制类、身份类（激活/解绑）、功能类接口，以及如果厂商跑路后如何自建服务端。全部内容基于 家长管理_v6.2.8.apk（com.readboy.parentmanager，versionCode 2101200172）的 smali 逐行分析与真实抓包（设备 95eab027）。  本分册导航 〇、公共约定：域名 / 公共参数 / 签名算法 / 响应外壳 / 错误码 一、配置拉取类：jpush/content（核心）、心跳、最后推送、禁用列表、激活状态 二、上传类：密码、设备信息、应用列表、卸载、管控状态、隐藏应用、时长、定位、状态、密码错误、截屏 三、控制类：远程关机、JPush 指令、系统模式、关闭禁用模式、管控应用列表 四、身份类：设备激活、解绑、机器信息查询、是否允许输入密码上传 五、功能类：下载等级、作业、轻应用、时间、护眼、统计等 30+ 接口 六、模拟服务端要点：自建服务器的最...</div></div></div></a><a class="pagination-related" href="/ParentManager-API-02-Parent-Assistant-ApiSuper/" title="家长管理接口手册②：手机端家长助手 api-super 域（与平板端完全不同的一套认证）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">家长管理接口手册②：手机端家长助手 api-super 域（与平板端完全不同的一套认证）</div></div><div class="info-2"><div class="info-item-1">② 手机端家长助手（api-super 域）接口 本分册对应原手册 第七章。分析样本：家长助手 com.readboy.rbmanager v2.9.57 / v2.6.4。 最重要的结论：手机端家长助手与平板端家长管理不是同一套认证，也不是同一套能力。平板端靠一个硬编码 APPSECRET 的 MD5 签名就够了；手机端走 getSn 签名 + 强制 token，且独有能力是平板端没有的——时间管控、允许输入密码（allow_input_pwd）。如果只想改平板上「能不能输入密码」，平板端自己是没接口的，必须借手机端这套（或直接改 SharedPreferences，见解绑专文 8.4.1）。  七、手机端家长助手（家长 App）api-super 域接口 ★新发现 来源：家长助手 v2.9.57 / v2.6.4（com.readboy.rbmanager，手机端家长 App）反编译。域名 https://api-super.readboy.com/api/，与平板端完全不同的认证体系。关键价值：平板端（parent-manage/parentadmin）...</div></div></div></a><a class="pagination-related" href="/ParentManager-API-03-AppStore-And-Settings/" title="家长管理接口手册③：应用商店与系统设置（安装管控判定、隐藏 USB 调试、通知黑名单）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">家长管理接口手册③：应用商店与系统设置（安装管控判定、隐藏 USB 调试、通知黑名单）</div></div><div class="info-2"><div class="info-item-1">③ 应用商店（cn.dream.android.appstore）与系统设置（Settings.apk） 本分册对应原手册 第八、九、十章。 三条主线：  应用商店：它不只是”下载应用”，还会以 app-store 身份去调家长管理域的接口（这是安装管控的关键一环），另有主域 g-apkstore.strongwind.cn 的 57 个接口、学分/商城/关怀等周边域名。 隐藏的 USB 调试：设置里的「USB 调试」被永久隐藏，能否显示由家长管理的 un_mall_app_state 表决定（= 云端 allow_unknown_app），另有 _wfad_ WiFi 高级选项暗门、工厂/产线逻辑。这是”为什么开发者选项里没有 USB 调试”的完整答案。 Settings 自身的隐藏接口：EWC 设备认证、屏幕/LCD 上报、SN 回源、通知黑名单、内网产线预装 API、摄像头配置、自更新；以及 killapp 实锤的四张动态列表（查杀/禁通知/深度隐藏/键位）。   本分册导航 八、应用商店接口：...</div></div></div></a><a class="pagination-related" href="/ParentManager-Network-API-Request-Response-Reference/" title="家长管理接口手册（旧地址已拆分为多篇，此处为跳转页）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">家长管理接口手册（旧地址已拆分为多篇，此处为跳转页）</div></div><div class="info-2"><div class="info-item-1">手册已拆分，请从索引进入 这篇原来是 1800 行的《家长管理生态全部网络接口速查手册》。2026-10 起按主题拆成 4 篇分册 + 1 篇索引，章节编号（〇～十二）保持不变，所以你之前收藏的「第 11.6 节」之类，在新分册里仍能对上号。  去向对照   原来的章节 现在在哪    〇 公共约定（域名 / 签名 / 响应外壳 / 错误码） ① 核心协议   一 配置拉取（jpush/content 等） ① 核心协议   二 上传类（11 个） ① 核心协议   三 控制类（远程指令） ① 核心协议   四 身份类（激活 / 解绑） ① 核心协议   五 功能类（30+ 接口） ① 核心协议   六 模拟服务端要点 ① 核心协议   七 家长助手 api-super 域 ② 家长助手 api-super 域   八 应用商店 ③ 应用商店与系统设置   九 隐藏的 USB 调试 ③ 应用商店与系统设置   十 Settings 自身接口 ③ 应用商店与系统设置   十一 DreamUpdate OTA ④ OTA 与系统组件   十二 ...</div></div></div></a><a class="pagination-related" href="/ParentManager-API-04-OTA-And-SystemApps/" title="家长管理接口手册④：系统更新 OTA 与系统组件（刷机包获取、personalsetting、计算器后门）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">家长管理接口手册④：系统更新 OTA 与系统组件（刷机包获取、personalsetting、计算器后门）</div></div><div class="info-2"><div class="info-item-1">④ 系统更新 DreamUpdate（OTA）与系统组件 本分册对应原手册 第十一、十二章与附录。 第十一章是全套材料里最”可直接用”的一章：ota.readboy.com/update.php 无任何鉴权/签名/token，HTTP 明文，任何人 POST 一组设备参数就能拿到对应机型的刷机包直链。本章已用真实服务器逐项验证，并纠正了早期三处误记（id 不是通道、chipset 不是 soc_id、伪造 fingerprint 不能强制完整包）。 配套的可运行实现见 GitHub 项目 ZaralynOTA（com.readboy.otadownloader），它把本章结论做成了 App：自动探测参数 → 查包 → 下载，并支持「参数尝试」批量试版本号。  本分册导航 十一、DreamUpdate OTA 11.1 检查更新接口（核心） 11.3 获取完整刷机包/增量包的方法 11.6 服务端机型库匹配规则（实测逆向）   十二、personalsetting API 清单 附：计算器后门   十一、系统更新 DreamUpdate（com.dre...</div></div></div></a><a class="pagination-related" href="/ZaralynControl-User-Guide/" title="ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-21</div><div class="info-item-2">ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具</div></div><div class="info-2"><div class="info-item-1">ZaralynControl 使用指南这是什么ZaralynControl 是一个基于读书郎家长管理 App（6.2.8 版本）反编译代码开发的管控修改工具。它维护一个自己的镜像数据库，通过双向同步机制覆盖家长管理 App 的本地数据库及云端配置，实现对被管控设备应用列表的自主修改。  适用人群：拥有设备所有权的家长，或技术研究者。不需 root，但需要 ADB 安装一次（或通过文件管理器直接安装 APK）。   功能速览   功能 说明    镜像库权威 自己维护一个 Room SQLite 数据库，所有修改先写入镜像库，再同步给家长管理   本地双向同步 从家长管理 ContentProvider 拉取配置；修改后覆盖写入 Provider   云端双向同步 从 jpush/content 拉取云端配置；通过 controlApp/upload 上传管控列表   版本自动适配 自动检测新版（install_app_list disabled_state）和旧版（forbidden_app state）   后台自动同步 WorkManager 周期任务，默认 1 分钟，可配置...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">OTFiles</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OTFiles"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暂无</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B6%E9%95%BF%E7%AE%A1%E7%90%86%E7%94%9F%E6%80%81%E5%85%A8%E9%83%A8%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3%EF%BC%9A%E7%B4%A2%E5%BC%95%E4%B8%8E%E6%80%BB%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">家长管理生态全部网络接口：索引与总览</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%86%8C%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.</span> <span class="toc-text">分册索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%AF%87"><span class="toc-number">1.2.</span> <span class="toc-text">方法篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%BB%93%E8%AE%BA%EF%BC%88%E5%85%88%E7%9C%8B%E8%BF%99%E4%B8%AA%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">一句话结论（先看这个）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E5%9F%BA%E5%87%86%EF%BC%88%E5%8E%9F%E5%A7%8B%E6%A0%B7%E6%9C%AC%EF%BC%8C%E4%BB%85%E4%BD%9C%E6%BA%AF%E6%BA%90%EF%BC%8C%E6%AD%A3%E6%96%87%E4%B8%8D%E4%BE%9D%E8%B5%96%E8%BF%99%E4%BA%9B%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">分析基准（原始样本，仅作溯源，正文不依赖这些文件）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="toc-number">1.5.</span> <span class="toc-text">更新日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="toc-number">1.6.</span> <span class="toc-text">相关文章</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Reverse-Engineering-Reproduction-Guide/" title="逆向复现指南：如何自行验证家长管理接口手册中的每条结论（apktool / smali / 抓包）">逆向复现指南：如何自行验证家长管理接口手册中的每条结论（apktool / smali / 抓包）</a><time datetime="2026-10-10T04:00:00.000Z" title="发表于 2026-10-10 12:00:00">2026-10-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ZaralynControl-User-Guide/" title="ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具">ZaralynControl 使用指南 — 读书郎家长管理云端+本地管控修改工具</a><time datetime="2026-08-21T04:00:00.000Z" title="发表于 2026-08-21 12:00:00">2026-08-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ParentManager-API-04-OTA-And-SystemApps/" title="家长管理接口手册④：系统更新 OTA 与系统组件（刷机包获取、personalsetting、计算器后门）">家长管理接口手册④：系统更新 OTA 与系统组件（刷机包获取、personalsetting、计算器后门）</a><time datetime="2026-08-14T08:00:00.000Z" title="发表于 2026-08-14 16:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ParentManager-API-03-AppStore-And-Settings/" title="家长管理接口手册③：应用商店与系统设置（安装管控判定、隐藏 USB 调试、通知黑名单）">家长管理接口手册③：应用商店与系统设置（安装管控判定、隐藏 USB 调试、通知黑名单）</a><time datetime="2026-08-14T07:00:00.000Z" title="发表于 2026-08-14 15:00:00">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ParentManager-API-02-Parent-Assistant-ApiSuper/" title="家长管理接口手册②：手机端家长助手 api-super 域（与平板端完全不同的一套认证）">家长管理接口手册②：手机端家长助手 api-super 域（与平板端完全不同的一套认证）</a><time datetime="2026-08-14T06:00:00.000Z" title="发表于 2026-08-14 14:00:00">2026-08-14</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 - 2026 By OTFiles</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="不许搜一些奇怪的东西哦，喵~" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div></div></div><script src="/bundle.js"></script></body></html>
